@@ -21,11 +21,11 @@ abstract class RouterAbstract
     /**
      * Finders
      *
-     * @type \AppendIterator
+     * @type array
      * @access private
      */
 
-    private $_finders = null;
+    private $_finders = array();
 
     /**
      * Add finder
@@ -37,10 +37,7 @@ abstract class RouterAbstract
 
     public function addFinder(Finder $finder)
     {
-        if ($this->_finders === null)
-            $this->_finders = new \AppendIterator();
-
-        $this->_finders->append($finder);
+        $this->_finders[] = $finder;
 
         return $this;
     }
@@ -66,8 +63,12 @@ abstract class RouterAbstract
 
     protected function requireFiles()
     {
-        foreach ($this->_finders as $file)
+        foreach ($this->_finders as $finder)
         {
+            foreach ($finder as $file)
+            {
+                require_once($file->getRealpath());
+            }
         }
 
         return $this;

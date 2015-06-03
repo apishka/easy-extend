@@ -26,7 +26,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "ApishkaTest\\EasyExtend\\": "tests/suites"
+            "ApishkaTest\\EasyExtend\\": "tests"
         }
     },
     "extra": {

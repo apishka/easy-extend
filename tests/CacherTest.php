@@ -47,7 +47,7 @@ class CacherTest extends \PHPUnit_Framework_TestCase
         $cacher = $this->getCacher();
 
         $this->assertEquals(
-            realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'cache'),
+            realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'cache'),
             $cacher->getCacheDir()
         );
     }
