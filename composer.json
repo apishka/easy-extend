@@ -17,6 +17,7 @@
         "doctrine/cache": "~1.4.0"
     },
     "require-dev": {
+        "composer/composer": "dev-master@dev",
         "phpunit/phpunit": "~4.6"
     },
     "autoload": {
