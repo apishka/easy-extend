@@ -1,6 +1,6 @@
 <?php namespace Apishka\EasyExtend;
 
-use Apishka\EasyExtend\Helper\ByClassNameTrait;
+use Apishka\EasyExtend\Type\ByClassNameTrait;
 use Symfony\Component\Finder\Finder;
 
 /**
@@ -62,6 +62,6 @@ abstract class RouterAbstract
 
     public function getCacheFile()
     {
-        ;
+        return realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'cache');
     }
 }

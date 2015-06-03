@@ -9,7 +9,7 @@
 
     <testsuites>
         <testsuite name="Easy Extend Test Suite">
-            <directory>./tests/suites</directory>
+            <directory>./tests</directory>
         </testsuite>
     </testsuites>
 </phpunit>
