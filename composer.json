@@ -1,0 +1,35 @@
+{
+    "name": "apishka/easy-extend",
+    "description": "Easy extends class implementation for PHP",
+    "keywords": ["extending", "extend", "class", "composer-plugin"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Evgeny Reykh",
+            "email": "evgeny@reykh.com"
+        }
+    ],
+    "type": "composer-plugin",
+    "require": {
+        "php": ">=5.6",
+        "composer-plugin-api": "~1.0.0",
+        "symfony/finder": "~2.7.0",
+        "doctrine/cache": "~1.4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Apishka\\EasyExtend\\": "source"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ApishkaTest\\EasyExtend\\": "tests/suites"
+        }
+    },
+    "extra": {
+        "class": "Apishka\\EasyExtend\\EasyExtend"
+    }
+}
