@@ -1,64 +1,158 @@
 <?php namespace ApishkaTest\EasyExtend\Router;
 
 use Apishka\EasyExtend\Router\ByClassName;
-use Symfony\Component\Finder\Finder;
 
 /**
  * By class name test
  *
+ * @runTestsInSeparateProcesses
  * @uses \PHPUnit_Framework_TestCase
  * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
-abstract class ByClassNameTest extends \PHPUnit_Framework_TestCase
+class ByClassNameTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Create router
+     * Get broker
      *
      * @access protected
-     * @return ByClassName
+     * @return void
      */
 
-    protected function createRouter()
+    protected function getRouter()
     {
         return new ByClassName();
     }
 
     /**
-     * Test cache name
+     * Test cached data
      *
      * @access public
      * @return void
      */
 
-    public function testCacheName()
+    public function testEmptyCachedData()
     {
-        $router = $this->createRouter();
+        $router = $this->getRouter();
+        $router->cache();
 
         $this->assertEquals(
-            'Apishka_EasyExtend_Router_ByClassName',
-            $router->getCacheName()
+            array(
+                'Apishka\EasyExtend\Router\ByClassName' => array(
+                    'class' => 'Apishka\EasyExtend\Router\ByClassName',
+                ),
+            ),
+            $router->getData()
         );
     }
 
     /**
-     * Test wihtout extending
+     * Test simple cache data
      *
      * @access public
      * @return void
      */
 
-    public function testWihtoutExtending()
+    public function testSimple()
     {
-        $finder = new Finder();
-        $finder
-            ->files()
-            ->name('*.php')
-            ->in(__DIR__ . DIRECTORY_SEPARATOR . 'Fixtures' . DIRECTORY_SEPARATOR . 'Tree')
-        ;
+        require_once('tests/Router/Fixtures/Tree/Apple.php');
+        require_once('tests/Router/Fixtures/Tree/Cherry.php');
+        require_once('tests/Router/Fixtures/Tree/Orange.php');
 
-        $router = $this->createRouter();
-        $router->addFinder($finder);
+        $router = $this->getRouter();
         $router->cache();
+
+        $this->assertEquals(
+            array(
+                'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Apple' => array (
+                    'class' => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Apple',
+                ),
+                'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Cherry' => array (
+                    'class' => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Cherry',
+                ),
+                'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Orange' => array (
+                    'class' => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Orange',
+                ),
+                'Apishka\EasyExtend\Router\ByClassName' => array(
+                    'class' => 'Apishka\EasyExtend\Router\ByClassName',
+                ),
+            ),
+            $router->getData()
+        );
+    }
+
+    /**
+     * Test simple cache data
+     *
+     * @access public
+     * @return void
+     */
+
+    public function testExtending()
+    {
+        require_once('tests/Router/Fixtures/Tree/Apple.php');
+        require_once('tests/Router/Fixtures/Tree/Cherry.php');
+        require_once('tests/Router/Fixtures/Tree/Orange.php');
+        require_once('tests/Router/Fixtures/Tree/MichurinCherry.php');
+
+        $router = $this->getRouter();
+        $router->cache();
+
+        $this->assertEquals(
+            array(
+                'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Apple' => array (
+                    'class' => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Apple',
+                ),
+                'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Cherry' => array (
+                    'class' => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\MichurinCherry',
+                ),
+                'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Orange' => array (
+                    'class' => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Orange',
+                ),
+                'Apishka\EasyExtend\Router\ByClassName' => array(
+                    'class' => 'Apishka\EasyExtend\Router\ByClassName',
+                ),
+            ),
+            $router->getData()
+        );
+    }
+
+    /**
+     * Test simple cache data
+     *
+     * @access public
+     * @return void
+     */
+
+    public function testExtendingWithBranch()
+    {
+        require_once('tests/Router/Fixtures/Tree/Apple.php');
+        require_once('tests/Router/Fixtures/Tree/Cherry.php');
+        require_once('tests/Router/Fixtures/Tree/Orange.php');
+        require_once('tests/Router/Fixtures/Tree/Mandarin.php');
+
+        $router = $this->getRouter();
+        $router->cache();
+
+        $this->assertEquals(
+            array(
+                'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Apple' => array (
+                    'class' => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Apple',
+                ),
+                'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Cherry' => array (
+                    'class' => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Cherry',
+                ),
+                'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Mandarin' => array (
+                    'class' => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Mandarin',
+                ),
+                'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Orange' => array (
+                    'class' => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Orange',
+                ),
+                'Apishka\EasyExtend\Router\ByClassName' => array(
+                    'class' => 'Apishka\EasyExtend\Router\ByClassName',
+                ),
+            ),
+            $router->getData()
+        );
     }
 }
