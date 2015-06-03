@@ -10,7 +10,7 @@ use Symfony\Component\Finder\Finder;
  * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
-class ByClassNameTest extends \PHPUnit_Framework_TestCase
+abstract class ByClassNameTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Create router

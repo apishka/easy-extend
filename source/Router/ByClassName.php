@@ -11,4 +11,32 @@ use Apishka\EasyExtend\RouterAbstract;
 
 class ByClassName extends RouterAbstract
 {
+    /**
+     * Is correct item
+     *
+     * @param \ReflectionClass $reflector
+     * @access protected
+     * @return bool
+     */
+
+    protected function isCorrectItem($reflector)
+    {
+        return parent::isCorrectItem($reflector) && $this->hasClassTrait($reflector, 'Apishka\EasyExtend\Type\ByClassNameTrait');
+    }
+
+    /**
+     * Push class data
+     *
+     * @param array $data
+     * @param \ReflectionClass $reflector
+     * @access protected
+     * @return array
+     */
+
+    protected function pushClassData(array $data, \ReflectionClass $reflector)
+    {
+        $data[$reflector->getName()] = $reflector->getName();
+
+        return $data;
+    }
 }
