@@ -54,14 +54,26 @@ abstract class RouterAbstract
     }
 
     /**
+     * Get cache dir
+     *
+     * @access public
+     * @return string
+     */
+
+    public function getCacheDir()
+    {
+        return realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'cache');
+    }
+
+    /**
      * Get cache path
      *
      * @access public
-     * @return void
+     * @return string
      */
 
-    public function getCacheFile()
+    public function getCacheName()
     {
-        return realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'cache');
+        return str_replace('\\', '_', get_class($this));
     }
 }

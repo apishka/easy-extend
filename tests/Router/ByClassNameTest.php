@@ -30,13 +30,30 @@ class ByClassNameTest extends \PHPUnit_Framework_TestCase
      * @return void
      */
 
-    public function testCachePath()
+    public function testCacheDir()
     {
         $router = $this->createRouter();
 
         $this->assertEquals(
             realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'cache'),
-            $router->getCacheFile()
+            $router->getCacheDir()
+        );
+    }
+
+    /**
+     * Test cache name
+     *
+     * @access public
+     * @return void
+     */
+
+    public function testCacheName()
+    {
+        $router = $this->createRouter();
+
+        $this->assertEquals(
+            'Apishka_EasyExtend_Router_ByClassName',
+            $router->getCacheName()
         );
     }
 }
