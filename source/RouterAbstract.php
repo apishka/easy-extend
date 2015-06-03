@@ -21,11 +21,11 @@ abstract class RouterAbstract
     /**
      * Finders
      *
-     * @type array
+     * @type \AppendIterator
      * @access private
      */
 
-    private $_finders = array();
+    private $_finders = null;
 
     /**
      * Add finder
@@ -37,7 +37,10 @@ abstract class RouterAbstract
 
     public function addFinder(Finder $finder)
     {
-        $this->_finders[] = $finder;
+        if ($this->_finders === null)
+            $this->_finders = new \AppendIterator();
+
+        $this->_finders->append($finder);
 
         return $this;
     }
@@ -51,18 +54,23 @@ abstract class RouterAbstract
 
     public function cache()
     {
+        $this->requireFiles();
     }
 
     /**
-     * Get cache dir
+     * Require files
      *
-     * @access public
-     * @return string
+     * @access protected
+     * @return RouterAbstract this
      */
 
-    public function getCacheDir()
+    protected function requireFiles()
     {
-        return realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'cache');
+        foreach ($this->_finders as $file)
+        {
+        }
+
+        return $this;
     }
 
     /**
