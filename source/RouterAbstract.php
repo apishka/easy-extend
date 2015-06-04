@@ -1,6 +1,6 @@
 <?php namespace Apishka\EasyExtend;
 
-use Apishka\EasyExtend\Type\ByClassNameTrait;
+use Apishka\EasyExtend\Helper\ByClassNameTrait;
 use Apishka\EasyExtend\RouterInterface;
 
 /**

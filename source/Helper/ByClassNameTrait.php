@@ -1,7 +1,7 @@
-<?php namespace Apishka\EasyExtend\Type;
+<?php namespace Apishka\EasyExtend\Helper;
 
 /**
- * By class name trait
+ * By class name help trait
  *
  * @author Evgeny Reykh <evgeny@reykh.com>
  */
@@ -59,7 +59,7 @@ trait ByClassNameTrait
      * @return string
      */
 
-    protected function __apishkaPrefixes()
+    protected function __apishkaGetPrefixes()
     {
         return 'apishka';
     }

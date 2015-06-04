@@ -23,4 +23,21 @@ class ByClassName extends RouterAbstract
     {
         return parent::isCorrectItem($reflector) && $this->hasClassTrait($reflector, 'Apishka\EasyExtend\Type\ByClassNameTrait');
     }
+
+    /**
+     * Get class data
+     *
+     * @param \ReflectionClass $reflector
+     * @param object $item
+     * @access protected
+     * @return mixed
+     */
+
+    protected function getClassData(\ReflectionClass $reflector, $item)
+    {
+        $data = parent::getClassData($reflector, $item);
+        $data['prefixes'] = $item->__apishkaGetPrefixes();
+
+        return $data;
+    }
 }
