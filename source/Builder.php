@@ -52,10 +52,12 @@ class Builder
     public function buildFromEvent(Event $event)
     {
         $this->setEvent($event);
-        $this->getConfigFilesByComposer();
 
-        // 1. Найти список нужных пакетиков
-        // 2. Обыскать пакетики на предмет апишечек
+        $configs = $this->getConfigFilesByComposer();
+        $this->addFindersByConfigs($configs);
+
+        // 1. +Найти список нужных пакетиков
+        // 2. +Обыскать пакетики на предмет апишечек
         // 3. Создать файндеры для поиска файликов
         // 4. Создать билдер и запилить кешик
     }
@@ -69,6 +71,25 @@ class Builder
 
     public function buildFromCache()
     {
+        $configs = Cacher::getInstance()->fetch($this->getConfigsCacheName());
+        $this->addFindersByConfigs($configs);
+    }
+
+    /**
+     * Add finders by configs
+     *
+     * @param array $configs
+     * @access protected
+     * @return Builder this
+     */
+
+    protected function addFindersByConfigs(array $configs)
+    {
+        foreach ($configs as $package => $config)
+        {
+            $data = @include($config);
+            var_dump($data);
+        }
     }
 
     /**
@@ -167,11 +188,28 @@ class Builder
                     )
                 );
 
-                $configs[] = $path;
+                $configs[$package->getName()] = $path;
             }
         }
 
+        Cacher::getInstance()->save(
+            $this->getConfigsCacheName(),
+            $configs
+        );
+
         return $this;
+    }
+
+    /**
+     * Get configs cache name
+     *
+     * @access protected
+     * @return string
+     */
+
+    protected function getConfigsCacheName()
+    {
+        return 'configs';
     }
 
     /**
