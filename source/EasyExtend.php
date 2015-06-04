@@ -6,7 +6,7 @@ use Composer\IO\IOInterface;
 use Composer\Plugin\PluginInterface;
 use Composer\Script\Event;
 use Composer\Script\ScriptEvents;
-use Apishka\Builder;
+use Apishka\EasyExtend\Builder;
 
 /**
  * Easy extend

@@ -1,8 +1,10 @@
 <?php namespace Apishka\EasyExtend;
 
-use Apishka\EasyExtend\Broker;
 use Composer\Script\Event;
+use Composer\IO\IOInterface;
+use Composer\Package\PackageInterface;
 use Symfony\Component\Finder\Finder;
+use Apishka\EasyExtend\Broker;
 
 /**
  * Builder
@@ -13,6 +15,15 @@ use Symfony\Component\Finder\Finder;
 class Builder
 {
     /**
+     * Event
+     *
+     * @type Event
+     * @access private
+     */
+
+    private $_event = null;
+
+    /**
      * Finders
      *
      * @type array
@@ -20,6 +31,15 @@ class Builder
      */
 
     private $_finders = array();
+
+    /**
+     * Logger
+     *
+     * @type IOInterface
+     * @access private
+     */
+
+    private $_logger = null;
 
     /**
      * Build
@@ -31,11 +51,21 @@ class Builder
 
     public function buildFromEvent(Event $event)
     {
+        $this->setEvent($event);
+        $this->getConfigFilesByComposer();
+
         // 1. Найти список нужных пакетиков
         // 2. Обыскать пакетики на предмет апишечек
         // 3. Создать файндеры для поиска файликов
         // 4. Создать билдер и запилить кешик
     }
+
+    /**
+     * Build from cache
+     *
+     * @access public
+     * @return void
+     */
 
     public function buildFromCache()
     {
@@ -95,5 +125,163 @@ class Builder
         }
 
         return $this;
+    }
+
+    /**
+     * Get config files by composer
+     *
+     * @access protected
+     * @return Builder
+     */
+
+    protected function getConfigFilesByComposer()
+    {
+        $this->getLogger()->write('<info>Searching for config files</info>');
+
+        $packages = $this->getEvent()->getComposer()->getRepositoryManager()->getLocalRepository()->getPackages();
+
+        $dependant_packages = array();
+        foreach ($packages as $package)
+        {
+            if ($this->isDependantPackage($package, false))
+                $dependant_packages[] = $package;
+        }
+
+        $configs = array();
+        foreach ($dependant_packages as $package)
+        {
+            $this->getLogger()->write(
+                sprintf(
+                    '<info>Looking for ".apishka.php" file for %s</info>',
+                    $package->getPrettyName()
+                )
+            );
+
+            $path = $this->getConfigPath($this->getEvent()->getComposer()->getInstallationManager()->getInstallPath($package));
+            if (file_exists($path))
+            {
+                $this->getLogger()->write(
+                    sprintf(
+                        '<info>Found config file for %s</info>',
+                        $package->getPrettyName()
+                    )
+                );
+
+                $configs[] = $path;
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get config path
+     *
+     * @param string $folder
+     * @access protected
+     * @return string
+     */
+
+    protected function getConfigPath($folder)
+    {
+        return $folder . DIRECTORY_SEPARATOR . '.apishka.php';
+    }
+
+    /**
+     * Returns true if the supplied package requires the Composer NPM bridge.
+     *
+     * @param PackageInterface $package The package to inspect.
+     * @param boolean|null     $dev_mode True if the dev dependencies should also be inspected.
+     * @access public
+     * @return boolean True if the package requires the bridge.
+     */
+
+    public function isDependantPackage(PackageInterface $package, $dev_mode = null)
+    {
+        if ($package->getName() === 'apishka/easy-extend')
+            return true;
+
+        foreach ($package->getRequires() as $link)
+        {
+            if ($link->getTarget() === 'apishka/easy-extend')
+                return true;
+        }
+
+        if ($dev_mode)
+        {
+            foreach ($package->getDevRequires() as $link)
+            {
+                if ($link->getTarget() === 'apishka/easy-extend')
+                    return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Set event
+     *
+     * @param Event $event
+     * @access protected
+     * @return Builder
+     */
+
+    protected function setEvent(Event $event)
+    {
+        $this->_event = $event;
+
+        return $this;
+    }
+
+    /**
+     * Get event
+     *
+     * @access protected
+     * @return Event
+     */
+
+    protected function getEvent()
+    {
+        return $this->_event;
+    }
+
+    /**
+     * Set logger
+     *
+     * @param IOInterface $logger
+     * @access public
+     * @return Builder
+     */
+
+    public function setLogger(IOInterface $logger)
+    {
+        $this->_logger = $logger;
+
+        return $this;
+    }
+
+    /**
+     * Get logger
+     *
+     * @access public
+     * @return IOInterface
+     */
+
+    public function getLogger()
+    {
+        if ($this->_logger === null)
+        {
+            if ($this->getEvent() !== null)
+            {
+                $this->_logger = $this->getEvent()->getIO();
+            }
+            else
+            {
+                $this->_logger = new NullIO();
+            }
+        }
+
+        return $this->_logger;
     }
 }
