@@ -1,6 +1,7 @@
 <?php namespace Apishka\EasyExtend;
 
 use Apishka\EasyExtend\Broker;
+use Composer\Script\Event;
 use Symfony\Component\Finder\Finder;
 
 /**

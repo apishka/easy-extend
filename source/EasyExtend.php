@@ -1,11 +1,12 @@
 <?php namespace Apishka\EasyExtend;
 
-use \Composer\Composer;
-use \Composer\EventDispatcher\EventSubscriberInterface;
-use \Composer\IO\IOInterface;
-use \Composer\Plugin\PluginInterface;
-use \Composer\Script\Event;
-use \Composer\Script\ScriptEvents;
+use Composer\Composer;
+use Composer\EventDispatcher\EventSubscriberInterface;
+use Composer\IO\IOInterface;
+use Composer\Plugin\PluginInterface;
+use Composer\Script\Event;
+use Composer\Script\ScriptEvents;
+use Apishka\Builder;
 
 /**
  * Easy extend
@@ -55,7 +56,7 @@ class EasyExtend implements PluginInterface, EventSubscriberInterface
 
     public function onPostInstallCmd(Event $event)
     {
-        $builder = new BuilderComposer();
-        $builder->build($event);
+        $builder = new Builder();
+        $builder->buildFromEvent($event);
     }
 }
