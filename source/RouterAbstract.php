@@ -19,13 +19,13 @@ abstract class RouterAbstract implements RouterInterface
     use ByClassNameTrait;
 
     /**
-     * Data
+     * Cache
      *
      * @type array
      * @access private
      */
 
-    private $_data = null;
+    private $_cache = null;
 
     /**
      * Cache
@@ -40,7 +40,10 @@ abstract class RouterAbstract implements RouterInterface
 
         Cacher::getInstance()->save(
             $this->getCacheName(),
-            $data
+            array(
+                'class' => get_class($this),
+                'data'  => $data,
+            )
         );
     }
 
@@ -264,10 +267,10 @@ abstract class RouterAbstract implements RouterInterface
 
     public function getData()
     {
-        if ($this->_data === null)
-            $this->_data = Cacher::getInstance()->fetch($this->getCacheName());
+        if ($this->_cache === null)
+            $this->_cache = Cacher::getInstance()->fetch($this->getCacheName());
 
-        return $this->_data;
+        return $this->_cache['data'];
     }
 
     /**

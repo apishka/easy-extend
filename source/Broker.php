@@ -20,7 +20,7 @@ final class Broker extends RouterAbstract
      * @return bool
      */
 
-    protected function isCorrectItem($reflector)
+    protected function isCorrectItem(\ReflectionClass $reflector)
     {
         if (!parent::isCorrectItem($reflector))
             return false;

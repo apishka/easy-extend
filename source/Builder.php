@@ -55,10 +55,11 @@ class Builder
 
         $configs = $this->getConfigFilesByComposer();
         $this->addFindersByConfigs($configs);
+        $this->build();
 
         // 1. +Найти список нужных пакетиков
         // 2. +Обыскать пакетики на предмет апишечек
-        // 3. Создать файндеры для поиска файликов
+        // 3. +Создать файндеры для поиска файликов
         // 4. Создать билдер и запилить кешик
     }
 
@@ -73,6 +74,7 @@ class Builder
     {
         $configs = Cacher::getInstance()->fetch($this->getConfigsCacheName());
         $this->addFindersByConfigs($configs);
+        $this->build();
     }
 
     /**
@@ -85,10 +87,30 @@ class Builder
 
     protected function addFindersByConfigs(array $configs)
     {
-        foreach ($configs as $package => $config)
+        foreach ($configs as $package => $path)
         {
-            $data = @include($config);
-            var_dump($data);
+            $data = @include($path);
+
+            if ($data && isset($data['easy-extend']))
+            {
+                $config = $data['easy-extend'];
+
+                if ($config && isset($config['finder']))
+                {
+                    $finder_callbacks = $config['finder'];
+
+                    if (!is_array($finder_callbacks))
+                        $finder_callbacks = array($finder_callbacks);
+
+                    foreach ($finder_callbacks as $callback)
+                    {
+                        $finder = new Finder();
+                        $finder = $callback($finder);
+
+                        $this->addFinder($finder);
+                    }
+                }
+            }
         }
     }
 
@@ -106,8 +128,10 @@ class Builder
         $broker = new Broker();
         $broker->cache();
 
-        foreach ($broker->getData() as $class)
+        foreach ($broker->getData() as $info)
         {
+            $class = $info['class'];
+
             $router = new $class();
             $router->cache();
         }
@@ -197,7 +221,7 @@ class Builder
             $configs
         );
 
-        return $this;
+        return $configs;
     }
 
     /**

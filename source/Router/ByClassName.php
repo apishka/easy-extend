@@ -19,7 +19,7 @@ class ByClassName extends RouterAbstract
      * @return bool
      */
 
-    protected function isCorrectItem($reflector)
+    protected function isCorrectItem(\ReflectionClass $reflector)
     {
         return parent::isCorrectItem($reflector) && $this->hasClassTrait($reflector, 'Apishka\EasyExtend\Type\ByClassNameTrait');
     }
