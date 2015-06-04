@@ -56,11 +56,6 @@ class Builder
         $configs = $this->getConfigFilesByComposer();
         $this->addFindersByConfigs($configs);
         $this->build();
-
-        // 1. +Найти список нужных пакетиков
-        // 2. +Обыскать пакетики на предмет апишечек
-        // 3. +Создать файндеры для поиска файликов
-        // 4. Создать билдер и запилить кешик
     }
 
     /**
