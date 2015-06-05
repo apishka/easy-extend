@@ -38,9 +38,6 @@ class ByClassNameTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             array(
-                'Apishka\EasyExtend\Router\ByClassName' => array(
-                    'class' => 'Apishka\EasyExtend\Router\ByClassName',
-                ),
             ),
             $router->getData()
         );
@@ -65,16 +62,16 @@ class ByClassNameTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(
             array(
                 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Apple' => array (
-                    'class' => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Apple',
+                    'class'     => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Apple',
+                    'prefixes'  => 'apishka',
                 ),
                 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Cherry' => array (
-                    'class' => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Cherry',
+                    'class'     => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Cherry',
+                    'prefixes'  => 'apishka',
                 ),
                 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Orange' => array (
-                    'class' => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Orange',
-                ),
-                'Apishka\EasyExtend\Router\ByClassName' => array(
-                    'class' => 'Apishka\EasyExtend\Router\ByClassName',
+                    'class'     => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Orange',
+                    'prefixes'  => 'apishka',
                 ),
             ),
             $router->getData()
@@ -101,16 +98,16 @@ class ByClassNameTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(
             array(
                 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Apple' => array (
-                    'class' => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Apple',
+                    'class'     => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Apple',
+                    'prefixes'  => 'apishka',
                 ),
                 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Cherry' => array (
-                    'class' => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\MichurinCherry',
+                    'class'     => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\MichurinCherry',
+                    'prefixes'  => 'apishka',
                 ),
                 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Orange' => array (
-                    'class' => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Orange',
-                ),
-                'Apishka\EasyExtend\Router\ByClassName' => array(
-                    'class' => 'Apishka\EasyExtend\Router\ByClassName',
+                    'class'     => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Orange',
+                    'prefixes'  => 'apishka',
                 ),
             ),
             $router->getData()
@@ -137,19 +134,20 @@ class ByClassNameTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(
             array(
                 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Apple' => array (
-                    'class' => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Apple',
+                    'class'     => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Apple',
+                    'prefixes'  => 'apishka',
                 ),
                 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Cherry' => array (
-                    'class' => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Cherry',
+                    'class'     => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Cherry',
+                    'prefixes'  => 'apishka',
                 ),
                 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Mandarin' => array (
-                    'class' => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Mandarin',
+                    'class'     => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Mandarin',
+                    'prefixes'  => 'apishka',
                 ),
                 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Orange' => array (
-                    'class' => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Orange',
-                ),
-                'Apishka\EasyExtend\Router\ByClassName' => array(
-                    'class' => 'Apishka\EasyExtend\Router\ByClassName',
+                    'class'     => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Orange',
+                    'prefixes'  => 'apishka',
                 ),
             ),
             $router->getData()

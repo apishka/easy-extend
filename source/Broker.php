@@ -13,6 +13,70 @@ use Apishka\EasyExtend\RouterAbstract;
 final class Broker extends RouterAbstract
 {
     /**
+     * Instance
+     *
+     * @static
+     * @type mixed
+     * @access private
+     */
+
+    static private $_instance = null;
+
+    /**
+     * Cache
+     *
+     * @type mixed
+     * @access protected
+     */
+
+    protected $_routers = null;
+
+    /**
+     * Returns the *Singleton* instance of this class.
+     *
+     * @static
+     * @access public
+     * @return void
+     */
+
+    public static function getInstance()
+    {
+        if (self::$_instance === null)
+            self::$_instance = new static();
+
+        return self::$_instance;
+    }
+
+    /**
+     * Clear instance
+     *
+     * @static
+     * @access public
+     * @return void
+     */
+
+    public static function clearInstance()
+    {
+        self::$_instance = null;
+    }
+
+    /**
+     * Get cache data
+     *
+     * @access protected
+     * @return array
+     */
+
+    protected function getCacheData()
+    {
+        $data = parent::getCacheData();
+
+        ksort($data);
+
+        return $data;
+    }
+
+    /**
      * Is correct item
      *
      * @param \ReflectionClass $reflector
@@ -35,18 +99,35 @@ final class Broker extends RouterAbstract
     }
 
     /**
-     * Get cache data
+     * Construct
      *
      * @access protected
-     * @return array
+     * @return void
      */
 
-    protected function getCacheData()
+    protected function __construct()
     {
-        $data = parent::getCacheData();
+    }
 
-        ksort($data);
+    /**
+     * Clone
+     *
+     * @access private
+     * @return void
+     */
 
-        return $data;
+    private function __clone()
+    {
+    }
+
+    /**
+     * Wakeup
+     *
+     * @access private
+     * @return void
+     */
+
+    private function __wakeup()
+    {
     }
 }

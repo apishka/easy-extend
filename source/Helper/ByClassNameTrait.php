@@ -55,11 +55,11 @@ trait ByClassNameTrait
     /**
      * Returns static prefixes
      *
-     * @access protected
+     * @access public
      * @return string
      */
 
-    protected function __apishkaGetPrefixes()
+    public function __apishkaGetPrefixes()
     {
         return 'apishka';
     }

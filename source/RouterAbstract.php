@@ -13,12 +13,6 @@ use Apishka\EasyExtend\RouterInterface;
 abstract class RouterAbstract implements RouterInterface
 {
     /**
-     * Traits
-     */
-
-    use ByClassNameTrait;
-
-    /**
      * Cache
      *
      * @type array

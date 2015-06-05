@@ -13,6 +13,18 @@ use Apishka\EasyExtend\Broker;
 class BrokerTest extends \PHPUnit_Framework_TestCase
 {
     /**
+     * Tear down
+     *
+     * @access protected
+     * @return void
+     */
+
+    protected function tearDown()
+    {
+        Broker::clearInstance();
+    }
+
+    /**
      * Get broker
      *
      * @access protected
@@ -21,7 +33,7 @@ class BrokerTest extends \PHPUnit_Framework_TestCase
 
     protected function getBroker()
     {
-        return new Broker();
+        return Broker::getInstance();
     }
 
     /**

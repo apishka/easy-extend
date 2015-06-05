@@ -1,6 +1,6 @@
 <?php namespace ApishkaTest\EasyExtend\Router\Fixtures;
 
-use Apishka\EasyExtend\Type\ByClassNameTrait;
+use Apishka\EasyExtend\Helper\ByClassNameTrait;
 
 /**
  * Tree abstract
