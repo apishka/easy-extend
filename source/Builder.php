@@ -120,10 +120,9 @@ class Builder
     {
         $this->requireFiles();
 
-        $broker = new Broker();
-        $broker->cache();
+        Broker::getInstance()->cache();
 
-        foreach ($broker->getData() as $info)
+        foreach (Broker::getInstance()->getData() as $info)
         {
             $class = $info['class'];
 
