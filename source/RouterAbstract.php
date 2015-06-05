@@ -134,6 +134,9 @@ abstract class RouterAbstract implements RouterInterface
         if ($reflector->isSubclassOf($base->getName()))
             return true;
 
+        if (!$base->isSubclassOf($reflector->getName()))
+            throw new Exception();
+
         return false;
     }
 
