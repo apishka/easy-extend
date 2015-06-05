@@ -189,38 +189,27 @@ class Builder
     {
         $this->getLogger()->write('<info>Searching for config files</info>');
 
-        $dependant_packages = array();
+        $configs = array();
         if ($this->isDependantPackage($this->getEvent()->getComposer()->getPackage()))
-            $dependant_packages[] = $this->getEvent()->getComposer()->getPackage();
+        {
+            $path = $this->getConfigPackagePath('./', $this->getEvent()->getComposer()->getPackage());
+
+            if ($path)
+                $configs[] = $path;
+        }
 
         $packages = $this->getEvent()->getComposer()->getRepositoryManager()->getLocalRepository()->getPackages();
         foreach ($packages as $package)
         {
             if ($this->isDependantPackage($package, false))
-                $dependant_packages[] = $package;
-        }
-
-        $configs = array();
-        foreach ($dependant_packages as $package)
-        {
-            $this->getLogger()->write(
-                sprintf(
-                    '<info>Looking for ".apishka.php" file for %s</info>',
-                    $package->getPrettyName()
-                )
-            );
-
-            $path = $this->getConfigPath($this->getEvent()->getComposer()->getInstallationManager()->getInstallPath($package));
-            if (file_exists($path))
             {
-                $this->getLogger()->write(
-                    sprintf(
-                        '<info>Found config file for %s</info>',
-                        $package->getPrettyName()
-                    )
+                $path = $this->getConfigPackagePath(
+                    $this->getEvent()->getComposer()->getInstallationManager()->getInstallPath($package),
+                    $package
                 );
 
-                $configs[$package->getName()] = $path;
+                if ($path)
+                    $configs[] = $path;
             }
         }
 
@@ -230,6 +219,46 @@ class Builder
         );
 
         return $configs;
+    }
+
+    /**
+     * Get config package file path
+     *
+     * @param string $dir
+     * @param PackageInterface $package
+     * @access protected
+     * @return null|string
+     */
+
+    protected function getConfigPackagePath($dir, $package)
+    {
+        $dir = preg_replace(
+            '#^(' . preg_quote(getcwd() . DIRECTORY_SEPARATOR, '#') . ')#',
+            '.' . DIRECTORY_SEPARATOR,
+            $dir
+        );
+
+        $this->getLogger()->write(
+            sprintf(
+                '<info>Looking for ".apishka.php" file for %s</info>',
+                $package->getPrettyName()
+            )
+        );
+
+        $path = $this->getConfigPath($dir);
+        if (file_exists($path))
+        {
+            $this->getLogger()->write(
+                sprintf(
+                    '<info>Found config file for %s</info>',
+                    $package->getPrettyName()
+                )
+            );
+
+            return $path;
+        }
+
+        return null;
     }
 
     /**
@@ -254,7 +283,7 @@ class Builder
 
     protected function getConfigPath($folder)
     {
-        return $folder . DIRECTORY_SEPARATOR . '.apishka.php';
+        return rtrim($folder, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . '.apishka.php';
     }
 
     /**
