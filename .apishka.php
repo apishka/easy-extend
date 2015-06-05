@@ -7,6 +7,7 @@ return array(
             $finder
                 ->in(__DIR__ . DIRECTORY_SEPARATOR . 'source')
                 ->files()
+                ->notName('EasyExtend.php')
                 ->name('*.php')
             ;
 
