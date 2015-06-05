@@ -189,9 +189,11 @@ class Builder
     {
         $this->getLogger()->write('<info>Searching for config files</info>');
 
-        $packages = $this->getEvent()->getComposer()->getRepositoryManager()->getLocalRepository()->getPackages();
-
         $dependant_packages = array();
+        if ($this->isDependantPackage($this->getEvent()->getComposer()->getPackage()))
+            $dependant_packages[] = $this->getEvent()->getComposer()->getPackage();
+
+        $packages = $this->getEvent()->getComposer()->getRepositoryManager()->getLocalRepository()->getPackages();
         foreach ($packages as $package)
         {
             if ($this->isDependantPackage($package, false))
