@@ -55,6 +55,10 @@ class Builder
 
         $configs = $this->getConfigFilesByComposer();
         $this->addFindersByConfigs($configs);
+
+        // We have to initialize composer autoload
+        require_once('vendor/autoload.php');
+
         $this->build();
     }
 
@@ -90,19 +94,27 @@ class Builder
             {
                 $config = $data['easy-extend'];
 
-                if ($config && isset($config['finder']))
+                if ($config)
                 {
-                    $finder_callbacks = $config['finder'];
-
-                    if (!is_array($finder_callbacks))
-                        $finder_callbacks = array($finder_callbacks);
-
-                    foreach ($finder_callbacks as $callback)
+                    if (isset($config['finder']))
                     {
-                        $finder = new Finder();
-                        $finder = $callback($finder);
+                        $finder_callbacks = $config['finder'];
 
-                        $this->addFinder($finder);
+                        if (!is_array($finder_callbacks))
+                            $finder_callbacks = array($finder_callbacks);
+
+                        foreach ($finder_callbacks as $callback)
+                        {
+                            $finder = new Finder();
+                            $finder = $callback($finder);
+
+                            $this->addFinder($finder);
+                        }
+                    }
+
+                    if (isset($config['bootstrap']))
+                    {
+                        $config['bootstrap']();
                     }
                 }
             }
