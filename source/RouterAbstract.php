@@ -271,6 +271,38 @@ abstract class RouterAbstract implements RouterInterface
     }
 
     /**
+     * Get item
+     *
+     * @param string $name
+     * @access public
+     * @return mixed
+     */
+
+    public function getItem($name)
+    {
+        $info = $this->getItemData($name);
+        $class = $info['class'];
+
+        return new $class;
+    }
+
+    /**
+     * Get item data
+     *
+     * @param string $name
+     * @access public
+     * @return array
+     */
+
+    public function getItemData($name)
+    {
+        if (!array_key_exists($name, $this->getData()))
+            throw new \LogicException('Item with name ' . var_export($name, true) . ' not found');
+
+        $info = $this->getData()[$name];
+    }
+
+    /**
      * Get cache path
      *
      * @access public

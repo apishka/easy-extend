@@ -61,6 +61,22 @@ final class Broker extends RouterAbstract
     }
 
     /**
+     * Get router instance
+     *
+     * @param string $class
+     * @access public
+     * @return void
+     */
+
+    public function getRouter($router)
+    {
+        if (!array_key_exists($router, $this->_routers))
+            $this->_routers[$router] = $this->getItem($router);
+
+        return $this->_routers[$router];
+    }
+
+    /**
      * Get cache data
      *
      * @access protected

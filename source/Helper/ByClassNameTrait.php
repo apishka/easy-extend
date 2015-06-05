@@ -1,5 +1,7 @@
 <?php namespace Apishka\EasyExtend\Helper;
 
+use Apishka\EasyExtend\Broker;
+
 /**
  * By class name help trait
  *
@@ -20,12 +22,9 @@ trait ByClassNameTrait
 
     public static function __callStatic($name, ...$arguments)
     {
-        $current = get_called_class();
-
-        $data = array(
-            'class'     => $current,
-            'prefixes'  => 'apishka',
-        );
+        $data = Broker::getInstance()->getRouter('Apishka\EasyExtend\Router\ByClassName')
+            ->getItemData(get_called_class())
+        ;
 
         if (preg_match('#^(' . $data['prefixes'] . ')([\w\d_]*)$#', $name, $match))
         {
