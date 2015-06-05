@@ -1,6 +1,6 @@
 <?php namespace Apishka\EasyExtend;
 
-use Doctrine\Common\Cache\PhpFileCache;
+use Apishka\EasyExtend\Cache\PhpFileCache;
 
 /**
  * Cacher
