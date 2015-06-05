@@ -135,7 +135,7 @@ abstract class RouterAbstract implements RouterInterface
             return true;
 
         if (!$base->isSubclassOf($reflector->getName()))
-            throw new Exception();
+            throw new \LogicException('Class ' . var_export($reflector->getName(), true) . ' has no direct relation with class ' . var_export($base->getName(), true));
 
         return false;
     }

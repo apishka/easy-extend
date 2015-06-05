@@ -144,4 +144,23 @@ class BrokerTest extends \PHPUnit_Framework_TestCase
             $broker->getData()
         );
     }
+
+    /**
+     * Test simple cache data
+     *
+     * @expectedException \LogicException
+     * @expectedExceptionMessage Class 'ApishkaTest\\EasyExtend\\Fixtures\\RouterB3' has no direct relation with class 'ApishkaTest\\EasyExtend\\Fixtures\\RouterB1'
+     * @access public
+     * @return void
+     */
+
+    public function testExtendingTwice()
+    {
+        require_once('tests/Fixtures/RouterB.php');
+        require_once('tests/Fixtures/RouterB1.php');
+        require_once('tests/Fixtures/RouterB3.php');
+
+        $broker = $this->getBroker();
+        $broker->cache();
+    }
 }
