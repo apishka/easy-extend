@@ -140,4 +140,68 @@ class ByClassNameTest extends \PHPUnit_Framework_TestCase
             $router->getData()
         );
     }
+
+    /**
+     * Test get item
+     */
+
+    public function testGetItem()
+    {
+        require_once('tests/Router/Fixtures/Tree/Apple.php');
+        require_once('tests/Router/Fixtures/Tree/Cherry.php');
+        require_once('tests/Router/Fixtures/Tree/Orange.php');
+
+        $router = $this->getRouter();
+        $router->cache();
+
+        $this->assertInstanceOf(
+            'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Apple',
+            $router->getItem('ApishkaTest\EasyExtend\Router\Fixtures\Tree\Apple')
+        );
+    }
+
+    /**
+     * Test get item data
+     */
+
+    public function testGetItemData()
+    {
+        require_once('tests/Router/Fixtures/Tree/Apple.php');
+        require_once('tests/Router/Fixtures/Tree/Cherry.php');
+        require_once('tests/Router/Fixtures/Tree/Orange.php');
+
+        $router = $this->getRouter();
+        $router->cache();
+
+        $this->assertEquals(
+            array(
+                'class'    => 'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Apple',
+                'prefixes' => 'apishka',
+            ),
+            $router->getItemData('ApishkaTest\EasyExtend\Router\Fixtures\Tree\Apple')
+        );
+    }
+
+    /**
+     * Test get items list
+     */
+
+    public function testGetItemsList()
+    {
+        require_once('tests/Router/Fixtures/Tree/Apple.php');
+        require_once('tests/Router/Fixtures/Tree/Cherry.php');
+        require_once('tests/Router/Fixtures/Tree/Orange.php');
+
+        $router = $this->getRouter();
+        $router->cache();
+
+        $this->assertEquals(
+            array(
+                'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Apple',
+                'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Cherry',
+                'ApishkaTest\EasyExtend\Router\Fixtures\Tree\Orange',
+            ),
+            $router->getItemsList()
+        );
+    }
 }
