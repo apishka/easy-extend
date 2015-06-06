@@ -20,7 +20,7 @@ trait ByClassNameTrait
      * @return mixed
      */
 
-    public static function __callStatic($name, ...$arguments)
+    public static function __callStatic($name, $arguments)
     {
         $data = Broker::getInstance()->getRouter('Apishka\EasyExtend\Router\ByClassName')
             ->getItemData(get_called_class())
