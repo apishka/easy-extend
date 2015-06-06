@@ -177,8 +177,28 @@ class BrokerTest extends \PHPUnit_Framework_TestCase
         $broker->cache();
 
         $this->assertInstanceOf(
-            'ApishkaTest\EasyExtend\Fixtures\RouterB',
+            'ApishkaTest\EasyExtend\Fixtures\RouterB1',
             $broker->getItem('ApishkaTest\EasyExtend\Fixtures\RouterB')
+        );
+    }
+
+    /**
+     * Test get item data
+     */
+
+    public function testGetItemData()
+    {
+        require_once('tests/Fixtures/RouterB.php');
+        require_once('tests/Fixtures/RouterB1.php');
+
+        $broker = $this->getBroker();
+        $broker->cache();
+
+        $this->assertEquals(
+            array(
+                'class' => 'ApishkaTest\EasyExtend\Fixtures\RouterB1',
+            ),
+            $broker->getItemData('ApishkaTest\EasyExtend\Fixtures\RouterB')
         );
     }
 }
