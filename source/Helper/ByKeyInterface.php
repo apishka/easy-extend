@@ -9,8 +9,8 @@
 interface ByKeyInterface
 {
     /**
-     * Apishka get supported keys
+     * Apishka supported keys
      */
 
-    public function __apishkaGetSupportedKeys();
+    public function __apishkaSupportedKeys();
 }

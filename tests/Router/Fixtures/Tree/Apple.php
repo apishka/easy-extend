@@ -12,4 +12,14 @@ use ApishkaTest\EasyExtend\Router\Fixtures\TreeAbstract;
 
 class Apple extends TreeAbstract
 {
+    /**
+     * Apishka supported keys
+     */
+
+    public function __apishkaSupportedKeys()
+    {
+        return array(
+            'apple',
+        );
+    }
 }
