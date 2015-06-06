@@ -201,4 +201,24 @@ class BrokerTest extends \PHPUnit_Framework_TestCase
             $broker->getItemData('ApishkaTest\EasyExtend\Fixtures\RouterB')
         );
     }
+
+    /**
+     * Test get items list
+     */
+
+    public function testGetItemsList()
+    {
+        require_once('tests/Fixtures/RouterB.php');
+        require_once('tests/Fixtures/RouterB1.php');
+
+        $broker = $this->getBroker();
+        $broker->cache();
+
+        $this->assertEquals(
+            array(
+                'ApishkaTest\EasyExtend\Fixtures\RouterB',
+            ),
+            $broker->getItemsList()
+        );
+    }
 }
