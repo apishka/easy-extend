@@ -279,6 +279,15 @@ abstract class RouterAbstract implements RouterInterface
     }
 
     /**
+     * Get items list
+     */
+
+    public function getItemsList()
+    {
+        return array_keys($this->getData());
+    }
+
+    /**
      * Get item data
      *
      * @param string $name

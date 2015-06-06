@@ -210,9 +210,9 @@ class Builder
     /**
      * Get config package file path
      *
-     * @param string $dir
+     * @param string           $dir
      * @param PackageInterface $package
-     * @access protected
+     *
      * @return null|string
      */
 
@@ -244,7 +244,7 @@ class Builder
             return $path;
         }
 
-        return null;
+        return;
     }
 
     /**
