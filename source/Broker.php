@@ -27,7 +27,7 @@ final class Broker extends RouterAbstract
      * @var mixed
      */
 
-    protected $_routers = null;
+    protected $_routers = array();
 
     /**
      * Returns the *Singleton* instance of this class.

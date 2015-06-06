@@ -300,7 +300,7 @@ abstract class RouterAbstract implements RouterInterface
         if (!array_key_exists($name, $this->getData()))
             throw new \LogicException('Item with name ' . var_export($name, true) . ' not found');
 
-        $info = $this->getData()[$name];
+        return $this->getData()[$name];
     }
 
     /**
