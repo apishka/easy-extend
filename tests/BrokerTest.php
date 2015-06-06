@@ -6,7 +6,9 @@ use Apishka\EasyExtend\Broker;
  * Broker test
  *
  * @runTestsInSeparateProcesses
+ *
  * @uses \PHPUnit_Framework_TestCase
+ *
  * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
@@ -14,9 +16,6 @@ class BrokerTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Tear down
-     *
-     * @access protected
-     * @return void
      */
 
     protected function tearDown()
@@ -26,9 +25,6 @@ class BrokerTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Get broker
-     *
-     * @access protected
-     * @return void
      */
 
     protected function getBroker()
@@ -38,9 +34,6 @@ class BrokerTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test cached data
-     *
-     * @access public
-     * @return void
      */
 
     public function testEmptyCachedData()
@@ -57,9 +50,6 @@ class BrokerTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test simple cache data
-     *
-     * @access public
-     * @return void
      */
 
     public function testSimple()
@@ -85,9 +75,6 @@ class BrokerTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test simple cache data
-     *
-     * @access public
-     * @return void
      */
 
     public function testExtending()
@@ -114,9 +101,6 @@ class BrokerTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test simple cache data
-     *
-     * @access public
-     * @return void
      */
 
     public function testExtendingWithBranch()
@@ -150,8 +134,6 @@ class BrokerTest extends \PHPUnit_Framework_TestCase
      *
      * @expectedException \LogicException
      * @expectedExceptionMessage Class 'ApishkaTest\\EasyExtend\\Fixtures\\RouterB3' has no direct relation with class 'ApishkaTest\\EasyExtend\\Fixtures\\RouterB1'
-     * @access public
-     * @return void
      */
 
     public function testExtendingTwice()

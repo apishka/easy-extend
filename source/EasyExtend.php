@@ -6,13 +6,13 @@ use Composer\IO\IOInterface;
 use Composer\Plugin\PluginInterface;
 use Composer\Script\Event;
 use Composer\Script\ScriptEvents;
-use Apishka\EasyExtend\Builder;
 
 /**
  * Easy extend
  *
  * @uses PluginInterface
  * @uses EventSubscriberInterface
+ *
  * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
@@ -34,7 +34,7 @@ class EasyExtend implements PluginInterface, EventSubscriberInterface
      * Get the event subscriber configuration for this plugin.
      *
      * @static
-     * @access public
+     *
      * @return array<string,string> The events to listen to, and their associated handlers.
      */
 
@@ -50,8 +50,6 @@ class EasyExtend implements PluginInterface, EventSubscriberInterface
      * Handle post install command events.
      *
      * @param Event $event The event to handle.
-     * @access public
-     * @return void
      */
 
     public function onPostInstallCmd(Event $event)

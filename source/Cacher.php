@@ -14,17 +14,16 @@ class Cacher
      * Instance
      *
      * @static
-     * @type mixed
-     * @access private
+     *
+     * @var mixed
      */
 
-    static private $_instance = null;
+    private static $_instance = null;
 
     /**
      * Cache
      *
-     * @type mixed
-     * @access protected
+     * @var mixed
      */
 
     protected $_cache = null;
@@ -33,8 +32,6 @@ class Cacher
      * Returns the *Singleton* instance of this class.
      *
      * @static
-     * @access public
-     * @return void
      */
 
     public static function getInstance()
@@ -49,8 +46,6 @@ class Cacher
      * Clear instance
      *
      * @static
-     * @access public
-     * @return void
      */
 
     public static function clearInstance()
@@ -62,9 +57,7 @@ class Cacher
      * Call
      *
      * @param string $name
-     * @param array $arguments
-     * @access public
-     * @return void
+     * @param array  $arguments
      */
 
     public function __call($name, $arguments)
@@ -74,9 +67,6 @@ class Cacher
 
     /**
      * Get cache dir
-     *
-     * @access public
-     * @return void
      */
 
     public function getCacheDir()
@@ -87,7 +77,6 @@ class Cacher
     /**
      * Get cache
      *
-     * @access protected
      * @return PhpFileCache
      */
 
@@ -101,9 +90,6 @@ class Cacher
 
     /**
      * Construct
-     *
-     * @access protected
-     * @return void
      */
 
     protected function __construct()
@@ -112,9 +98,6 @@ class Cacher
 
     /**
      * Clone
-     *
-     * @access private
-     * @return void
      */
 
     private function __clone()
@@ -123,9 +106,6 @@ class Cacher
 
     /**
      * Wakeup
-     *
-     * @access private
-     * @return void
      */
 
     private function __wakeup()

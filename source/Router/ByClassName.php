@@ -6,6 +6,7 @@ use Apishka\EasyExtend\RouterAbstract;
  * By class name
  *
  * @uses RouterAbstract
+ *
  * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
@@ -15,7 +16,7 @@ class ByClassName extends RouterAbstract
      * Is correct item
      *
      * @param \ReflectionClass $reflector
-     * @access protected
+     *
      * @return bool
      */
 
@@ -28,8 +29,8 @@ class ByClassName extends RouterAbstract
      * Get class data
      *
      * @param \ReflectionClass $reflector
-     * @param object $item
-     * @access protected
+     * @param object           $item
+     *
      * @return mixed
      */
 

@@ -6,6 +6,7 @@ use Apishka\EasyExtend\Helper\ByClassNameTrait;
  * Tree abstract
  *
  * @abstract
+ *
  * @author Evgeny Reykh <evgeny@reykh.com>
  */
 

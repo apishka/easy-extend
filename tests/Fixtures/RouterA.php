@@ -6,6 +6,7 @@ use Apishka\EasyExtend\RouterAbstract;
  * RouterA
  *
  * @uses RouterAbstract
+ *
  * @author Evgeny Reykh <evgeny@reykh.com>
  */
 

@@ -1,12 +1,11 @@
 <?php namespace Apishka\EasyExtend;
 
-use Apishka\EasyExtend\RouterAbstract;
-
 /**
  * Broker
  *
  * @uses RouterAbstract
  * @final
+ *
  * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
@@ -16,17 +15,16 @@ final class Broker extends RouterAbstract
      * Instance
      *
      * @static
-     * @type mixed
-     * @access private
+     *
+     * @var mixed
      */
 
-    static private $_instance = null;
+    private static $_instance = null;
 
     /**
      * Cache
      *
-     * @type mixed
-     * @access protected
+     * @var mixed
      */
 
     protected $_routers = null;
@@ -35,8 +33,6 @@ final class Broker extends RouterAbstract
      * Returns the *Singleton* instance of this class.
      *
      * @static
-     * @access public
-     * @return void
      */
 
     public static function getInstance()
@@ -51,8 +47,6 @@ final class Broker extends RouterAbstract
      * Clear instance
      *
      * @static
-     * @access public
-     * @return void
      */
 
     public static function clearInstance()
@@ -64,8 +58,6 @@ final class Broker extends RouterAbstract
      * Get router instance
      *
      * @param string $class
-     * @access public
-     * @return void
      */
 
     public function getRouter($router)
@@ -79,7 +71,6 @@ final class Broker extends RouterAbstract
     /**
      * Get cache data
      *
-     * @access protected
      * @return array
      */
 
@@ -96,7 +87,7 @@ final class Broker extends RouterAbstract
      * Is correct item
      *
      * @param \ReflectionClass $reflector
-     * @access protected
+     *
      * @return bool
      */
 
@@ -116,9 +107,6 @@ final class Broker extends RouterAbstract
 
     /**
      * Construct
-     *
-     * @access protected
-     * @return void
      */
 
     protected function __construct()
@@ -127,9 +115,6 @@ final class Broker extends RouterAbstract
 
     /**
      * Clone
-     *
-     * @access private
-     * @return void
      */
 
     private function __clone()
@@ -138,9 +123,6 @@ final class Broker extends RouterAbstract
 
     /**
      * Wakeup
-     *
-     * @access private
-     * @return void
      */
 
     private function __wakeup()

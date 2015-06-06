@@ -13,10 +13,10 @@ trait ByClassNameTrait
     /**
      * Call static
      *
-     * @param string    $name
-     * @param array     $arguments
+     * @param string $name
+     * @param array  $arguments
      * @static
-     * @access public
+     *
      * @return mixed
      */
 
@@ -38,11 +38,11 @@ trait ByClassNameTrait
     /**
      * Call static apishka
      *
-     * @param array $data
+     * @param array  $data
      * @param string $name
-     * @param array $arguments
+     * @param array  $arguments
      * @static
-     * @access protected
+     *
      * @return mixed
      */
 
@@ -54,7 +54,6 @@ trait ByClassNameTrait
     /**
      * Returns static prefixes
      *
-     * @access public
      * @return string
      */
 

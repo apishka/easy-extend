@@ -4,6 +4,7 @@
  * RouterB3
  *
  * @uses RouterB
+ *
  * @author Evgeny Reykh <evgeny@reykh.com>
  */
 

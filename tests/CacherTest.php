@@ -6,6 +6,7 @@ use Apishka\EasyExtend\Cacher;
  * Cacher test
  *
  * @uses \PHPUnit_Framework_TestCase
+ *
  * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
@@ -13,9 +14,6 @@ class CacherTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Tear down
-     *
-     * @access protected
-     * @return void
      */
 
     protected function tearDown()
@@ -26,7 +24,6 @@ class CacherTest extends \PHPUnit_Framework_TestCase
     /**
      * Create cacher
      *
-     * @access protected
      * @return Cacher
      */
 
@@ -37,9 +34,6 @@ class CacherTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test cache path
-     *
-     * @access public
-     * @return void
      */
 
     public function testCacheDir()

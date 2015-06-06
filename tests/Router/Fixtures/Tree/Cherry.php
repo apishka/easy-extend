@@ -6,6 +6,7 @@ use ApishkaTest\EasyExtend\Router\Fixtures\TreeAbstract;
  * Cherry
  *
  * @uses TreeAbstract
+ *
  * @author Evgeny Reykh <evgeny@reykh.com>
  */
 

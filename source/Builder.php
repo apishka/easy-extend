@@ -1,10 +1,9 @@
 <?php namespace Apishka\EasyExtend;
 
-use Composer\Script\Event;
 use Composer\IO\IOInterface;
 use Composer\Package\PackageInterface;
+use Composer\Script\Event;
 use Symfony\Component\Finder\Finder;
-use Apishka\EasyExtend\Broker;
 
 /**
  * Builder
@@ -17,8 +16,7 @@ class Builder
     /**
      * Event
      *
-     * @type Event
-     * @access private
+     * @var Event
      */
 
     private $_event = null;
@@ -26,8 +24,7 @@ class Builder
     /**
      * Finders
      *
-     * @type array
-     * @access private
+     * @var array
      */
 
     private $_finders = array();
@@ -35,8 +32,7 @@ class Builder
     /**
      * Logger
      *
-     * @type IOInterface
-     * @access private
+     * @var IOInterface
      */
 
     private $_logger = null;
@@ -45,8 +41,6 @@ class Builder
      * Build
      *
      * @param Event $event
-     * @access public
-     * @return void
      */
 
     public function buildFromEvent(Event $event)
@@ -64,9 +58,6 @@ class Builder
 
     /**
      * Build from cache
-     *
-     * @access public
-     * @return void
      */
 
     public function buildFromCache()
@@ -80,7 +71,7 @@ class Builder
      * Add finders by configs
      *
      * @param array $configs
-     * @access protected
+     *
      * @return Builder this
      */
 
@@ -123,9 +114,6 @@ class Builder
 
     /**
      * Build
-     *
-     * @access public
-     * @return void
      */
 
     public function build()
@@ -147,7 +135,7 @@ class Builder
      * Add finder
      *
      * @param Finder $finder
-     * @access public
+     *
      * @return RouterAbstract this
      */
 
@@ -161,7 +149,6 @@ class Builder
     /**
      * Require files
      *
-     * @access protected
      * @return RouterAbstract this
      */
 
@@ -181,7 +168,6 @@ class Builder
     /**
      * Get config files by composer
      *
-     * @access protected
      * @return Builder
      */
 
@@ -264,7 +250,6 @@ class Builder
     /**
      * Get configs cache name
      *
-     * @access protected
      * @return string
      */
 
@@ -277,7 +262,7 @@ class Builder
      * Get config path
      *
      * @param string $folder
-     * @access protected
+     *
      * @return string
      */
 
@@ -289,10 +274,10 @@ class Builder
     /**
      * Returns true if the supplied package requires the Composer NPM bridge.
      *
-     * @param PackageInterface $package The package to inspect.
-     * @param boolean|null     $dev_mode True if the dev dependencies should also be inspected.
-     * @access public
-     * @return boolean True if the package requires the bridge.
+     * @param PackageInterface $package  The package to inspect.
+     * @param bool|null        $dev_mode True if the dev dependencies should also be inspected.
+     *
+     * @return bool True if the package requires the bridge.
      */
 
     public function isDependantPackage(PackageInterface $package, $dev_mode = null)
@@ -322,7 +307,7 @@ class Builder
      * Set event
      *
      * @param Event $event
-     * @access protected
+     *
      * @return Builder
      */
 
@@ -336,7 +321,6 @@ class Builder
     /**
      * Get event
      *
-     * @access protected
      * @return Event
      */
 
@@ -349,7 +333,7 @@ class Builder
      * Set logger
      *
      * @param IOInterface $logger
-     * @access public
+     *
      * @return Builder
      */
 
@@ -363,7 +347,6 @@ class Builder
     /**
      * Get logger
      *
-     * @access public
      * @return IOInterface
      */
 

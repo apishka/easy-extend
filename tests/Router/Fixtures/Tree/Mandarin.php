@@ -4,7 +4,9 @@
  * Mandarin
  *
  * @easy-extend-base
+ *
  * @uses Orange
+ *
  * @author Evgeny Reykh <evgeny@reykh.com>
  */
 

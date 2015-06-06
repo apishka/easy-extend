@@ -1,12 +1,10 @@
 <?php namespace Apishka\EasyExtend;
 
-use Apishka\EasyExtend\Helper\ByClassNameTrait;
-use Apishka\EasyExtend\RouterInterface;
-
 /**
  * Router abstract
  *
  * @abstract
+ *
  * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
@@ -15,17 +13,13 @@ abstract class RouterAbstract implements RouterInterface
     /**
      * Cache
      *
-     * @type array
-     * @access private
+     * @var array
      */
 
     private $_cache = null;
 
     /**
      * Cache
-     *
-     * @access public
-     * @return void
      */
 
     public function cache()
@@ -44,7 +38,6 @@ abstract class RouterAbstract implements RouterInterface
     /**
      * Get cache data
      *
-     * @access protected
      * @return array
      */
 
@@ -66,9 +59,9 @@ abstract class RouterAbstract implements RouterInterface
     /**
      * Push class data
      *
-     * @param array $data
+     * @param array            $data
      * @param \ReflectionClass $reflector
-     * @access protected
+     *
      * @return array
      */
 
@@ -89,8 +82,8 @@ abstract class RouterAbstract implements RouterInterface
      * Get class data
      *
      * @param \ReflectionClass $reflector
-     * @param object $item
-     * @access protected
+     * @param object           $item
+     *
      * @return mixed
      */
 
@@ -105,8 +98,8 @@ abstract class RouterAbstract implements RouterInterface
      * Get class variants
      *
      * @param \ReflectionClass $reflector
-     * @param object $item
-     * @access protected
+     * @param object           $item
+     *
      * @return array
      */
 
@@ -120,10 +113,10 @@ abstract class RouterAbstract implements RouterInterface
     /**
      * Returns true if item is greedy
      *
-     * @param array $info
+     * @param array            $info
      * @param \ReflectionClass $reflector
-     * @param object $item
-     * @access protected
+     * @param object           $item
+     *
      * @return bool
      */
 
@@ -144,7 +137,7 @@ abstract class RouterAbstract implements RouterInterface
      * Function to get first not abstract parent
      *
      * @param object $item
-     * @access protected
+     *
      * @return string
      */
 
@@ -179,7 +172,7 @@ abstract class RouterAbstract implements RouterInterface
      * Is correct item
      *
      * @param \ReflectionClass $reflector
-     * @access protected
+     *
      * @return bool
      */
 
@@ -192,7 +185,7 @@ abstract class RouterAbstract implements RouterInterface
      * Get class traits
      *
      * @param \ReflectionClass $reflector
-     * @access protected
+     *
      * @return array
      */
 
@@ -218,7 +211,7 @@ abstract class RouterAbstract implements RouterInterface
      * Get class interfaces
      *
      * @param \ReflectionClass $reflector
-     * @access protected
+     *
      * @return array
      */
 
@@ -231,8 +224,8 @@ abstract class RouterAbstract implements RouterInterface
      * Has class trait
      *
      * @param \ReflectionClass $reflector
-     * @param string $trait
-     * @access protected
+     * @param string           $trait
+     *
      * @return bool
      */
 
@@ -245,8 +238,8 @@ abstract class RouterAbstract implements RouterInterface
      * Has class interface
      *
      * @param \ReflectionClass $reflector
-     * @param string $interface
-     * @access protected
+     * @param string           $interface
+     *
      * @return bool
      */
 
@@ -258,7 +251,6 @@ abstract class RouterAbstract implements RouterInterface
     /**
      * Get data
      *
-     * @access public
      * @return array
      */
 
@@ -274,7 +266,7 @@ abstract class RouterAbstract implements RouterInterface
      * Get item
      *
      * @param string $name
-     * @access public
+     *
      * @return mixed
      */
 
@@ -290,7 +282,7 @@ abstract class RouterAbstract implements RouterInterface
      * Get item data
      *
      * @param string $name
-     * @access public
+     *
      * @return array
      */
 
@@ -305,7 +297,6 @@ abstract class RouterAbstract implements RouterInterface
     /**
      * Get cache path
      *
-     * @access public
      * @return string
      */
 
