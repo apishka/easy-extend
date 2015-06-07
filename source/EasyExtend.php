@@ -19,6 +19,14 @@ use Composer\Script\ScriptEvents;
 class EasyExtend implements PluginInterface, EventSubscriberInterface
 {
     /**
+     * Builder
+     *
+     * @var Builder
+     */
+
+    private $_builder = null;
+
+    /**
      * Activate the plugin.
      *
      * @param Composer    $composer The main Composer object.
@@ -54,7 +62,37 @@ class EasyExtend implements PluginInterface, EventSubscriberInterface
 
     public function onPostInstallCmd(Event $event)
     {
-        $builder = new Builder();
-        $builder->buildFromEvent($event);
+        $this->getBuilder()
+            ->buildFromEvent($event)
+        ;
+    }
+
+    /**
+     * Sets builder
+     *
+     * @param Builder $builder
+     *
+     * @return EasyExtend this
+     */
+
+    public function setBuilder(Builder $builder)
+    {
+        $this->_builder = $builder;
+
+        return $this;
+    }
+
+    /**
+     * Get builder
+     *
+     * @return \Apishka\EasyExtend\Builder
+     */
+
+    public function getBuilder()
+    {
+        if ($this->_builder === null)
+            $this->_builder = new Builder();
+
+        return $this->_builder;
     }
 }
