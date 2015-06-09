@@ -15,7 +15,7 @@ use Composer\Script\ScriptEvents;
 class EasyExtendTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var FxpAssetPlugin
+     * @var EasyExtend
      */
 
     protected $plugin;
