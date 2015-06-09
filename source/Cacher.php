@@ -29,6 +29,14 @@ class Cacher
     protected $_cache = null;
 
     /**
+     * Cache dir
+     *
+     * @var string
+     */
+
+    protected $_cache_dir = null;
+
+    /**
      * Returns the *Singleton* instance of this class.
      *
      * @static
@@ -67,11 +75,30 @@ class Cacher
 
     /**
      * Get cache dir
+     *
+     * return string
      */
 
     public function getCacheDir()
     {
-        return realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'cache');
+        if ($this->_cache_dir === null)
+            $this->_cache_dir = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'cache');
+
+        return $this->_cache_dir;
+    }
+
+    /**
+     * Set cache dir
+     *
+     * @param string $dir
+     * @return Cacher this
+     */
+
+    public function setCacheDir($dir)
+    {
+        $this->_cache_dir = $dir;
+
+        return $this;
     }
 
     /**

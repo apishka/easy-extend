@@ -45,4 +45,22 @@ class CacherTest extends \PHPUnit_Framework_TestCase
             $cacher->getCacheDir()
         );
     }
+
+    /**
+     * Test set cache dir
+     */
+
+    public function testSetCacheDir()
+    {
+        $path = sys_get_temp_dir() . '/apishka-cacher';
+
+        $cacher = $this->getCacher()
+            ->setCacheDir($path)
+        ;
+
+        $this->assertEquals(
+            $path,
+            $cacher->getCacheDir()
+        );
+    }
 }
