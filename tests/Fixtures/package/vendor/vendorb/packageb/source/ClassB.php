@@ -29,4 +29,15 @@ class ClassB implements ByKeyInterface
             'classb',
         );
     }
+
+    /**
+     * Returns static prefixes
+     *
+     * @return string
+     */
+
+    public function __apishkaGetPrefixes()
+    {
+        return 'apishka|testishka';
+    }
 }

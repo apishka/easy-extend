@@ -248,4 +248,42 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
             Cacher::getInstance()->fetch('VendorA_PackageA_ByKeyRouter')
         );
     }
+
+    /**
+     * Test by class name routing
+     */
+
+    public function testByClassNameCachedData()
+    {
+        require_once('source/Router/ByClassName.php');
+
+        $event = new Event(
+            'post-update-cmd',
+            $this->_composer,
+            $this->_io
+        );
+
+        $builder = new Builder();
+        $builder
+            ->setRootPackagePath($this->_directory)
+            ->buildFromEvent($event)
+        ;
+
+        $this->assertEquals(
+            array(
+                'class' => 'Apishka\EasyExtend\Router\ByClassName',
+                'data' => array(
+                    'VendorA\PackageA\ClassA' => array(
+                        'class'     => 'ApishkaTest\TestPackage\ClassAtoC',
+                        'prefixes'  => 'apishka'
+                    ),
+                    'VendorB\PackageB\ClassB' => array(
+                        'class'     => 'VendorB\PackageB\ClassB',
+                        'prefixes'  => 'apishka|testishka'
+                    ),
+                ),
+            ),
+            Cacher::getInstance()->fetch('Apishka_EasyExtend_Router_ByClassName')
+        );
+    }
 }
