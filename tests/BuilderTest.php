@@ -233,19 +233,19 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
             ->buildFromEvent($event)
         ;
 
+        $router = new \VendorA\PackageA\ByKeyRouter();
+        $router->cache();
+
         $this->assertEquals(
             array(
-                'class' => 'VendorA\PackageA\ByKeyRouter',
-                'data' => array(
-                    'classa' => array(
-                        'class'     => 'ApishkaTest\TestPackage\ClassAtoC',
-                    ),
-                    'classb' => array(
-                        'class'     => 'VendorB\PackageB\ClassB',
-                    ),
+                'classa' => array(
+                    'class'     => 'ApishkaTest\TestPackage\ClassAtoC',
+                ),
+                'classb' => array(
+                    'class'     => 'VendorB\PackageB\ClassB',
                 ),
             ),
-            Cacher::getInstance()->fetch('VendorA_PackageA_ByKeyRouter')
+            $router->getData()
         );
     }
 
@@ -269,21 +269,21 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
             ->buildFromEvent($event)
         ;
 
+        $router = new \Apishka\EasyExtend\Router\ByClassName();
+        $router->cache();
+
         $this->assertEquals(
             array(
-                'class' => 'Apishka\EasyExtend\Router\ByClassName',
-                'data' => array(
-                    'VendorA\PackageA\ClassA' => array(
-                        'class'     => 'ApishkaTest\TestPackage\ClassAtoC',
-                        'prefixes'  => 'apishka'
-                    ),
-                    'VendorB\PackageB\ClassB' => array(
-                        'class'     => 'VendorB\PackageB\ClassB',
-                        'prefixes'  => 'apishka|testishka'
-                    ),
+                'VendorA\PackageA\ClassA' => array(
+                    'class'     => 'ApishkaTest\TestPackage\ClassAtoC',
+                    'prefixes'  => 'apishka'
+                ),
+                'VendorB\PackageB\ClassB' => array(
+                    'class'     => 'VendorB\PackageB\ClassB',
+                    'prefixes'  => 'apishka|testishka'
                 ),
             ),
-            Cacher::getInstance()->fetch('Apishka_EasyExtend_Router_ByClassName')
+            $router->getData()
         );
     }
 }
