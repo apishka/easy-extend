@@ -382,6 +382,7 @@ class Builder
      * Set root path
      *
      * @param string $path
+     *
      * @return Builder this
      */
 

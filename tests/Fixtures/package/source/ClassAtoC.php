@@ -1,5 +1,5 @@
 <?php namespace ApishkaTest\TestPackage;
- 
+
 use VendorA\PackageA\ClassA;
 
 /**

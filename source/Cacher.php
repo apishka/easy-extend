@@ -91,6 +91,7 @@ class Cacher
      * Set cache dir
      *
      * @param string $dir
+     *
      * @return Cacher this
      */
 

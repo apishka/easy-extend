@@ -1,21 +1,16 @@
 <?php namespace ApishkaTest\EasyExtend;
 
+use Apishka\EasyExtend\Builder;
+use Apishka\EasyExtend\Cacher;
+use Composer\Autoload\AutoloadGenerator;
 use Composer\Composer;
 use Composer\Config;
-use Composer\Installer\PluginInstaller;
-use Composer\Package\CompletePackage;
-use Composer\Package\Loader\JsonLoader;
-use Composer\Package\Loader\ArrayLoader;
-use Composer\Plugin\PluginManager;
-use Composer\Autoload\AutoloadGenerator;
-use Composer\TestCase;
-use Composer\Util\Filesystem;
 use Composer\Package\Link;
 use Composer\Package\Package;
 use Composer\Package\RootPackage;
+use Composer\Plugin\PluginManager;
 use Composer\Script\Event;
-use Apishka\EasyExtend\Builder;
-use Apishka\EasyExtend\Cacher;
+use Composer\Util\Filesystem;
 
 /**
  * Tests of easy extend builder
@@ -35,8 +30,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     /**
      * Directory
      *
-     * @type mixed
-     * @access protected
+     * @var mixed
      */
 
     protected $_directory;
@@ -50,16 +44,15 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     /**
      * Repository
      *
-     * @type InstalledRepositoryInterface
-     * @access protected
+     * @var InstalledRepositoryInterface
      */
 
     protected $_repository;
 
     /**
-     * Root package 
+     * Root package
      *
-     * @type RootPackage
+     * @var RootPackage
      */
 
     protected $_root_package;
@@ -67,7 +60,6 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     /**
      * Generage packages
      *
-     * @access protected
      * @return array
      */
 
@@ -276,11 +268,11 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
             array(
                 'VendorA\PackageA\ClassA' => array(
                     'class'     => 'ApishkaTest\TestPackage\ClassAtoC',
-                    'prefixes'  => 'apishka'
+                    'prefixes'  => 'apishka',
                 ),
                 'VendorB\PackageB\ClassB' => array(
                     'class'     => 'VendorB\PackageB\ClassB',
-                    'prefixes'  => 'apishka|testishka'
+                    'prefixes'  => 'apishka|testishka',
                 ),
             ),
             $router->getData()
