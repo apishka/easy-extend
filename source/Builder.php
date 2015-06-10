@@ -38,6 +38,14 @@ class Builder
     private $_logger = null;
 
     /**
+     * Rootpath
+     *
+     * @var string
+     */
+
+    private $_root_package_path = null;
+
+    /**
      * Build
      *
      * @param Event $event
@@ -178,7 +186,10 @@ class Builder
         $configs = array();
         if ($this->isDependantPackage($this->getEvent()->getComposer()->getPackage()))
         {
-            $path = $this->getConfigPackagePath('./', $this->getEvent()->getComposer()->getPackage());
+            $path = $this->getConfigPackagePath(
+                rtrim($this->getRootPackagePath(), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR,
+                $this->getEvent()->getComposer()->getPackage()
+            );
 
             if ($path)
                 $configs[] = $path;
@@ -365,5 +376,33 @@ class Builder
         }
 
         return $this->_logger;
+    }
+
+    /**
+     * Set root path
+     *
+     * @param string $path
+     * @return Builder this
+     */
+
+    public function setRootPackagePath($path)
+    {
+        $this->_root_package_path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get root path
+     *
+     * @return string
+     */
+
+    public function getRootPackagePath()
+    {
+        if ($this->_root_package_path === null)
+            $this->_root_package_path = './';
+
+        return $this->_root_package_path;
     }
 }
