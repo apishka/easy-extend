@@ -20,19 +20,12 @@ use Apishka\EasyExtend\Cacher;
 /**
  * Tests of easy extend builder
  *
+ * @runTestsInSeparateProcesses
+ *
  * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class BuilderTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * Autoload generator
-     *
-     * @type mixed
-     * @access protected
-     */
-
-    protected $autoloadGenerator;
-
     /**
      * @var Composer
      */
@@ -46,7 +39,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
      * @access protected
      */
 
-    protected $directory;
+    protected $_directory;
 
     /**
      * @var IOInterface
@@ -55,19 +48,28 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     protected $_io;
 
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject
-     */
-
-    protected $package;
-
-    /**
      * Repository
      *
-     * @type mixed
+     * @type InstalledRepositoryInterface
      * @access protected
      */
 
-    protected $repository;
+    protected $_repository;
+
+    /**
+     * Root package 
+     *
+     * @type RootPackage
+     */
+
+    protected $_root_package;
+
+    /**
+     * Generage packages
+     *
+     * @access protected
+     * @return array
+     */
 
     protected function generagePackages()
     {
@@ -95,12 +97,14 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
+        $this->_directory = __DIR__ . '/Fixtures/package';
+
         Cacher::getInstance()
             ->setCacheDir(sys_get_temp_dir() . '/apishka-cacher')
         ;
 
-        $this->rootPackage = new RootPackage('apishka/testpackage', '1.0.0', '1.0.0');
-        $this->rootPackage->setRequires(
+        $this->root_package = new RootPackage('apishka/testpackage', '1.0.0', '1.0.0');
+        $this->root_package->setRequires(
             array(
                 new Link('apishka/testpackage', 'vendorX/packageX'),
                 new Link('apishka/testpackage', 'vendorY/packageY'),
@@ -113,9 +117,9 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
             ->getMock()
         ;
 
-        $this->repository = $this->getMock('Composer\Repository\InstalledRepositoryInterface');
+        $this->_repository = $this->getMock('Composer\Repository\InstalledRepositoryInterface');
 
-        $this->repository->expects($this->any())
+        $this->_repository->expects($this->any())
             ->method('getPackages')
             ->will(
                 $this->returnValue(
@@ -131,14 +135,14 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
 
         $rm->expects($this->any())
             ->method('getLocalRepository')
-            ->will($this->returnValue($this->repository))
+            ->will($this->returnValue($this->_repository))
         ;
 
         $im = $this->getMock('Composer\Installer\InstallationManager');
         $im->expects($this->any())
             ->method('getInstallPath')
             ->will($this->returnCallback(function ($package) {
-                return __DIR__ . '/Fixtures/package/vendor/' . $package->getPrettyName();
+                return $this->_directory . '/vendor/' . $package->getPrettyName();
             }))
         ;
 
@@ -149,19 +153,21 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
             ->getMock()
         ;
 
-        $this->autoloadGenerator = new AutoloadGenerator($dispatcher);
-
         $this->_composer = new Composer();
         $config = new Config();
         $this->_composer->setConfig($config);
         $this->_composer->setDownloadManager($dm);
         $this->_composer->setRepositoryManager($rm);
         $this->_composer->setInstallationManager($im);
-        $this->_composer->setAutoloadGenerator($this->autoloadGenerator);
-        $this->_composer->setPackage($this->rootPackage);
+        $this->_composer->setAutoloadGenerator(
+            new AutoloadGenerator($dispatcher)
+        );
 
-        $this->pm = new PluginManager($this->_io, $this->_composer);
-        $this->_composer->setPluginManager($this->pm);
+        $this->_composer->setPackage($this->root_package);
+
+        $this->_composer->setPluginManager(
+            new PluginManager($this->_io, $this->_composer)
+        );
     }
 
     /**
@@ -199,34 +205,47 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
 
     public function testSetRootPackagePath()
     {
-        $path = __DIR__ . '/Fixtures/package/';
-
         $builder = (new Builder())
-            ->setRootPackagePath($path)
+            ->setRootPackagePath($this->_directory)
         ;
 
         $this->assertEquals(
-            $path,
+            $this->_directory,
             $builder->getRootPackagePath()
         );
     }
 
     /**
-     * Test simple
+     * Test by keys routing
      */
 
-    public function testSimple()
+    public function testByKeysCachedData()
     {
-        //$event = new Event(
-        //    'post-update-cmd',
-        //    $this->_composer,
-        //    $this->_io
-        //);
-        //
-        //$builder = new Builder();
-        //$builder
-        //    ->setRootPackagePath(__DIR__ . '/Fixtures/package/')
-        //    ->buildFromEvent($event)
-        //;
+        $event = new Event(
+            'post-update-cmd',
+            $this->_composer,
+            $this->_io
+        );
+
+        $builder = new Builder();
+        $builder
+            ->setRootPackagePath($this->_directory)
+            ->buildFromEvent($event)
+        ;
+
+        $this->assertEquals(
+            array(
+                'class' => 'VendorA\PackageA\ByKeyRouter',
+                'data' => array(
+                    'classa' => array(
+                        'class'     => 'ApishkaTest\TestPackage\ClassAtoC',
+                    ),
+                    'classb' => array(
+                        'class'     => 'VendorB\PackageB\ClassB',
+                    ),
+                ),
+            ),
+            Cacher::getInstance()->fetch('VendorA_PackageA_ByKeyRouter')
+        );
     }
 }
