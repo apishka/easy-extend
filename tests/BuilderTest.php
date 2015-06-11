@@ -168,7 +168,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
 
     protected function tearDown()
     {
-        //Cacher::getInstance()->flushAll();
+        Cacher::getInstance()->flushAll();
 
         Cacher::clearInstance();
 
