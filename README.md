@@ -34,4 +34,4 @@ One thing you have to do is create new instance of class using
 Library_User_Implementation::apishka(); // instanceof My_Library_User_Implementation
 ```
 
-All libraries can be easy extended for you custom project with your custom requirements. No need to reqrite tons of code.
+All libraries can be easy extended for you custom project with your custom requirements. No need to require tons of code.
