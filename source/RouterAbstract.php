@@ -24,13 +24,13 @@ abstract class RouterAbstract implements RouterInterface
 
     public function cache()
     {
-        $data = $this->getCacheData();
-
         Cacher::getInstance()->save(
             $this->getCacheName(),
-            array(
-                'class' => get_class($this),
-                'data'  => $data,
+            array_replace(
+                array(
+                    'class' => get_class($this),
+                ),
+                $this->getCacheData()
             )
         );
     }
@@ -43,7 +43,9 @@ abstract class RouterAbstract implements RouterInterface
 
     protected function getCacheData()
     {
-        $data = array();
+        $data = array(
+            'data'  => array(),
+        );
 
         foreach (get_declared_classes() as $class)
         {
@@ -67,12 +69,29 @@ abstract class RouterAbstract implements RouterInterface
 
     protected function pushClassData(array $data, \ReflectionClass $reflector)
     {
-        $item = $reflector->newInstanceWithoutConstructor();
+        return $this->collectClassData(
+            $reflector->newInstanceWithoutConstructor(),
+            $data,
+            $reflector
+        );
+    }
 
+    /**
+     * Collect class data
+     *
+     * @param object           $item
+     * @param array            $data
+     * @param \ReflectionClass $reflector
+     *
+     * @return array
+     */
+
+    protected function collectClassData($item, array $data, $reflector)
+    {
         foreach ($this->getClassVariants($reflector, $item) as $key)
         {
             if (!array_key_exists($key, $data) || $this->isItemGreedy($data[$key], $reflector, $item))
-                $data[$key] = $this->getClassData($reflector, $item);
+                $data['data'][$key] = $this->getClassData($reflector, $item);
         }
 
         return $data;
@@ -84,7 +103,7 @@ abstract class RouterAbstract implements RouterInterface
      * @param \ReflectionClass $reflector
      * @param object           $item
      *
-     * @return mixed
+     * @return array
      */
 
     protected function getClassData(\ReflectionClass $reflector, $item)
@@ -138,22 +157,38 @@ abstract class RouterAbstract implements RouterInterface
      *
      * @param object $item
      *
-     * @return string
+     * @return string|null
      */
 
     protected function getClassBaseName($item)
     {
-        $basename   = null;
-        $reflector  = new \ReflectionClass($item);
+        return end($this->getClassBaseNames($item));
+    }
+
+    /**
+     * Get class base names
+     *
+     * @param object $item
+     * @return array
+     */
+
+    protected function getClassBaseNames($item)
+    {
+        $basenames = array();
+        $reflector = new \ReflectionClass($item);
 
         do
         {
             if (!$reflector->isAbstract())
             {
                 if (strpos($reflector->getDocComment(), '@easy-extend-base') !== false)
-                    return $reflector->getName();
+                {
+                    $basenames[] = $reflector->getName();
 
-                $basename = $reflector->getName();
+                    return $basenames;
+                }
+
+                $basenames[] = $reflector->getName();
             }
 
             $parent = $reflector->getParentClass();
@@ -165,7 +200,7 @@ abstract class RouterAbstract implements RouterInterface
         }
         while (true);
 
-        return $basename;
+        return $basenames;
     }
 
     /**
@@ -256,10 +291,21 @@ abstract class RouterAbstract implements RouterInterface
 
     public function getData()
     {
+        return $this->loadCache()['data'];
+    }
+
+    /**
+     * Load cache
+     *
+     * @return array
+     */
+
+    protected function loadCache()
+    {
         if ($this->_cache === null)
             $this->_cache = Cacher::getInstance()->fetch($this->getCacheName());
 
-        return $this->_cache['data'];
+        return $this->_cache;
     }
 
     /**
@@ -298,9 +344,20 @@ abstract class RouterAbstract implements RouterInterface
     public function getItemData($name)
     {
         if (!array_key_exists($name, $this->getData()))
-            throw new \LogicException('Item with name ' . var_export($name, true) . ' not found');
+            return $this->getItemDataNotFound($name);
 
         return $this->getData()[$name];
+    }
+
+    /**
+     * Item data not found
+     *
+     * @param string $name
+     */
+
+    protected function getItemDataNotFound($name)
+    {
+        throw new \LogicException('Item with name ' . var_export($name, true) . ' not found');
     }
 
     /**

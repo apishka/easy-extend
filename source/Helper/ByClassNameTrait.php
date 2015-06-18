@@ -28,7 +28,7 @@ trait ByClassNameTrait
 
         if (preg_match('#^(' . $data['prefixes'] . ')([\w\d_]*)$#', $name, $match))
         {
-            if (method_exists($data['class'], $method = '__' . $match[1]))
+            if (method_exists($data['class'], $method = '__apishka' . $match[1]))
                 return $data['class']::$method($data, $match[2], $arguments);
         }
 
@@ -46,7 +46,7 @@ trait ByClassNameTrait
      * @return mixed
      */
 
-    protected static function __apishka(array $data, $name, array $arguments)
+    protected static function __apishkaApishka(array $data, $name, array $arguments)
     {
         return new $data['class'](...$arguments);
     }
