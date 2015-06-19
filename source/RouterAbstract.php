@@ -24,7 +24,7 @@ abstract class RouterAbstract implements RouterInterface
 
     public function cache()
     {
-        Cacher::getInstance()->save(
+        Cacher::getInstance()->set(
             $this->getCacheName(),
             array_replace(
                 array(
@@ -306,7 +306,7 @@ abstract class RouterAbstract implements RouterInterface
     protected function loadCache()
     {
         if ($this->_cache === null)
-            $this->_cache = Cacher::getInstance()->fetch($this->getCacheName());
+            $this->_cache = Cacher::getInstance()->get($this->getCacheName());
 
         return $this->_cache;
     }

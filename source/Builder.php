@@ -70,7 +70,7 @@ class Builder
 
     public function buildFromCache()
     {
-        $configs = Cacher::getInstance()->fetch($this->getConfigsCacheName());
+        $configs = Cacher::getInstance()->get($this->getConfigsCacheName());
         $this->addFindersByConfigs($configs);
         $this->build();
     }
@@ -210,7 +210,7 @@ class Builder
             }
         }
 
-        Cacher::getInstance()->save(
+        Cacher::getInstance()->set(
             $this->getConfigsCacheName(),
             $configs
         );
