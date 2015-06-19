@@ -90,7 +90,7 @@ abstract class RouterAbstract implements RouterInterface
     {
         foreach ($this->getClassVariants($reflector, $item) as $key)
         {
-            if (!array_key_exists($key, $data) || $this->isItemGreedy($data[$key], $reflector, $item))
+            if (!array_key_exists($key, $data['data']) || $this->isItemGreedy($data['data'][$key], $reflector, $item))
                 $data['data'][$key] = $this->getClassData($reflector, $item);
         }
 
