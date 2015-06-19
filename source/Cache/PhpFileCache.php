@@ -127,6 +127,9 @@ class PhpFileCache
 
     public function flush()
     {
+        if (!is_dir($this->getCacheDir()))
+            return;
+
         $finder = (new Finder())
             ->files()
             ->name('*.php')
