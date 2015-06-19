@@ -33,7 +33,8 @@ class PhpFileCache
      * Set
      *
      * @param string $id
-     * @param mixed $value
+     * @param mixed  $value
+     *
      * @return PhpFileCache
      */
 
@@ -42,9 +43,24 @@ class PhpFileCache
         $filename = $this->getFileName($id);
         $filepath = pathinfo($filename, PATHINFO_DIRNAME);
 
+        if (!is_dir($filepath) && !@mkdir($filepath, 0777, true))
+        {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    'The directory "%s" does not exist and could not be created',
+                    $filepath
+                )
+            );
+        }
+
         if (!is_writable($filepath))
         {
-            return false;
+            throw new \InvalidArgumentException(
+                sprintf(
+                    'The directory "%s" is not writable',
+                    $filepath
+                )
+            );
         }
 
         $tmp_file = tempnam($filepath, 'swap');
@@ -64,6 +80,7 @@ class PhpFileCache
             if (@rename($tmp_file, $filename))
             {
                 @chmod($filename, 0666 & ~umask());
+
                 return true;
             }
 
@@ -77,18 +94,20 @@ class PhpFileCache
      * Get file name
      *
      * @param string $id
+     *
      * @return string
      */
 
     protected function getFileName($id)
     {
-        return rtrim($this->getCacheDir(), DIRECTORY_SEPARATOR). DIRECTORY_SEPARATOR . $id . '.php';
+        return rtrim($this->getCacheDir(), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $id . '.php';
     }
 
     /**
      * Returns cache data
      *
      * @param string $id
+     *
      * @return mixed
      */
 
@@ -124,6 +143,7 @@ class PhpFileCache
      * Set cache dir
      *
      * @param string $cache_dir
+     *
      * @return PhpFileCache this
      */
 
