@@ -10,7 +10,6 @@ use Composer\Package\Package;
 use Composer\Package\RootPackage;
 use Composer\Plugin\PluginManager;
 use Composer\Script\Event;
-use Composer\Util\Filesystem;
 
 /**
  * Tests of easy extend builder

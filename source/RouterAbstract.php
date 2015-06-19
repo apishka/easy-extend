@@ -169,6 +169,7 @@ abstract class RouterAbstract implements RouterInterface
      * Get class base names
      *
      * @param object $item
+     *
      * @return array
      */
 
