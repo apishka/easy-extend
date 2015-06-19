@@ -86,7 +86,7 @@ abstract class RouterAbstract implements RouterInterface
      * @return array
      */
 
-    protected function collectClassData($item, array $data, $reflector)
+    protected function collectClassData($item, array $data, \ReflectionClass $reflector)
     {
         foreach ($this->getClassVariants($reflector, $item) as $key)
         {
@@ -162,7 +162,9 @@ abstract class RouterAbstract implements RouterInterface
 
     protected function getClassBaseName($item)
     {
-        return end($this->getClassBaseNames($item));
+        $classes = $this->getClassBaseNames($item);
+
+        return array_pop($classes);
     }
 
     /**
