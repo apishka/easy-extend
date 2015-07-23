@@ -22,9 +22,7 @@ trait ByClassNameTrait
 
     public static function __callStatic($name, $arguments)
     {
-        $data = Broker::getInstance()->getRouter('Apishka\EasyExtend\Router\ByClassName')
-            ->getItemData(get_called_class())
-        ;
+        $data = \Apishka\EasyExtend\Router\ByClassName::apishka()->getItemData(get_called_class());
 
         if (preg_match('#^(' . $data['prefixes'] . ')([\w\d_]*)$#', $name, $match))
         {
