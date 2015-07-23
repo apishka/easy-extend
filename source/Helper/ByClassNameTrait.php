@@ -1,7 +1,5 @@
 <?php namespace Apishka\EasyExtend\Helper;
 
-use Apishka\EasyExtend\Broker;
-
 /**
  * By class name help trait
  *
