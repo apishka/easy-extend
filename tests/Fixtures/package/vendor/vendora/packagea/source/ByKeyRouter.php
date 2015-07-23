@@ -22,6 +22,6 @@ class ByKeyRouter extends ByKeyAbstract
 
     protected function isCorrectItem(\ReflectionClass $reflector)
     {
-        return parent::isCorrectItem($reflector) && $this->hasClassInterface($reflector, 'Apishka\EasyExtend\Helper\ByKeyInterface');
+        return $this->hasClassInterface($reflector, 'Apishka\EasyExtend\Helper\ByKeyInterface');
     }
 }

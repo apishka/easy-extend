@@ -12,4 +12,16 @@ use Apishka\EasyExtend\RouterAbstract;
 
 class RouterB extends RouterAbstract
 {
+    /**
+     * Is correct item
+     *
+     * @param \ReflectionClass $reflector
+     *
+     * @return bool
+     */
+
+    protected function isCorrectItem(\ReflectionClass $reflector)
+    {
+        return false;
+    }
 }

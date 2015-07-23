@@ -224,13 +224,12 @@ abstract class RouterAbstract implements RouterInterface
      *
      * @param \ReflectionClass $reflector
      *
+     * @abstract
+     *
      * @return bool
      */
 
-    protected function isCorrectItem(\ReflectionClass $reflector)
-    {
-        return true;
-    }
+    abstract protected function isCorrectItem(\ReflectionClass $reflector);
 
     /**
      * Is correct abstract item
