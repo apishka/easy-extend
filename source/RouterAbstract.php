@@ -64,7 +64,7 @@ abstract class RouterAbstract implements RouterInterface
         {
             $reflector = new \ReflectionClass($class);
 
-            if ($this->isCorrectItem($reflector))
+            if ($this->isCorrectAbstractItem($reflector) && $this->isCorrectItem($reflector))
                 $data = $this->pushClassData($data, $reflector);
         }
 
@@ -229,7 +229,34 @@ abstract class RouterAbstract implements RouterInterface
 
     protected function isCorrectItem(\ReflectionClass $reflector)
     {
-        return !$reflector->isAbstract();
+        return true;
+    }
+
+    /**
+     * Is correct abstract item
+     *
+     * @param \ReflectionClass $reflector
+     *
+     * @return bool
+     */
+
+    protected function isCorrectAbstractItem(\ReflectionClass $reflector)
+    {
+        if ($reflector->isAbstract())
+            return $this->collectAbstractItems();
+
+        return true;
+    }
+
+    /**
+     * Collect abstract items
+     *
+     * @return bool
+     */
+
+    protected function collectAbstractItems()
+    {
+        return false;
     }
 
     /**

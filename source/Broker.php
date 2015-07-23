@@ -110,9 +110,6 @@ final class Broker extends RouterAbstract
 
     protected function isCorrectItem(\ReflectionClass $reflector)
     {
-        if (!parent::isCorrectItem($reflector))
-            return false;
-
         if ($reflector->isInstance($this))
             return false;
 
