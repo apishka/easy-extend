@@ -19,6 +19,19 @@ abstract class RouterAbstract implements RouterInterface
     private $_cache = null;
 
     /**
+     * Apishka
+     *
+     * @static
+     *
+     * @return RouterAbstract
+     */
+
+    public static function apishka()
+    {
+        return Broker::getInstance()->getRouter(get_called_class());
+    }
+
+    /**
      * Cache
      */
 

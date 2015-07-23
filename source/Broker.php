@@ -30,9 +30,24 @@ final class Broker extends RouterAbstract
     protected $_routers = array();
 
     /**
+     * Apishka
+     *
+     * @static
+     *
+     * @return RouterAbstract
+     */
+
+    public static function apishka()
+    {
+        return static::getInstance();
+    }
+
+    /**
      * Returns the *Singleton* instance of this class.
      *
      * @static
+     *
+     * @return Broker
      */
 
     public static function getInstance()
@@ -58,6 +73,8 @@ final class Broker extends RouterAbstract
      * Get router instance
      *
      * @param string $class
+     *
+     * @return RouterAbstract
      */
 
     public function getRouter($router)
