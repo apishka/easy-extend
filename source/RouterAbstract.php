@@ -106,8 +106,26 @@ abstract class RouterAbstract implements RouterInterface
             $key = $this->getItemKey($name);
 
             if (!array_key_exists($key, $data['data']) || $this->isItemGreedy($data['data'][$key], $reflector, $item))
-                $data['data'][$key] = $this->getClassData($reflector, $item);
+                $data = $this->addClassData($data, $key, $reflector, $item);
         }
+
+        return $data;
+    }
+
+    /**
+     * Add class data
+     *
+     * @param array             $data
+     * @param string            $key
+     * @param \ReflectionClass  $reflector
+     * @param mixed             $item
+     *
+     * @return array
+     */
+
+    protected function addClassData(array $data, $key, $reflector, $item)
+    {
+        $data['data'][$key] = $this->getClassData($reflector, $item);
 
         return $data;
     }
