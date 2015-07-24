@@ -385,10 +385,23 @@ abstract class RouterAbstract implements RouterInterface
 
     public function getItemData($name)
     {
-        if (!array_key_exists($name, $this->getData()))
+        if (!$this->hasItemData($name))
             return $this->getItemDataNotFound($name);
 
         return $this->getData()[$name];
+    }
+
+    /**
+     * Has item data
+     *
+     * @param string $name
+     *
+     * @return bool
+     */
+
+    public function hasItemData($name)
+    {
+        return array_key_exists($name, $this->getData());
     }
 
     /**
