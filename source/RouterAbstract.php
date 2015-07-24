@@ -101,8 +101,10 @@ abstract class RouterAbstract implements RouterInterface
 
     protected function collectClassData($item, array $data, \ReflectionClass $reflector)
     {
-        foreach ($this->getClassVariants($reflector, $item) as $key)
+        foreach ($this->getClassVariants($reflector, $item) as $name)
         {
+            $key = $this->getItemKey($name);
+
             if (!array_key_exists($key, $data['data']) || $this->isItemGreedy($data['data'][$key], $reflector, $item))
                 $data['data'][$key] = $this->getClassData($reflector, $item);
         }
