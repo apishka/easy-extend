@@ -353,13 +353,16 @@ abstract class RouterAbstract implements RouterInterface
     /**
      * Get item
      *
-     * @param string $name
+     * @param string|array $name
      *
      * @return mixed
      */
 
     public function getItem($name)
     {
+        if (func_num_args() > 1)
+            $name = func_get_args();
+
         $info = $this->getItemData($name);
         $class = $info['class'];
 
@@ -378,36 +381,61 @@ abstract class RouterAbstract implements RouterInterface
     /**
      * Get item data
      *
-     * @param string $name
+     * @param string|array $name
      *
      * @return array
      */
 
     public function getItemData($name)
     {
+        if (func_num_args() > 1)
+            $name = func_get_args();
+
         if (!$this->hasItemData($name))
             return $this->getItemDataNotFound($name);
 
-        return $this->getData()[$name];
+        return $this->getData()[$this->getItemKey($name)];
     }
 
     /**
      * Has item data
      *
-     * @param string $name
+     * @param string|array $name
      *
      * @return bool
      */
 
     public function hasItemData($name)
     {
-        return array_key_exists($name, $this->getData());
+        if (func_num_args() > 1)
+            $name = func_get_args();
+
+        return array_key_exists($this->getItemKey($name), $this->getData());
+    }
+
+    /**
+     * Returns item key
+     *
+     * @param string|array $name
+     *
+     * @return string
+     */
+
+    public function getItemKey($name)
+    {
+        if (func_num_args() > 1)
+            $name = func_get_args();
+
+        if (is_array($name))
+            return join('|', $name);
+
+        return (string) $name;
     }
 
     /**
      * Item data not found
      *
-     * @param string $name
+     * @param string|array $name
      */
 
     protected function getItemDataNotFound($name)
