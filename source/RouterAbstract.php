@@ -180,7 +180,7 @@ abstract class RouterAbstract implements RouterInterface
             return true;
 
         if (!$base->isSubclassOf($reflector->getName()))
-            throw new \LogicException('Class ' . var_export($reflector->getName(), true) . ' has no direct relation with class ' . var_export($base->getName(), true));
+            throw new \LogicException('Class ' . var_export($reflector->getName(), true) . ' has no direct relation with class ' . var_export($base->getName(), true) . '. Use @easy-extend-base to create new branch.');
 
         return false;
     }
