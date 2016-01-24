@@ -12,7 +12,3 @@ install:
 
 script:
   - php ./vendor/bin/phpunit -c phpunit.sample.xml
-
-matrix:
-  allow_failures:
-    - php: 7
