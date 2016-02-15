@@ -70,9 +70,22 @@ class Builder
 
     public function buildFromCache()
     {
-        $configs = Cacher::getInstance()->get($this->getConfigsCacheName());
-        $this->addFindersByConfigs($configs);
+        $this->addFindersByConfigs(
+            $this->getConfigFilesFromCache()
+        );
+
         $this->build();
+    }
+
+    /**
+     * Get config files from cache
+     *
+     * @return array
+     */
+
+    public function getConfigFilesFromCache()
+    {
+        return Cacher::getInstance()->get($this->getConfigsCacheName());
     }
 
     /**
