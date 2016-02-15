@@ -115,10 +115,10 @@ abstract class RouterAbstract implements RouterInterface
     /**
      * Add class data
      *
-     * @param array             $data
-     * @param string            $key
-     * @param \ReflectionClass  $reflector
-     * @param mixed             $item
+     * @param array            $data
+     * @param string           $key
+     * @param \ReflectionClass $reflector
+     * @param mixed            $item
      *
      * @return array
      */
@@ -447,7 +447,7 @@ abstract class RouterAbstract implements RouterInterface
             $name = func_get_args();
 
         if (is_array($name))
-            return join('|', $name);
+            return implode('|', $name);
 
         return (string) $name;
     }
