@@ -6,6 +6,14 @@ require_once('vendor/autoload.php');
 use \Symfony\Component\Console;
 use \Apishka\EasyExtend\Builder;
 
+/**
+ * Apishka easy extend command
+ *
+ * @uses \Symfony\Component\Console\Command\Command
+ *
+ * @author Evgeny Reykh <evgeny@reykh.com>
+ */
+
 class Apishka_EasyExtendCommand extends \Symfony\Component\Console\Command\Command
 {
     /**
