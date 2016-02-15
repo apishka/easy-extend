@@ -205,7 +205,7 @@ class Builder
             );
 
             if ($path)
-                $configs[] = $path;
+                $configs[$this->getEvent()->getComposer()->getPackage()->getName()] = $path;
         }
 
         $packages = $this->getEvent()->getComposer()->getRepositoryManager()->getLocalRepository()->getPackages();
@@ -219,9 +219,11 @@ class Builder
                 );
 
                 if ($path)
-                    $configs[] = $path;
+                    $configs[$package->getName()] = $path;
             }
         }
+
+        ksort($configs);
 
         Cacher::getInstance()->set(
             $this->getConfigsCacheName(),
