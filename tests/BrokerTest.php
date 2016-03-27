@@ -6,10 +6,6 @@ use Apishka\EasyExtend\Broker;
  * Broker test
  *
  * @runTestsInSeparateProcesses
- *
- * @uses \PHPUnit_Framework_TestCase
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class BrokerTest extends \PHPUnit_Framework_TestCase

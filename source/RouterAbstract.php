@@ -2,10 +2,6 @@
 
 /**
  * Router abstract
- *
- * @abstract
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 abstract class RouterAbstract implements RouterInterface
@@ -21,7 +17,6 @@ abstract class RouterAbstract implements RouterInterface
     /**
      * Apishka
      *
-     * @static
      *
      * @return RouterAbstract
      */
@@ -243,8 +238,6 @@ abstract class RouterAbstract implements RouterInterface
      * Is correct item
      *
      * @param \ReflectionClass $reflector
-     *
-     * @abstract
      *
      * @return bool
      */

@@ -3,10 +3,7 @@
 /**
  * Broker
  *
- * @uses RouterAbstract
  * @final
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 final class Broker extends RouterAbstract
@@ -14,7 +11,6 @@ final class Broker extends RouterAbstract
     /**
      * Instance
      *
-     * @static
      *
      * @var mixed
      */
@@ -32,7 +28,6 @@ final class Broker extends RouterAbstract
     /**
      * Apishka
      *
-     * @static
      *
      * @return RouterAbstract
      */
@@ -45,7 +40,6 @@ final class Broker extends RouterAbstract
     /**
      * Returns the *Singleton* instance of this class.
      *
-     * @static
      *
      * @return Broker
      */
@@ -60,8 +54,6 @@ final class Broker extends RouterAbstract
 
     /**
      * Clear instance
-     *
-     * @static
      */
 
     public static function clearInstance()

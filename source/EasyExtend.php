@@ -9,11 +9,6 @@ use Composer\Script\ScriptEvents;
 
 /**
  * Easy extend
- *
- * @uses PluginInterface
- * @uses EventSubscriberInterface
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class EasyExtend implements PluginInterface, EventSubscriberInterface
@@ -41,7 +36,6 @@ class EasyExtend implements PluginInterface, EventSubscriberInterface
     /**
      * Get the event subscriber configuration for this plugin.
      *
-     * @static
      *
      * @return array<string,string> The events to listen to, and their associated handlers.
      */

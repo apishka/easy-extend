@@ -6,10 +6,6 @@ use Apishka\EasyExtend\Router\ByClassName;
  * By class name test
  *
  * @runTestsInSeparateProcesses
- *
- * @uses \PHPUnit_Framework_TestCase
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class ByClassNameTest extends \PHPUnit_Framework_TestCase

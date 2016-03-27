@@ -15,8 +15,6 @@ use Composer\Script\Event;
  * Tests of easy extend builder
  *
  * @runTestsInSeparateProcesses
- *
- * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class BuilderTest extends \PHPUnit_Framework_TestCase
 {

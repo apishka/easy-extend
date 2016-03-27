@@ -9,8 +9,6 @@ use Composer\Script\ScriptEvents;
 
 /**
  * Tests of easy extend plugin.
- *
- * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class EasyExtendTest extends \PHPUnit_Framework_TestCase
 {

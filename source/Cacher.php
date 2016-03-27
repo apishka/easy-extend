@@ -4,8 +4,6 @@ use Apishka\EasyExtend\Cache\PhpFileCache;
 
 /**
  * Cacher
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class Cacher
@@ -13,7 +11,6 @@ class Cacher
     /**
      * Instance
      *
-     * @static
      *
      * @var mixed
      */
@@ -38,8 +35,6 @@ class Cacher
 
     /**
      * Returns the *Singleton* instance of this class.
-     *
-     * @static
      */
 
     public static function getInstance()
@@ -52,8 +47,6 @@ class Cacher
 
     /**
      * Clear instance
-     *
-     * @static
      */
 
     public static function clearInstance()

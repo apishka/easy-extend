@@ -4,8 +4,6 @@ use Symfony\Component\Finder\Finder;
 
 /**
  * Php file cache
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class PhpFileCache

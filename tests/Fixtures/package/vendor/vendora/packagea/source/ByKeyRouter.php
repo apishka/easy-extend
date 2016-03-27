@@ -5,9 +5,7 @@ use Apishka\EasyExtend\Router\ByKeyAbstract;
 /**
  * By key router
  *
- * @uses ByKeyAbstract
  *
- * @author Alexander "grevus" Lobtsov <alex@lobtsov.com>
  */
 
 class ByKeyRouter extends ByKeyAbstract

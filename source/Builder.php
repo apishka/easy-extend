@@ -7,8 +7,6 @@ use Symfony\Component\Finder\Finder;
 
 /**
  * Builder
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class Builder

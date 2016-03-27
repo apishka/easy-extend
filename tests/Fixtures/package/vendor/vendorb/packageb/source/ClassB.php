@@ -6,9 +6,7 @@ use Apishka\EasyExtend\Helper\ByKeyInterface;
 /**
  * Class B
  *
- * @uses ByKeyInterface
  *
- * @author Alexander "grevus" Lobtsov <alex@lobtsov.com>
  */
 
 class ClassB implements ByKeyInterface

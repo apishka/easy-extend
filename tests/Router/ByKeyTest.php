@@ -6,10 +6,6 @@ use ApishkaTest\EasyExtend\Router\Fixtures\ByKeyRouter;
  * By key test
  *
  * @runTestsInSeparateProcesses
- *
- * @uses \PHPUnit_Framework_TestCase
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class ByKeyTest extends \PHPUnit_Framework_TestCase

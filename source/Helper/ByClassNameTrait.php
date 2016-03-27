@@ -2,8 +2,6 @@
 
 /**
  * By class name help trait
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 trait ByClassNameTrait
@@ -13,7 +11,6 @@ trait ByClassNameTrait
      *
      * @param string $name
      * @param array  $arguments
-     * @static
      *
      * @return mixed
      */
@@ -37,7 +34,6 @@ trait ByClassNameTrait
      * @param array  $data
      * @param string $name
      * @param array  $arguments
-     * @static
      *
      * @return mixed
      */
