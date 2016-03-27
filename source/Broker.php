@@ -2,8 +2,6 @@
 
 /**
  * Broker
- *
- * @final
  */
 
 final class Broker extends RouterAbstract
