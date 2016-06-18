@@ -14,4 +14,9 @@ return array(
             return $finder;
         }
     ),
+    'ctags' => array(
+        array(
+            'folder'    => 'source',
+        ),
+    ),
 );
