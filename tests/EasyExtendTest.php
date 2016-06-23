@@ -42,10 +42,10 @@ class EasyExtendTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $io         = $this->getMock('Composer\IO\IOInterface');
-        $composer   = $this->getMock('Composer\Composer');
+        $io         = $this->getMockBuilder('Composer\IO\IOInterface')->getMock();
+        $composer   = $this->getMockBuilder('Composer\Composer')->getMock();
 
-        $config = $this->getMock('Composer\Config');
+        $config = $this->getMockBuilder('Composer\Config')->getMock();
         $config->expects($this->any())
             ->method('get')
             ->will($this->returnCallback(function ($key) {
@@ -58,7 +58,7 @@ class EasyExtendTest extends \PHPUnit_Framework_TestCase
             }))
         ;
 
-        $this->package = $this->getMock('Composer\Package\RootPackageInterface');
+        $this->package = $this->getMockBuilder('Composer\Package\RootPackageInterface')->getMock();
         $this->package->expects($this->any())
             ->method('getRequires')
             ->will($this->returnValue(array()))
@@ -72,7 +72,7 @@ class EasyExtendTest extends \PHPUnit_Framework_TestCase
         $rm = new RepositoryManager($io, $config);
         $im = new InstallationManager();
 
-        $composer = $this->getMock('Composer\Composer');
+        $composer = $this->getMockBuilder('Composer\Composer')->getMock();
         $composer->expects($this->any())
             ->method('getRepositoryManager')
             ->will($this->returnValue($rm))
@@ -128,7 +128,7 @@ class EasyExtendTest extends \PHPUnit_Framework_TestCase
             ->assertInstanceOf('Apishka\EasyExtend\Builder', $this->plugin->getBuilder())
         ;
 
-        $builder = $this->getMock('Apishka\EasyExtend\Builder');
+        $builder = $this->getMockBuilder('Apishka\EasyExtend\Builder')->getMock();
 
         $this->plugin->setBuilder($builder);
 
@@ -157,7 +157,7 @@ class EasyExtendTest extends \PHPUnit_Framework_TestCase
             $this->io
         );
 
-        $builder = $this->getMock('Apishka\EasyExtend\Builder');
+        $builder = $this->getMockBuilder('Apishka\EasyExtend\Builder')->getMock();
 
         $builder->expects($this->once())
             ->method('buildFromEvent')
