@@ -66,7 +66,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
 
         foreach (range('a', 'b') as $i)
         {
-            $name = 'vendor' . $i . '/package' . $i;
+            $name    = 'vendor' . $i . '/package' . $i;
             $package = new Package($name, '1.0.0', '1.0.0');
             $package->setRequires(
                 array(
@@ -143,7 +143,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
         ;
 
         $this->_composer = new Composer();
-        $config = new Config();
+        $config          = new Config();
         $this->_composer->setConfig($config);
         $this->_composer->setDownloadManager($dm);
         $this->_composer->setRepositoryManager($rm);
@@ -170,7 +170,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
         Cacher::clearInstance();
 
         $this->_composer = null;
-        $this->_io = null;
+        $this->_io       = null;
     }
 
     /**

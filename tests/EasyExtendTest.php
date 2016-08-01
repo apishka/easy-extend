@@ -93,9 +93,9 @@ class EasyExtendTest extends \PHPUnit_Framework_TestCase
             ->will($this->returnValue($im))
         ;
 
-        $this->plugin = new \Apishka\EasyExtend\EasyExtend();
+        $this->plugin   = new \Apishka\EasyExtend\EasyExtend();
         $this->composer = $composer;
-        $this->io = $io;
+        $this->io       = $io;
     }
 
     /**
@@ -104,9 +104,9 @@ class EasyExtendTest extends \PHPUnit_Framework_TestCase
 
     protected function tearDown()
     {
-        $this->plugin = null;
+        $this->plugin   = null;
         $this->composer = null;
-        $this->io = null;
+        $this->io       = null;
     }
 
     /**

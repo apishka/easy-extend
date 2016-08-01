@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f25540aabcf4c3ef9f0d9af78454127a",
-    "content-hash": "7fa45eab51fa74c30ca0f2f32181ab6b",
+    "hash": "47a770c014d7eb29c867d14ee96566cd",
+    "content-hash": "257db6442fca55b3cbc5d25877293c97",
     "packages": [
         {
             "name": "symfony/console",
@@ -179,7 +179,7 @@
     "packages-dev": [
         {
             "name": "apishka/cs",
-            "version": "1.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apishka/cs.git",
@@ -2105,7 +2105,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "composer/composer": 20
+        "composer/composer": 20,
+        "apishka/cs": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

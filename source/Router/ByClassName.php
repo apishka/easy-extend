@@ -32,7 +32,7 @@ class ByClassName extends RouterAbstract
 
     protected function getClassData(\ReflectionClass $reflector, $item)
     {
-        $data = parent::getClassData($reflector, $item);
+        $data             = parent::getClassData($reflector, $item);
         $data['prefixes'] = $item->__apishkaGetPrefixes();
 
         return $data;

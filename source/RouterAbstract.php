@@ -376,7 +376,7 @@ abstract class RouterAbstract implements RouterInterface
         if (func_num_args() > 1)
             $name = func_get_args();
 
-        $info = $this->getItemData($name);
+        $info  = $this->getItemData($name);
         $class = $info['class'];
 
         return new $class;
