@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "47a770c014d7eb29c867d14ee96566cd",
-    "content-hash": "257db6442fca55b3cbc5d25877293c97",
+    "hash": "12a3a07a993616971677ad6dddeab797",
+    "content-hash": "b125b5fc270a5bbbff4200e7fe4954ac",
     "packages": [
         {
             "name": "symfony/console",
@@ -179,16 +179,16 @@
     "packages-dev": [
         {
             "name": "apishka/cs",
-            "version": "dev-master",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apishka/cs.git",
-                "reference": "10b6780df43fda66a653df19da55603a7ae9648d"
+                "reference": "1417d865b8858a12e7c96de48dacb52f63df21d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apishka/cs/zipball/10b6780df43fda66a653df19da55603a7ae9648d",
-                "reference": "10b6780df43fda66a653df19da55603a7ae9648d",
+                "url": "https://api.github.com/repos/apishka/cs/zipball/1417d865b8858a12e7c96de48dacb52f63df21d0",
+                "reference": "1417d865b8858a12e7c96de48dacb52f63df21d0",
                 "shasum": ""
             },
             "type": "library",
@@ -206,7 +206,7 @@
                 "cs",
                 "style"
             ],
-            "time": "2015-06-06 14:33:20"
+            "time": "2016-08-01 22:30:55"
         },
         {
             "name": "composer/ca-bundle",
@@ -2105,8 +2105,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "composer/composer": 20,
-        "apishka/cs": 20
+        "composer/composer": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
