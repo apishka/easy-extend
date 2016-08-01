@@ -106,7 +106,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
             ->getMock()
         ;
 
-        $this->_repository = $this->getMock('Composer\Repository\InstalledRepositoryInterface');
+        $this->_repository = $this->createMock('Composer\Repository\InstalledRepositoryInterface');
 
         $this->_repository->expects($this->any())
             ->method('getPackages')
@@ -127,7 +127,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
             ->will($this->returnValue($this->_repository))
         ;
 
-        $im = $this->getMock('Composer\Installer\InstallationManager');
+        $im = $this->createMock('Composer\Installer\InstallationManager');
         $im->expects($this->any())
             ->method('getInstallPath')
             ->will($this->returnCallback(function ($package) {
@@ -135,7 +135,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
             }))
         ;
 
-        $this->_io = $this->getMock('Composer\IO\IOInterface');
+        $this->_io = $this->createMock('Composer\IO\IOInterface');
 
         $dispatcher = $this->getMockBuilder('Composer\EventDispatcher\EventDispatcher')
             ->disableOriginalConstructor()
