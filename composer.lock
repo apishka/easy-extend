@@ -179,16 +179,16 @@
     "packages-dev": [
         {
             "name": "apishka/cs",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apishka/cs.git",
-                "reference": "1417d865b8858a12e7c96de48dacb52f63df21d0"
+                "reference": "54abe967ea05df8406d3b7e8bf06c7663879b556"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apishka/cs/zipball/1417d865b8858a12e7c96de48dacb52f63df21d0",
-                "reference": "1417d865b8858a12e7c96de48dacb52f63df21d0",
+                "url": "https://api.github.com/repos/apishka/cs/zipball/54abe967ea05df8406d3b7e8bf06c7663879b556",
+                "reference": "54abe967ea05df8406d3b7e8bf06c7663879b556",
                 "shasum": ""
             },
             "type": "library",
@@ -206,7 +206,7 @@
                 "cs",
                 "style"
             ],
-            "time": "2016-08-01 22:30:55"
+            "time": "2016-08-02 07:36:17"
         },
         {
             "name": "composer/ca-bundle",
@@ -271,12 +271,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "034f1cf591e9061500488a4c354050cf3ea4965f"
+                "reference": "f2fc70fd7919b6414a1b97ce585d03d020c5c5e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/034f1cf591e9061500488a4c354050cf3ea4965f",
-                "reference": "034f1cf591e9061500488a4c354050cf3ea4965f",
+                "url": "https://api.github.com/repos/composer/composer/zipball/f2fc70fd7919b6414a1b97ce585d03d020c5c5e1",
+                "reference": "f2fc70fd7919b6414a1b97ce585d03d020c5c5e1",
                 "shasum": ""
             },
             "require": {
@@ -340,7 +340,7 @@
                 "dependency",
                 "package"
             ],
-            "time": "2016-07-28 11:34:05"
+            "time": "2016-08-15 07:14:45"
         },
         {
             "name": "composer/semver",
@@ -1081,16 +1081,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.4.8",
+            "version": "5.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "3132365e1430c091f208e120b8845d39c25f20e6"
+                "reference": "c7b3e1dcc1d183f26d5ba282881fe65c2cbb5b2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3132365e1430c091f208e120b8845d39c25f20e6",
-                "reference": "3132365e1430c091f208e120b8845d39c25f20e6",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/c7b3e1dcc1d183f26d5ba282881fe65c2cbb5b2b",
+                "reference": "c7b3e1dcc1d183f26d5ba282881fe65c2cbb5b2b",
                 "shasum": ""
             },
             "require": {
@@ -1129,7 +1129,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.4.x-dev"
+                    "dev-master": "5.5.x-dev"
                 }
             },
             "autoload": {
@@ -1155,7 +1155,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-07-26 14:48:00"
+            "time": "2016-08-05 04:49:02"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -2054,28 +2054,29 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozart/assert.git",
-                "reference": "30eed06dd6bc88410a4ff7f77b6d22f3ce13dbde"
+                "reference": "bb2d123231c095735130cc8f6d31385a44c7b308"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/30eed06dd6bc88410a4ff7f77b6d22f3ce13dbde",
-                "reference": "30eed06dd6bc88410a4ff7f77b6d22f3ce13dbde",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/bb2d123231c095735130cc8f6d31385a44c7b308",
+                "reference": "bb2d123231c095735130cc8f6d31385a44c7b308",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": "^5.3.3|^7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.6"
+                "phpunit/phpunit": "^4.6",
+                "sebastian/version": "^1.0.1"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev"
+                    "dev-master": "1.2-dev"
                 }
             },
             "autoload": {
@@ -2099,7 +2100,7 @@
                 "check",
                 "validate"
             ],
-            "time": "2015-08-24 13:29:44"
+            "time": "2016-08-09 15:02:57"
         }
     ],
     "aliases": [],
