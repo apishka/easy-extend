@@ -18,7 +18,7 @@ This is composer component which helps developers to write common libraries and 
     "apishka/easy-extend": "^1.0.0"
 }
 ```
- - Create ``.apishka.php``. More details of ``.apishka.php`` structure you can find here. Most common file looks like this:
+ - Create ``.apishka.php`` (structure documentation). Most common file looks like this:
 ```php
 <?php
 
