@@ -7,6 +7,39 @@
 [build-image]: http://img.shields.io/travis/apishka/easy-extend/master.svg "Current build status for the develop branch"
 [Current build status]: https://travis-ci.org/apishka/easy-extend
 
+# What is easy extend?
+
+This is composer component which helps developers to write common libraries and extend them in project.
+
+## Quick start
+ - Add easy-extend to composer requirements of your library
+```json
+"require": {
+    "apishka/easy-extend": "^1.0.0"
+}
+```
+ - Create ``.apishka.php``. More details of ``.apishka.php`` structure you can find here. Most common file looks like this:
+```php
+<?php
+
+return array(
+    'easy-extend' => array(
+        'finder' => function($finder)
+        {
+            $finder
+                ->in('source/')
+                ->files()
+                ->name('*.php')
+            ;
+
+            return $finder;
+        }
+    ),
+);
+ ```
+ - Run ``composer update``
+ - Implement traits to classes which you want to be easy extendable.
+
 # Getting started
 ## Extending classes
 Some library has basic implementation of class you want extend and this library implements EasyExtend:
