@@ -40,7 +40,7 @@ return array(
  - Run ``composer update``
  - Implement traits to classes which you want to be easy extendable.
 
-# Getting started
+# How to extend?
 ## Extending classes
 Some library has basic implementation of class you want extend and this library implements EasyExtend:
 ```php
