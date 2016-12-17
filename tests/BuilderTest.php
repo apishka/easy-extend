@@ -1,4 +1,6 @@
-<?php namespace ApishkaTest\EasyExtend;
+<?php
+
+namespace ApishkaTest\EasyExtend;
 
 use Apishka\EasyExtend\Builder;
 use Apishka\EasyExtend\Cacher;
@@ -243,7 +245,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
 
     public function testByClassNameCachedData()
     {
-        require_once('source/Router/ByClassName.php');
+        require_once 'source/Router/ByClassName.php';
 
         $event = new Event(
             'post-update-cmd',

@@ -1,4 +1,6 @@
-<?php namespace ApishkaTest\EasyExtend;
+<?php
+
+namespace ApishkaTest\EasyExtend;
 
 use Composer\Composer;
 use Composer\Installer\InstallationManager;

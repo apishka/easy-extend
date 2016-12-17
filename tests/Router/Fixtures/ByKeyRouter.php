@@ -1,4 +1,6 @@
-<?php namespace ApishkaTest\EasyExtend\Router\Fixtures;
+<?php
+
+namespace ApishkaTest\EasyExtend\Router\Fixtures;
 
 use Apishka\EasyExtend\Router\ByKeyAbstract;
 

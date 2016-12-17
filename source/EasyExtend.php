@@ -1,4 +1,6 @@
-<?php namespace Apishka\EasyExtend;
+<?php
+
+namespace Apishka\EasyExtend;
 
 use Composer\Composer;
 use Composer\EventDispatcher\EventSubscriberInterface;
@@ -24,8 +26,8 @@ class EasyExtend implements PluginInterface, EventSubscriberInterface
     /**
      * Activate the plugin.
      *
-     * @param Composer    $composer The main Composer object.
-     * @param IOInterface $io       The i/o interface to use.
+     * @param Composer    $composer the main Composer object
+     * @param IOInterface $io       the i/o interface to use
      */
 
     public function activate(Composer $composer, IOInterface $io)
@@ -37,7 +39,7 @@ class EasyExtend implements PluginInterface, EventSubscriberInterface
      * Get the event subscriber configuration for this plugin.
      *
      *
-     * @return array<string,string> The events to listen to, and their associated handlers.
+     * @return array<string,string> the events to listen to, and their associated handlers
      */
 
     public static function getSubscribedEvents()
@@ -51,7 +53,7 @@ class EasyExtend implements PluginInterface, EventSubscriberInterface
     /**
      * Handle post install command events.
      *
-     * @param Event $event The event to handle.
+     * @param Event $event the event to handle
      */
 
     public function onPostInstallCmd(Event $event)

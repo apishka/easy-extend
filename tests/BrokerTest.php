@@ -1,4 +1,6 @@
-<?php namespace ApishkaTest\EasyExtend;
+<?php
+
+namespace ApishkaTest\EasyExtend;
 
 use Apishka\EasyExtend\Broker;
 
@@ -50,8 +52,8 @@ class BrokerTest extends \PHPUnit_Framework_TestCase
 
     public function testSimple()
     {
-        require_once('tests/Fixtures/RouterA.php');
-        require_once('tests/Fixtures/RouterB.php');
+        require_once 'tests/Fixtures/RouterA.php';
+        require_once 'tests/Fixtures/RouterB.php';
 
         $broker = $this->getBroker();
         $broker->cache();
@@ -75,9 +77,9 @@ class BrokerTest extends \PHPUnit_Framework_TestCase
 
     public function testExtending()
     {
-        require_once('tests/Fixtures/RouterA.php');
-        require_once('tests/Fixtures/RouterB.php');
-        require_once('tests/Fixtures/RouterB1.php');
+        require_once 'tests/Fixtures/RouterA.php';
+        require_once 'tests/Fixtures/RouterB.php';
+        require_once 'tests/Fixtures/RouterB1.php';
 
         $broker = $this->getBroker();
         $broker->cache();
@@ -101,10 +103,10 @@ class BrokerTest extends \PHPUnit_Framework_TestCase
 
     public function testExtendingWithBranch()
     {
-        require_once('tests/Fixtures/RouterA.php');
-        require_once('tests/Fixtures/RouterB.php');
-        require_once('tests/Fixtures/RouterB1.php');
-        require_once('tests/Fixtures/RouterB2.php');
+        require_once 'tests/Fixtures/RouterA.php';
+        require_once 'tests/Fixtures/RouterB.php';
+        require_once 'tests/Fixtures/RouterB1.php';
+        require_once 'tests/Fixtures/RouterB2.php';
 
         $broker = $this->getBroker();
         $broker->cache();
@@ -134,9 +136,9 @@ class BrokerTest extends \PHPUnit_Framework_TestCase
 
     public function testExtendingTwice()
     {
-        require_once('tests/Fixtures/RouterB.php');
-        require_once('tests/Fixtures/RouterB1.php');
-        require_once('tests/Fixtures/RouterB3.php');
+        require_once 'tests/Fixtures/RouterB.php';
+        require_once 'tests/Fixtures/RouterB1.php';
+        require_once 'tests/Fixtures/RouterB3.php';
 
         $broker = $this->getBroker();
         $broker->cache();
@@ -148,8 +150,8 @@ class BrokerTest extends \PHPUnit_Framework_TestCase
 
     public function testGetRouter()
     {
-        require_once('tests/Fixtures/RouterB.php');
-        require_once('tests/Fixtures/RouterB1.php');
+        require_once 'tests/Fixtures/RouterB.php';
+        require_once 'tests/Fixtures/RouterB1.php';
 
         $broker = $this->getBroker();
         $broker->cache();
@@ -166,8 +168,8 @@ class BrokerTest extends \PHPUnit_Framework_TestCase
 
     public function testGetItem()
     {
-        require_once('tests/Fixtures/RouterB.php');
-        require_once('tests/Fixtures/RouterB1.php');
+        require_once 'tests/Fixtures/RouterB.php';
+        require_once 'tests/Fixtures/RouterB1.php';
 
         $broker = $this->getBroker();
         $broker->cache();
@@ -184,8 +186,8 @@ class BrokerTest extends \PHPUnit_Framework_TestCase
 
     public function testGetItemData()
     {
-        require_once('tests/Fixtures/RouterB.php');
-        require_once('tests/Fixtures/RouterB1.php');
+        require_once 'tests/Fixtures/RouterB.php';
+        require_once 'tests/Fixtures/RouterB1.php';
 
         $broker = $this->getBroker();
         $broker->cache();
@@ -204,8 +206,8 @@ class BrokerTest extends \PHPUnit_Framework_TestCase
 
     public function testGetItemsList()
     {
-        require_once('tests/Fixtures/RouterB.php');
-        require_once('tests/Fixtures/RouterB1.php');
+        require_once 'tests/Fixtures/RouterB.php';
+        require_once 'tests/Fixtures/RouterB1.php';
 
         $broker = $this->getBroker();
         $broker->cache();

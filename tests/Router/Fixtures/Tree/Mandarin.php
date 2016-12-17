@@ -1,4 +1,6 @@
-<?php namespace ApishkaTest\EasyExtend\Router\Fixtures\Tree;
+<?php
+
+namespace ApishkaTest\EasyExtend\Router\Fixtures\Tree;
 
 /**
  * Mandarin

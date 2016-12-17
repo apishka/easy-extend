@@ -1,4 +1,6 @@
-<?php namespace ApishkaTest\EasyExtend\Fixtures;
+<?php
+
+namespace ApishkaTest\EasyExtend\Fixtures;
 
 /**
  * RouterB2

@@ -1,4 +1,6 @@
-<?php namespace Apishka\EasyExtend\Router;
+<?php
+
+namespace Apishka\EasyExtend\Router;
 
 use Apishka\EasyExtend\RouterAbstract;
 

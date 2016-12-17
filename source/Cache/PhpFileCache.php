@@ -1,4 +1,6 @@
-<?php namespace Apishka\EasyExtend\Cache;
+<?php
+
+namespace Apishka\EasyExtend\Cache;
 
 use Symfony\Component\Finder\Finder;
 

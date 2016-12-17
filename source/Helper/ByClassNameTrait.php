@@ -1,4 +1,6 @@
-<?php namespace Apishka\EasyExtend\Helper;
+<?php
+
+namespace Apishka\EasyExtend\Helper;
 
 /**
  * By class name help trait

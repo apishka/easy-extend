@@ -1,4 +1,6 @@
-<?php namespace Apishka\EasyExtend;
+<?php
+
+namespace Apishka\EasyExtend;
 
 use Apishka\EasyExtend\Cache\PhpFileCache;
 

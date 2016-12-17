@@ -1,4 +1,6 @@
-<?php namespace ApishkaTest\EasyExtend\Router;
+<?php
+
+namespace ApishkaTest\EasyExtend\Router;
 
 use ApishkaTest\EasyExtend\Router\Fixtures\ByKeyRouter;
 
@@ -41,9 +43,9 @@ class ByKeyTest extends \PHPUnit_Framework_TestCase
 
     public function testSimple()
     {
-        require_once('tests/Router/Fixtures/Tree/Apple.php');
-        require_once('tests/Router/Fixtures/Tree/Cherry.php');
-        require_once('tests/Router/Fixtures/Tree/Orange.php');
+        require_once 'tests/Router/Fixtures/Tree/Apple.php';
+        require_once 'tests/Router/Fixtures/Tree/Cherry.php';
+        require_once 'tests/Router/Fixtures/Tree/Orange.php';
 
         $router = $this->getRouter();
         $router->cache();
@@ -70,10 +72,10 @@ class ByKeyTest extends \PHPUnit_Framework_TestCase
 
     public function testExtending()
     {
-        require_once('tests/Router/Fixtures/Tree/Apple.php');
-        require_once('tests/Router/Fixtures/Tree/Cherry.php');
-        require_once('tests/Router/Fixtures/Tree/Orange.php');
-        require_once('tests/Router/Fixtures/Tree/MichurinCherry.php');
+        require_once 'tests/Router/Fixtures/Tree/Apple.php';
+        require_once 'tests/Router/Fixtures/Tree/Cherry.php';
+        require_once 'tests/Router/Fixtures/Tree/Orange.php';
+        require_once 'tests/Router/Fixtures/Tree/MichurinCherry.php';
 
         $router = $this->getRouter();
         $router->cache();
@@ -100,10 +102,10 @@ class ByKeyTest extends \PHPUnit_Framework_TestCase
 
     public function testExtendingWithBranch()
     {
-        require_once('tests/Router/Fixtures/Tree/Apple.php');
-        require_once('tests/Router/Fixtures/Tree/Cherry.php');
-        require_once('tests/Router/Fixtures/Tree/Orange.php');
-        require_once('tests/Router/Fixtures/Tree/Mandarin.php');
+        require_once 'tests/Router/Fixtures/Tree/Apple.php';
+        require_once 'tests/Router/Fixtures/Tree/Cherry.php';
+        require_once 'tests/Router/Fixtures/Tree/Orange.php';
+        require_once 'tests/Router/Fixtures/Tree/Mandarin.php';
 
         $router = $this->getRouter();
         $router->cache();
@@ -133,9 +135,9 @@ class ByKeyTest extends \PHPUnit_Framework_TestCase
 
     public function testGetItem()
     {
-        require_once('tests/Router/Fixtures/Tree/Apple.php');
-        require_once('tests/Router/Fixtures/Tree/Cherry.php');
-        require_once('tests/Router/Fixtures/Tree/Orange.php');
+        require_once 'tests/Router/Fixtures/Tree/Apple.php';
+        require_once 'tests/Router/Fixtures/Tree/Cherry.php';
+        require_once 'tests/Router/Fixtures/Tree/Orange.php';
 
         $router = $this->getRouter();
         $router->cache();
@@ -152,9 +154,9 @@ class ByKeyTest extends \PHPUnit_Framework_TestCase
 
     public function testGetItemData()
     {
-        require_once('tests/Router/Fixtures/Tree/Apple.php');
-        require_once('tests/Router/Fixtures/Tree/Cherry.php');
-        require_once('tests/Router/Fixtures/Tree/Orange.php');
+        require_once 'tests/Router/Fixtures/Tree/Apple.php';
+        require_once 'tests/Router/Fixtures/Tree/Cherry.php';
+        require_once 'tests/Router/Fixtures/Tree/Orange.php';
 
         $router = $this->getRouter();
         $router->cache();
@@ -173,9 +175,9 @@ class ByKeyTest extends \PHPUnit_Framework_TestCase
 
     public function testGetItemsList()
     {
-        require_once('tests/Router/Fixtures/Tree/Apple.php');
-        require_once('tests/Router/Fixtures/Tree/Cherry.php');
-        require_once('tests/Router/Fixtures/Tree/Orange.php');
+        require_once 'tests/Router/Fixtures/Tree/Apple.php';
+        require_once 'tests/Router/Fixtures/Tree/Cherry.php';
+        require_once 'tests/Router/Fixtures/Tree/Orange.php';
 
         $router = $this->getRouter();
         $router->cache();

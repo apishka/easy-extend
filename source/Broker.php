@@ -1,4 +1,6 @@
-<?php namespace Apishka\EasyExtend;
+<?php
+
+namespace Apishka\EasyExtend;
 
 /**
  * Broker
@@ -63,6 +65,7 @@ final class Broker extends RouterAbstract
      * Get router instance
      *
      * @param string $class
+     * @param mixed  $router
      *
      * @return RouterAbstract
      */

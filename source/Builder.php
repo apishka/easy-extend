@@ -1,4 +1,6 @@
-<?php namespace Apishka\EasyExtend;
+<?php
+
+namespace Apishka\EasyExtend;
 
 use Composer\IO\IOInterface;
 use Composer\Package\PackageInterface;
@@ -57,7 +59,7 @@ class Builder
         $this->addFindersByConfigs($configs);
 
         // We have to initialize composer autoload
-        require_once('vendor/autoload.php');
+        require_once 'vendor/autoload.php';
 
         $this->build();
     }
@@ -98,7 +100,7 @@ class Builder
     {
         foreach ($configs as $package => $path)
         {
-            $data = @include($path);
+            $data = @include $path;
 
             if ($data && isset($data['easy-extend']))
             {
@@ -177,7 +179,7 @@ class Builder
         {
             foreach ($finder as $file)
             {
-                require_once($file->getRealpath());
+                require_once $file->getRealpath();
             }
         }
 
@@ -298,10 +300,10 @@ class Builder
     /**
      * Returns true if the supplied package requires the Composer NPM bridge.
      *
-     * @param PackageInterface $package  The package to inspect.
-     * @param bool|null        $dev_mode True if the dev dependencies should also be inspected.
+     * @param PackageInterface $package  the package to inspect
+     * @param bool|null        $dev_mode true if the dev dependencies should also be inspected
      *
-     * @return bool True if the package requires the bridge.
+     * @return bool true if the package requires the bridge
      */
 
     public function isDependantPackage(PackageInterface $package, $dev_mode = null)

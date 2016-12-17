@@ -1,4 +1,6 @@
-<?php namespace Apishka\EasyExtend;
+<?php
+
+namespace Apishka\EasyExtend;
 
 /**
  * Router abstract
@@ -379,7 +381,7 @@ abstract class RouterAbstract implements RouterInterface
         $info  = $this->getItemData($name);
         $class = $info['class'];
 
-        return new $class;
+        return new $class();
     }
 
     /**
