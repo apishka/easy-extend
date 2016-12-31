@@ -194,7 +194,7 @@ class Builder
 
     protected function getConfigFilesByComposer()
     {
-        $this->getLogger()->write('<info>Searching for config files</info>');
+        $this->getLogger()->write('<info>Searching for ".apishla" files</info>');
 
         $configs = array();
         if ($this->isDependantPackage($this->getEvent()->getComposer()->getPackage()))
@@ -250,19 +250,12 @@ class Builder
             $dir
         );
 
-        $this->getLogger()->write(
-            sprintf(
-                '<info>Looking for ".apishka.php" file for %s</info>',
-                $package->getPrettyName()
-            )
-        );
-
         $path = $this->getConfigPath($dir);
         if (file_exists($path))
         {
             $this->getLogger()->write(
                 sprintf(
-                    '<info>Found config file for %s</info>',
+                    '  - Found in <info>%s</info>',
                     $package->getPrettyName()
                 )
             );
