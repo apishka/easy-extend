@@ -194,7 +194,7 @@ class Builder
 
     protected function getConfigFilesByComposer()
     {
-        $this->getLogger()->write('<info>Searching for ".apishla" files</info>');
+        $this->getLogger()->write('<info>Searching for ".apishka" files</info>');
 
         $configs = array();
         if ($this->isDependantPackage($this->getEvent()->getComposer()->getPackage()))
