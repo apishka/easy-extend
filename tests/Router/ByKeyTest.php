@@ -10,7 +10,7 @@ use ApishkaTest\EasyExtend\Router\Fixtures\ByKeyRouter;
  * @runTestsInSeparateProcesses
  */
 
-class ByKeyTest extends \PHPUnit_Framework_TestCase
+class ByKeyTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Get broker

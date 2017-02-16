@@ -12,7 +12,7 @@ use Composer\Script\ScriptEvents;
 /**
  * Tests of easy extend plugin.
  */
-class EasyExtendTest extends \PHPUnit_Framework_TestCase
+class EasyExtendTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var EasyExtend

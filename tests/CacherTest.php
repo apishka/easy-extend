@@ -8,7 +8,7 @@ use Apishka\EasyExtend\Cacher;
  * Cacher test
  */
 
-class CacherTest extends \PHPUnit_Framework_TestCase
+class CacherTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Tear down

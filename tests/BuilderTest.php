@@ -18,7 +18,7 @@ use Composer\Script\Event;
  *
  * @runTestsInSeparateProcesses
  */
-class BuilderTest extends \PHPUnit_Framework_TestCase
+class BuilderTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var Composer

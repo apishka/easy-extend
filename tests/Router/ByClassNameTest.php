@@ -10,7 +10,7 @@ use Apishka\EasyExtend\Router\ByClassName;
  * @runTestsInSeparateProcesses
  */
 
-class ByClassNameTest extends \PHPUnit_Framework_TestCase
+class ByClassNameTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Get broker

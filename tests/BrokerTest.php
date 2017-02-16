@@ -10,7 +10,7 @@ use Apishka\EasyExtend\Broker;
  * @runTestsInSeparateProcesses
  */
 
-class BrokerTest extends \PHPUnit_Framework_TestCase
+class BrokerTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Tear down
