@@ -28,13 +28,14 @@ class ByClassName extends RouterAbstract
      *
      * @param \ReflectionClass $reflector
      * @param object           $item
+     * @param mixed            $variant
      *
      * @return mixed
      */
 
-    protected function getClassData(\ReflectionClass $reflector, $item)
+    protected function getClassData(\ReflectionClass $reflector, $item, $variant)
     {
-        $data             = parent::getClassData($reflector, $item);
+        $data             = parent::getClassData($reflector, $item, $variant);
         $data['prefixes'] = $item->__apishkaGetPrefixes();
 
         return $data;
