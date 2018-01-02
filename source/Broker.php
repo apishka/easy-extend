@@ -1,38 +1,30 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Apishka\EasyExtend;
 
 /**
  * Broker
  */
-
 final class Broker extends RouterAbstract
 {
     /**
      * Instance
      *
-     *
-     * @var mixed
+     * @var Broker
      */
-
     private static $_instance = null;
 
     /**
      * Cache
      *
-     * @var mixed
+     * @var RouterAbstract[]
      */
-
-    protected $_routers = array();
+    private $_routers = array();
 
     /**
-     * Apishka
-     *
-     *
-     * @return RouterAbstract
+     * @return Broker
      */
-
-    public static function apishka()
+    public static function apishka(): self
     {
         return static::getInstance();
     }
@@ -40,11 +32,9 @@ final class Broker extends RouterAbstract
     /**
      * Returns the *Singleton* instance of this class.
      *
-     *
      * @return Broker
      */
-
-    public static function getInstance()
+    public static function getInstance(): self
     {
         if (self::$_instance === null)
             self::$_instance = new static();
@@ -55,8 +45,7 @@ final class Broker extends RouterAbstract
     /**
      * Clear instance
      */
-
-    public static function clearInstance()
+    public static function clearInstance(): void
     {
         self::$_instance = null;
     }
@@ -64,13 +53,11 @@ final class Broker extends RouterAbstract
     /**
      * Get router instance
      *
-     * @param string $class
-     * @param mixed  $router
+     * @param string $router
      *
      * @return RouterAbstract
      */
-
-    public function getRouter($router)
+    public function getRouter($router): RouterAbstract
     {
         if (!array_key_exists($router, $this->_routers))
             $this->_routers[$router] = $this->getItem($router);
@@ -83,8 +70,7 @@ final class Broker extends RouterAbstract
      *
      * @return array
      */
-
-    protected function getCacheData()
+    protected function getCacheData(): array
     {
         $data = parent::getCacheData();
 
@@ -100,8 +86,7 @@ final class Broker extends RouterAbstract
      *
      * @return bool
      */
-
-    protected function isCorrectItem(\ReflectionClass $reflector)
+    protected function isCorrectItem(\ReflectionClass $reflector): bool
     {
         if ($reflector->isInstance($this))
             return false;
@@ -115,15 +100,13 @@ final class Broker extends RouterAbstract
     /**
      * Construct
      */
-
-    protected function __construct()
+    private function __construct()
     {
     }
 
     /**
      * Clone
      */
-
     private function __clone()
     {
     }
@@ -131,7 +114,6 @@ final class Broker extends RouterAbstract
     /**
      * Wakeup
      */
-
     private function __wakeup()
     {
     }
