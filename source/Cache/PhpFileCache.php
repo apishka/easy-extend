@@ -84,7 +84,7 @@ class PhpFileCache
                 return true;
             }
 
-            @unlink($tmpFile);
+            @unlink($tmp_file);
         }
 
         return false;

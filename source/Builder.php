@@ -379,7 +379,7 @@ class Builder
             }
             else
             {
-                $this->_logger = new NullIO();
+                $this->_logger = new \Composer\IO\NullIO();
             }
         }
 
