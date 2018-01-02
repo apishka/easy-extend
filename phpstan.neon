@@ -1,0 +1,4 @@
+parameters:
+	ignoreErrors:
+		- '#Call to an undefined method object::__apishkaGetPrefixes().#'
+		- '#Call to an undefined method object::__apishkaSupportedKeys().#'

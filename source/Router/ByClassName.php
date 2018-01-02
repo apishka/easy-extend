@@ -63,6 +63,9 @@ class ByClassName extends RouterAbstract
      */
     protected function getItemDataNotFound($name)
     {
+        if (!is_string($name))
+            throw new \InvalidArgumentException('At the moment we accept only string');
+
         if (array_key_exists($name, $this->getMapping()))
             return $this->getItemData($this->getMapping()[$name]);
 

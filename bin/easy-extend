@@ -1,66 +1,14 @@
 #!/usr/bin/env php
-<?php
+<?php declare(strict_types = 1);
+
+namespace Apishka\EasyExtend\Bin;
 
 require_once('vendor/autoload.php');
 
-use \Symfony\Component\Console;
-use \Apishka\EasyExtend\Builder;
-
-/**
- * Apishka easy extend command
- *
- * @uses \Symfony\Component\Console\Command\Command
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
- */
-
-class Apishka_EasyExtendCommand extends \Symfony\Component\Console\Command\Command
-{
-    /**
-     * Result
-     *
-     * @var array
-     * @access private
-     */
-
-    private $_result = array();
-
-    /**
-     * Configure
-     *
-     * @access protected
-     * @return void
-     */
-
-    protected function configure()
-    {
-        $this
-            ->setName('apishka:easy-extend')
-            ->setDescription('Easy extend')
-        ;
-    }
-
-    /**
-     * Execute
-     *
-     * @param \Symfony\Component\Console\Input\InputInterface   $input
-     * @param \Symfony\Component\Console\Input\OutputInterface  $output
-     * @access protected
-     * @return void
-     */
-
-    protected function execute(\Symfony\Component\Console\Input\InputInterface $input, \Symfony\Component\Console\Output\OutputInterface $output)
-    {
-        $output->writeln('Apishka Easy Extend config generation');
-
-        $builder = new Builder();
-        $builder->buildFromCache();
-
-        $output->writeln('Done');
-    }
-}
+use Symfony\Component\Console\Application;
+use Apishka\EasyExtend\Command\EasyExtend;
 
 $application = new \Symfony\Component\Console\Application();
-$application->add(new Apishka_EasyExtendCommand);
+$application->add(new EasyExtend);
 $application->setDefaultCommand('apishka:easy-extend');
 $application->run();
