@@ -10,9 +10,9 @@ final class Broker extends RouterAbstract
     /**
      * Instance
      *
-     * @var Broker
+     * @var Broker|null
      */
-    private static $_instance = null;
+    private static $_instance;
 
     /**
      * Cache
