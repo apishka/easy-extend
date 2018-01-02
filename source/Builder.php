@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Apishka\EasyExtend;
 
@@ -10,7 +10,6 @@ use Symfony\Component\Finder\Finder;
 /**
  * Builder
  */
-
 class Builder
 {
     /**
@@ -18,15 +17,13 @@ class Builder
      *
      * @var Event
      */
-
-    private $_event = null;
+    private $_event;
 
     /**
      * Finders
      *
      * @var array
      */
-
     private $_finders = array();
 
     /**
@@ -34,23 +31,20 @@ class Builder
      *
      * @var IOInterface
      */
-
-    private $_logger = null;
+    private $_logger;
 
     /**
      * Rootpath
      *
      * @var string
      */
-
-    private $_root_package_path = null;
+    private $_root_package_path;
 
     /**
      * Build
      *
      * @param Event $event
      */
-
     public function buildFromEvent(Event $event)
     {
         $this->setEvent($event);
@@ -67,7 +61,6 @@ class Builder
     /**
      * Build from cache
      */
-
     public function buildFromCache()
     {
         $this->addFindersByConfigs(
@@ -82,7 +75,6 @@ class Builder
      *
      * @return array
      */
-
     public function getConfigFilesFromCache()
     {
         return Cacher::getInstance()->get($this->getConfigsCacheName());
@@ -157,10 +149,9 @@ class Builder
      *
      * @param Finder $finder
      *
-     * @return RouterAbstract this
+     * @return Builder this
      */
-
-    public function addFinder(Finder $finder)
+    public function addFinder(Finder $finder): self
     {
         $this->_finders[] = $finder;
 
@@ -170,10 +161,9 @@ class Builder
     /**
      * Require files
      *
-     * @return RouterAbstract this
+     * @return Builder this
      */
-
-    protected function requireFiles()
+    protected function requireFiles(): self
     {
         foreach ($this->_finders as $finder)
         {
@@ -189,12 +179,14 @@ class Builder
     /**
      * Get config files by composer
      *
-     * @return Builder
+     * @return array
      */
-
-    protected function getConfigFilesByComposer()
+    protected function getConfigFilesByComposer(): array
     {
         $this->getLogger()->write('<info>Searching for ".apishka" files</info>');
+
+        if ($this->getEvent() === null)
+            throw new \LogicException('Event not exists');
 
         $configs = array();
         if ($this->isDependantPackage($this->getEvent()->getComposer()->getPackage()))
@@ -241,8 +233,7 @@ class Builder
      *
      * @return null|string
      */
-
-    protected function getConfigPackagePath($dir, $package)
+    protected function getConfigPackagePath(string $dir, PackageInterface $package): ?string
     {
         $dir = preg_replace(
             '#^(' . preg_quote(getcwd() . DIRECTORY_SEPARATOR, '#') . ')#',
@@ -263,7 +254,7 @@ class Builder
             return $path;
         }
 
-        return;
+        return null;
     }
 
     /**
@@ -271,8 +262,7 @@ class Builder
      *
      * @return string
      */
-
-    protected function getConfigsCacheName()
+    protected function getConfigsCacheName(): string
     {
         return 'configs';
     }
@@ -284,8 +274,7 @@ class Builder
      *
      * @return string
      */
-
-    protected function getConfigPath($folder)
+    protected function getConfigPath(string $folder): string
     {
         return rtrim($folder, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . '.apishka.php';
     }
@@ -299,7 +288,7 @@ class Builder
      * @return bool true if the package requires the bridge
      */
 
-    public function isDependantPackage(PackageInterface $package, $dev_mode = null)
+    public function isDependantPackage(PackageInterface $package, bool $dev_mode = null)
     {
         if ($package->getName() === 'apishka/easy-extend')
             return true;
@@ -329,8 +318,7 @@ class Builder
      *
      * @return Builder
      */
-
-    protected function setEvent(Event $event)
+    protected function setEvent(Event $event): self
     {
         $this->_event = $event;
 
@@ -340,10 +328,9 @@ class Builder
     /**
      * Get event
      *
-     * @return Event
+     * @return Event|null
      */
-
-    protected function getEvent()
+    protected function getEvent(): ?Event
     {
         return $this->_event;
     }
@@ -355,8 +342,7 @@ class Builder
      *
      * @return Builder
      */
-
-    public function setLogger(IOInterface $logger)
+    public function setLogger(IOInterface $logger): self
     {
         $this->_logger = $logger;
 
@@ -368,8 +354,7 @@ class Builder
      *
      * @return IOInterface
      */
-
-    public function getLogger()
+    public function getLogger(): IOInterface
     {
         if ($this->_logger === null)
         {
@@ -393,8 +378,7 @@ class Builder
      *
      * @return Builder this
      */
-
-    public function setRootPackagePath($path)
+    public function setRootPackagePath($path): self
     {
         $this->_root_package_path = $path;
 
@@ -406,8 +390,7 @@ class Builder
      *
      * @return string
      */
-
-    public function getRootPackagePath()
+    public function getRootPackagePath(): string
     {
         if ($this->_root_package_path === null)
             $this->_root_package_path = './';
