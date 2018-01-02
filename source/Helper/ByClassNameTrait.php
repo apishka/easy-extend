@@ -1,11 +1,10 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Apishka\EasyExtend\Helper;
 
 /**
  * By class name help trait
  */
-
 trait ByClassNameTrait
 {
     /**
@@ -16,8 +15,7 @@ trait ByClassNameTrait
      *
      * @return mixed
      */
-
-    public static function __callStatic($name, $arguments)
+    public static function __callStatic(string $name, array $arguments)
     {
         $data = \Apishka\EasyExtend\Router\ByClassName::apishka()->getItemData(get_called_class());
 
@@ -37,10 +35,9 @@ trait ByClassNameTrait
      * @param string $name
      * @param array  $arguments
      *
-     * @return mixed
+     * @return object
      */
-
-    protected static function __apishkaApishka(array $data, $name, array $arguments)
+    protected static function __apishkaApishka(array $data, string $name, array $arguments): object
     {
         return new $data['class'](...$arguments);
     }
@@ -50,8 +47,7 @@ trait ByClassNameTrait
      *
      * @return string
      */
-
-    public function __apishkaGetPrefixes()
+    public function __apishkaGetPrefixes(): string
     {
         return 'apishka';
     }
