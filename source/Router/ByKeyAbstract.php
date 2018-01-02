@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Apishka\EasyExtend\Router;
 
@@ -18,8 +18,7 @@ abstract class ByKeyAbstract extends RouterAbstract
      *
      * @return array
      */
-
-    protected function getClassVariants(\ReflectionClass $reflector, $item)
+    protected function getClassVariants(\ReflectionClass $reflector, $item): array
     {
         return $item->__apishkaSupportedKeys();
     }

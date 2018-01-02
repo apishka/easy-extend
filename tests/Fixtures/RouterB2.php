@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace ApishkaTest\EasyExtend\Fixtures;
 
@@ -7,7 +7,6 @@ namespace ApishkaTest\EasyExtend\Fixtures;
  *
  * @easy-extend-base
  */
-
 class RouterB2 extends RouterB1
 {
 }

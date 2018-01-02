@@ -91,7 +91,7 @@ final class Broker extends RouterAbstract
         if ($reflector->isInstance($this))
             return false;
 
-        if (!$this->hasClassInterface($reflector, 'Apishka\EasyExtend\RouterInterface'))
+        if (!$reflector->isSubclassOf(RouterAbstract::class))
             return false;
 
         return true;

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Apishka\EasyExtend\Router;
 
@@ -7,33 +7,20 @@ use Apishka\EasyExtend\RouterAbstract;
 /**
  * By class name
  */
-
 class ByClassName extends RouterAbstract
 {
     /**
-     * Is correct item
-     *
-     * @param \ReflectionClass $reflector
-     *
-     * @return bool
+     * {@inheritdoc}
      */
-
-    protected function isCorrectItem(\ReflectionClass $reflector)
+    protected function isCorrectItem(\ReflectionClass $reflector): bool
     {
         return $this->hasClassTrait($reflector, 'Apishka\EasyExtend\Helper\ByClassNameTrait');
     }
 
     /**
-     * Get class data
-     *
-     * @param \ReflectionClass $reflector
-     * @param object           $item
-     * @param mixed            $variant
-     *
-     * @return mixed
+     * {@inheritdoc}
      */
-
-    protected function getClassData(\ReflectionClass $reflector, $item, $variant)
+    protected function getClassData(\ReflectionClass $reflector, $item, $variant): array
     {
         $data             = parent::getClassData($reflector, $item, $variant);
         $data['prefixes'] = $item->__apishkaGetPrefixes();
@@ -42,16 +29,9 @@ class ByClassName extends RouterAbstract
     }
 
     /**
-     * Collect class data
-     *
-     * @param object           $item
-     * @param array            $data
-     * @param \ReflectionClass $reflector
-     *
-     * @return array
+     * {@inheritdoc}
      */
-
-    protected function collectClassData($item, array $data, \ReflectionClass $reflector)
+    protected function collectClassData($item, array $data, \ReflectionClass $reflector): array
     {
         $data = parent::collectClassData($item, $data, $reflector);
 
@@ -73,18 +53,14 @@ class ByClassName extends RouterAbstract
      *
      * @return array
      */
-
-    public function getMapping()
+    public function getMapping(): array
     {
         return $this->loadCache()['mapping'];
     }
 
     /**
-     * Item data not found
-     *
-     * @param string $name
+     * {@inheritdoc}
      */
-
     protected function getItemDataNotFound($name)
     {
         if (array_key_exists($name, $this->getMapping()))

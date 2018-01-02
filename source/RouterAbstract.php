@@ -1,28 +1,24 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Apishka\EasyExtend;
 
 /**
  * Router abstract
  */
-
-abstract class RouterAbstract implements RouterInterface
+abstract class RouterAbstract
 {
     /**
      * Cache
      *
-     * @var array
+     * @var array|null
      */
-
-    private $_cache = null;
+    private $_cache;
 
     /**
      * Apishka
      *
-     *
-     * @return RouterAbstract
+     * @return static
      */
-
     public static function apishka()
     {
         return Broker::getInstance()->getRouter(get_called_class());
@@ -31,8 +27,7 @@ abstract class RouterAbstract implements RouterInterface
     /**
      * Cache
      */
-
-    public function cache()
+    public function cache(): void
     {
         Cacher::getInstance()->set(
             $this->getCacheName(),
@@ -50,8 +45,7 @@ abstract class RouterAbstract implements RouterInterface
      *
      * @return array
      */
-
-    protected function getCacheData()
+    protected function getCacheData(): array
     {
         $data = array(
             'data'  => array(),
@@ -76,8 +70,7 @@ abstract class RouterAbstract implements RouterInterface
      *
      * @return array
      */
-
-    protected function pushClassData(array $data, \ReflectionClass $reflector)
+    protected function pushClassData(array $data, \ReflectionClass $reflector): array
     {
         return $this->collectClassData(
             $reflector->newInstanceWithoutConstructor(),
@@ -95,8 +88,7 @@ abstract class RouterAbstract implements RouterInterface
      *
      * @return array
      */
-
-    protected function collectClassData($item, array $data, \ReflectionClass $reflector)
+    protected function collectClassData($item, array $data, \ReflectionClass $reflector): array
     {
         foreach ($this->getClassVariants($reflector, $item) as $name)
         {
@@ -115,13 +107,13 @@ abstract class RouterAbstract implements RouterInterface
      * @param array            $data
      * @param string           $key
      * @param \ReflectionClass $reflector
-     * @param mixed            $item
+     * @param object           $item
      * @param mixed            $variant
      *
      * @return array
      */
 
-    protected function addClassData(array $data, $key, $reflector, $item, $variant)
+    protected function addClassData(array $data, string $key, \ReflectionClass $reflector, $item, $variant): array
     {
         $data['data'][$key] = $this->getClassData($reflector, $item, $variant);
 
@@ -137,8 +129,7 @@ abstract class RouterAbstract implements RouterInterface
      *
      * @return array
      */
-
-    protected function getClassData(\ReflectionClass $reflector, $item, $variant)
+    protected function getClassData(\ReflectionClass $reflector, $item, $variant): array
     {
         return array(
             'class'     => $reflector->getName(),
@@ -153,8 +144,7 @@ abstract class RouterAbstract implements RouterInterface
      *
      * @return array
      */
-
-    protected function getClassVariants(\ReflectionClass $reflector, $item)
+    protected function getClassVariants(\ReflectionClass $reflector, $item): array
     {
         return array(
             $this->getClassBaseName($item),
@@ -170,8 +160,7 @@ abstract class RouterAbstract implements RouterInterface
      *
      * @return bool
      */
-
-    protected function isItemGreedy(array $info, \ReflectionClass $reflector, $item)
+    protected function isItemGreedy(array $info, \ReflectionClass $reflector, $item): bool
     {
         $base = new \ReflectionClass($info['class']);
 
@@ -191,8 +180,7 @@ abstract class RouterAbstract implements RouterInterface
      *
      * @return string|null
      */
-
-    protected function getClassBaseName($item)
+    protected function getClassBaseName($item): ?string
     {
         $classes = $this->getClassBaseNames($item);
 
@@ -206,8 +194,7 @@ abstract class RouterAbstract implements RouterInterface
      *
      * @return array
      */
-
-    protected function getClassBaseNames($item)
+    protected function getClassBaseNames($item): array
     {
         $basenames = array();
         $reflector = new \ReflectionClass($item);
@@ -216,7 +203,8 @@ abstract class RouterAbstract implements RouterInterface
         {
             if (!$reflector->isAbstract())
             {
-                if (strpos($reflector->getDocComment(), '@easy-extend-base') !== false)
+                $docComment = $reflector->getDocComment();
+                if ($docComment && strpos($docComment, '@easy-extend-base') !== false)
                 {
                     $basenames[] = $reflector->getName();
 
@@ -245,8 +233,7 @@ abstract class RouterAbstract implements RouterInterface
      *
      * @return bool
      */
-
-    abstract protected function isCorrectItem(\ReflectionClass $reflector);
+    abstract protected function isCorrectItem(\ReflectionClass $reflector): bool;
 
     /**
      * Is correct abstract item
@@ -255,8 +242,7 @@ abstract class RouterAbstract implements RouterInterface
      *
      * @return bool
      */
-
-    protected function isCorrectAbstractItem(\ReflectionClass $reflector)
+    protected function isCorrectAbstractItem(\ReflectionClass $reflector): bool
     {
         if ($reflector->isAbstract())
             return $this->collectAbstractItems();
@@ -269,8 +255,7 @@ abstract class RouterAbstract implements RouterInterface
      *
      * @return bool
      */
-
-    protected function collectAbstractItems()
+    protected function collectAbstractItems(): bool
     {
         return false;
     }
@@ -282,8 +267,7 @@ abstract class RouterAbstract implements RouterInterface
      *
      * @return array
      */
-
-    protected function getClassTraits(\ReflectionClass $reflector)
+    protected function getClassTraits(\ReflectionClass $reflector): array
     {
         $class = $reflector->getName();
 
@@ -309,7 +293,7 @@ abstract class RouterAbstract implements RouterInterface
      * @return array
      */
 
-    protected function getClassInterfaces(\ReflectionClass $reflector)
+    protected function getClassInterfaces(\ReflectionClass $reflector): array
     {
         return array_values($reflector->getInterfaceNames());
     }
@@ -322,8 +306,7 @@ abstract class RouterAbstract implements RouterInterface
      *
      * @return bool
      */
-
-    protected function hasClassTrait(\ReflectionClass $reflector, $trait)
+    protected function hasClassTrait(\ReflectionClass $reflector, string $trait): bool
     {
         return in_array($trait, $this->getClassTraits($reflector));
     }
@@ -336,8 +319,7 @@ abstract class RouterAbstract implements RouterInterface
      *
      * @return bool
      */
-
-    protected function hasClassInterface(\ReflectionClass $reflector, $interface)
+    protected function hasClassInterface(\ReflectionClass $reflector, string $interface): bool
     {
         return in_array($interface, $this->getClassInterfaces($reflector));
     }
@@ -347,8 +329,7 @@ abstract class RouterAbstract implements RouterInterface
      *
      * @return array
      */
-
-    public function getData()
+    public function getData(): array
     {
         return $this->loadCache()['data'];
     }
@@ -358,8 +339,7 @@ abstract class RouterAbstract implements RouterInterface
      *
      * @return array
      */
-
-    protected function loadCache()
+    protected function loadCache(): array
     {
         if ($this->_cache === null)
             $this->_cache = Cacher::getInstance()->get($this->getCacheName());
@@ -372,9 +352,8 @@ abstract class RouterAbstract implements RouterInterface
      *
      * @param string|array $name
      *
-     * @return mixed
+     * @return object
      */
-
     public function getItem($name)
     {
         if (func_num_args() > 1)
@@ -388,9 +367,10 @@ abstract class RouterAbstract implements RouterInterface
 
     /**
      * Get items list
+     *
+     * @return array
      */
-
-    public function getItemsList()
+    public function getItemsList(): array
     {
         return array_keys($this->getData());
     }
@@ -402,8 +382,7 @@ abstract class RouterAbstract implements RouterInterface
      *
      * @return array
      */
-
-    public function getItemData($name)
+    public function getItemData($name): array
     {
         if (func_num_args() > 1)
             $name = func_get_args();
@@ -421,8 +400,7 @@ abstract class RouterAbstract implements RouterInterface
      *
      * @return bool
      */
-
-    public function hasItemData($name)
+    public function hasItemData($name): bool
     {
         if (func_num_args() > 1)
             $name = func_get_args();
@@ -437,8 +415,7 @@ abstract class RouterAbstract implements RouterInterface
      *
      * @return string
      */
-
-    public function getItemKey($name)
+    public function getItemKey($name): string
     {
         if (func_num_args() > 1)
             $name = func_get_args();
@@ -454,7 +431,6 @@ abstract class RouterAbstract implements RouterInterface
      *
      * @param string|array $name
      */
-
     protected function getItemDataNotFound($name)
     {
         throw new \LogicException('Item with name ' . var_export($name, true) . ' not found');
@@ -465,8 +441,7 @@ abstract class RouterAbstract implements RouterInterface
      *
      * @return string
      */
-
-    public function getCacheName()
+    public function getCacheName(): string
     {
         return str_replace('\\', '_', get_class($this));
     }

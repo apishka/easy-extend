@@ -1,13 +1,13 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace ApishkaTest\EasyExtend\Router\Fixtures;
 
+use Apishka\EasyExtend\Helper\ByKeyInterface;
 use Apishka\EasyExtend\Router\ByKeyAbstract;
 
 /**
  * By key router
  */
-
 class ByKeyRouter extends ByKeyAbstract
 {
     /**
@@ -17,9 +17,8 @@ class ByKeyRouter extends ByKeyAbstract
      *
      * @return bool
      */
-
-    protected function isCorrectItem(\ReflectionClass $reflector)
+    protected function isCorrectItem(\ReflectionClass $reflector): bool
     {
-        return $this->hasClassInterface($reflector, 'Apishka\EasyExtend\Helper\ByKeyInterface');
+        return $this->hasClassInterface($reflector, ByKeyInterface::class);
     }
 }

@@ -9,7 +9,6 @@ use Apishka\EasyExtend\Router\ByClassName;
  *
  * @runTestsInSeparateProcesses
  */
-
 class ByClassNameTest extends \PHPUnit\Framework\TestCase
 {
     /**

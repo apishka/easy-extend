@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace ApishkaTest\EasyExtend\Router\Fixtures\Tree;
 
@@ -7,7 +7,6 @@ namespace ApishkaTest\EasyExtend\Router\Fixtures\Tree;
  *
  * @easy-extend-base
  */
-
 class Mandarin extends Orange
 {
     /**

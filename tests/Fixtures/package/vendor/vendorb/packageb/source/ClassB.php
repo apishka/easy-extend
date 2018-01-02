@@ -1,27 +1,24 @@
-<?php namespace VendorB\PackageB;
+<?php declare(strict_types = 1);
+
+namespace VendorB\PackageB;
 
 use Apishka\EasyExtend\Helper\ByClassNameTrait;
 use Apishka\EasyExtend\Helper\ByKeyInterface;
 
 /**
  * Class B
- *
- *
  */
-
 class ClassB implements ByKeyInterface
 {
     /**
      * Traits
      */
-
     use ByClassNameTrait;
 
     /**
-     * Apishka supported keys
+     * @return array
      */
-
-    public function __apishkaSupportedKeys()
+    public function __apishkaSupportedKeys(): array
     {
         return array(
             'classb',
@@ -33,8 +30,7 @@ class ClassB implements ByKeyInterface
      *
      * @return string
      */
-
-    public function __apishkaGetPrefixes()
+    public function __apishkaGetPrefixes(): string
     {
         return 'apishka|testishka';
     }
