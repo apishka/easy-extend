@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Apishka\EasyExtend\Cache;
 
@@ -7,7 +7,6 @@ use Symfony\Component\Finder\Finder;
 /**
  * Php file cache
  */
-
 class PhpFileCache
 {
     /**
@@ -15,7 +14,6 @@ class PhpFileCache
      *
      * @var string
      */
-
     protected $_cache_dir = null;
 
     /**
@@ -23,8 +21,7 @@ class PhpFileCache
      *
      * @param string $cache_dir
      */
-
-    public function __construct($cache_dir)
+    public function __construct(string $cache_dir)
     {
         $this->setCacheDir($cache_dir);
     }
@@ -35,10 +32,9 @@ class PhpFileCache
      * @param string $id
      * @param mixed  $value
      *
-     * @return PhpFileCache
+     * @return bool
      */
-
-    public function set($id, $value)
+    public function set(string $id, $value): bool
     {
         $filename = $this->getFileName($id);
         $filepath = pathinfo($filename, PATHINFO_DIRNAME);
@@ -97,8 +93,7 @@ class PhpFileCache
      *
      * @return string
      */
-
-    protected function getFileName($id)
+    protected function getFileName(string $id): string
     {
         return rtrim($this->getCacheDir(), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $id . '.php';
     }
@@ -108,10 +103,9 @@ class PhpFileCache
      *
      * @param string $id
      *
-     * @return mixed
+     * @return array
      */
-
-    public function get($id)
+    public function get($id): array
     {
         $filename = $this->getFileName($id);
 
@@ -124,8 +118,7 @@ class PhpFileCache
     /**
      * Flush
      */
-
-    public function flush()
+    public function flush(): void
     {
         if (!is_dir($this->getCacheDir()))
             return;
@@ -138,7 +131,8 @@ class PhpFileCache
 
         foreach ($finder as $file)
         {
-            @unlink($file->getRealpath());
+            /** @var $file \Symfony\Component\Finder\SplFileInfo */
+            @unlink($file->getRealPath());
         }
     }
 
@@ -149,8 +143,7 @@ class PhpFileCache
      *
      * @return PhpFileCache this
      */
-
-    protected function setCacheDir($cache_dir)
+    protected function setCacheDir(string $cache_dir): self
     {
         $this->_cache_dir = $cache_dir;
 
@@ -162,8 +155,7 @@ class PhpFileCache
      *
      * @return string
      */
-
-    protected function getCacheDir()
+    protected function getCacheDir(): string
     {
         return $this->_cache_dir;
     }

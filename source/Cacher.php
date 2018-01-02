@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Apishka\EasyExtend;
 
@@ -7,39 +7,33 @@ use Apishka\EasyExtend\Cache\PhpFileCache;
 /**
  * Cacher
  */
-
 class Cacher
 {
     /**
      * Instance
      *
-     *
-     * @var mixed
+     * @var self|null
      */
-
-    private static $_instance = null;
+    private static $_instance;
 
     /**
      * Cache
      *
-     * @var mixed
+     * @var PhpFileCache
      */
-
-    protected $_cache = null;
+    protected $_cache;
 
     /**
      * Cache dir
      *
      * @var string
      */
-
-    protected $_cache_dir = null;
+    protected $_cache_dir;
 
     /**
-     * Returns the *Singleton* instance of this class.
+     * @return self
      */
-
-    public static function getInstance()
+    public static function getInstance(): self
     {
         if (self::$_instance === null)
             self::$_instance = new static();
@@ -50,22 +44,35 @@ class Cacher
     /**
      * Clear instance
      */
-
-    public static function clearInstance()
+    public static function clearInstance(): void
     {
         self::$_instance = null;
     }
 
     /**
-     * Call
+     * @param string $id
+     * @param $value
      *
-     * @param string $name
-     * @param array  $arguments
+     * @return bool
      */
-
-    public function __call($name, $arguments)
+    public function set(string $id, $value): bool
     {
-        return $this->getCache()->$name(...$arguments);
+        return $this->getCache()->set($id, $value);
+    }
+
+    /**
+     * @param string $id
+     *
+     * @return array
+     */
+    public function get(string $id): array
+    {
+        return $this->getCache()->get($id);
+    }
+
+    public function flush(): void
+    {
+        $this->getCache()->flush();
     }
 
     /**
@@ -73,8 +80,7 @@ class Cacher
      *
      * return string
      */
-
-    public function getCacheDir()
+    public function getCacheDir(): string
     {
         if ($this->_cache_dir === null)
             $this->_cache_dir = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'cache');
@@ -89,8 +95,7 @@ class Cacher
      *
      * @return Cacher this
      */
-
-    public function setCacheDir($dir)
+    public function setCacheDir($dir): self
     {
         $this->_cache_dir = $dir;
 
@@ -102,8 +107,7 @@ class Cacher
      *
      * @return PhpFileCache
      */
-
-    protected function getCache()
+    protected function getCache(): PhpFileCache
     {
         if ($this->_cache === null)
             $this->_cache = new PhpFileCache($this->getCacheDir());
@@ -114,15 +118,13 @@ class Cacher
     /**
      * Construct
      */
-
-    protected function __construct()
+    private function __construct()
     {
     }
 
     /**
      * Clone
      */
-
     private function __clone()
     {
     }
@@ -130,7 +132,6 @@ class Cacher
     /**
      * Wakeup
      */
-
     private function __wakeup()
     {
     }

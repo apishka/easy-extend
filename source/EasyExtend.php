@@ -12,7 +12,6 @@ use Composer\Script\ScriptEvents;
 /**
  * Easy extend
  */
-
 class EasyExtend implements PluginInterface, EventSubscriberInterface
 {
     /**
@@ -20,7 +19,6 @@ class EasyExtend implements PluginInterface, EventSubscriberInterface
      *
      * @var Builder
      */
-
     private $_builder = null;
 
     /**
@@ -29,7 +27,6 @@ class EasyExtend implements PluginInterface, EventSubscriberInterface
      * @param Composer    $composer the main Composer object
      * @param IOInterface $io       the i/o interface to use
      */
-
     public function activate(Composer $composer, IOInterface $io)
     {
         // no action required
@@ -38,10 +35,8 @@ class EasyExtend implements PluginInterface, EventSubscriberInterface
     /**
      * Get the event subscriber configuration for this plugin.
      *
-     *
      * @return array<string,string> the events to listen to, and their associated handlers
      */
-
     public static function getSubscribedEvents()
     {
         return array(
@@ -55,7 +50,6 @@ class EasyExtend implements PluginInterface, EventSubscriberInterface
      *
      * @param Event $event the event to handle
      */
-
     public function onPostInstallCmd(Event $event)
     {
         $this->getBuilder()
@@ -70,7 +64,6 @@ class EasyExtend implements PluginInterface, EventSubscriberInterface
      *
      * @return EasyExtend this
      */
-
     public function setBuilder(Builder $builder)
     {
         $this->_builder = $builder;
@@ -83,7 +76,6 @@ class EasyExtend implements PluginInterface, EventSubscriberInterface
      *
      * @return \Apishka\EasyExtend\Builder
      */
-
     public function getBuilder()
     {
         if ($this->_builder === null)
