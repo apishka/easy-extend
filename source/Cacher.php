@@ -51,7 +51,7 @@ class Cacher
 
     /**
      * @param string $id
-     * @param $value
+     * @param mixed  $value
      *
      * @return bool
      */
