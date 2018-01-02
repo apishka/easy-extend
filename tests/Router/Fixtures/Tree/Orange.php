@@ -10,9 +10,8 @@ use ApishkaTest\EasyExtend\Router\Fixtures\TreeAbstract;
 class Orange extends TreeAbstract
 {
     /**
-     * Apishka supported keys
+     * @return array
      */
-
     public function __apishkaSupportedKeys(): array
     {
         return array(

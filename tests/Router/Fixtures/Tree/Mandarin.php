@@ -10,10 +10,9 @@ namespace ApishkaTest\EasyExtend\Router\Fixtures\Tree;
 class Mandarin extends Orange
 {
     /**
-     * Apishka supported keys
+     * @return array
      */
-
-    public function __apishkaSupportedKeys()
+    public function __apishkaSupportedKeys(): array
     {
         return array(
             'mandarin',
