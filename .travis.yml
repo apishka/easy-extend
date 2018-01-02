@@ -1,13 +1,21 @@
 language: php
 
 php:
-  - 7
+  - 7.1
+  - 7.2
 
-before_install:
+env:
+  - dependencies=lowest
+  - dependencies=highest
+
+before_script:
   - composer self-update
+  - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest --no-interaction; fi;
+  - if [ "$dependencies" = "highest" ]; then composer update --no-interaction; fi;
 
 install:
-  - composer install --no-interaction --prefer-source
+  - composer update --no-interaction
 
 script:
-  - php ./vendor/bin/phpunit -c phpunit.sample.xml
+  - vendor/bin/phpunit -c phpunit.sample.xml
+  - vendor/bin/phpstan analyze -l 1 source
