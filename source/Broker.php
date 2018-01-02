@@ -17,9 +17,9 @@ final class Broker extends RouterAbstract
     /**
      * Cache
      *
-     * @var RouterAbstract[]
+     * @var array
      */
-    private $_routers = array();
+    private $_routers = [];
 
     /**
      * @return Broker
