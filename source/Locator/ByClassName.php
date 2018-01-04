@@ -51,7 +51,7 @@ class ByClassName extends RouterAbstract
     /**
      * {@inheritdoc}
      */
-    protected function getItemDataNotFound($name)
+    protected function getItemDataNotFound($name): array
     {
         if (!is_string($name))
             throw new \InvalidArgumentException('At the moment we accept only string');
