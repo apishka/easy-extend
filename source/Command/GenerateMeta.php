@@ -67,7 +67,7 @@ class GenerateMeta extends Command
         $maps = [];
         foreach ($router->getData() as $key => $data)
         {
-            $maps[] = var_export($key, true) . ' => \\' . $data['class'] . '::class';
+            $maps[] = '\'\\' . $key .'\'' . ' => \\' . $data['class'] . '::class';
         }
 
         return $this->prepareMetaDataForClass(
@@ -90,7 +90,7 @@ class GenerateMeta extends Command
         }
 
         file_put_contents(
-            $dir . DIRECTORY_SEPARATOR . 'easy-extend.php',
+            $dir . DIRECTORY_SEPARATOR . 'easy-extend.meta.php',
             $contents
         );
     }

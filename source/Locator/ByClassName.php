@@ -39,13 +39,11 @@ class ByClassName extends RouterAbstract
     }
 
     /**
-     * @param string $class_name
-     *
-     * @return object
+     * @param string $name
      */
-    public function make(string $class_name)
+    public function make(string $name)
     {
-        $data = $this->getItemData($class_name);
+        $data = $this->getItemData($name);
 
         return new $data['class']();
     }

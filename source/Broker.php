@@ -67,10 +67,8 @@ final class Broker extends RouterAbstract
 
     /**
      * Get by class name locatotor
-     *
-     * @return RouterAbstract
      */
-    public static function getLocator(): RouterAbstract
+    public static function getLocator()
     {
         return self::getInstance()->getRouter(Locator\ByClassName::class);
     }
