@@ -38,7 +38,7 @@ trait ByClassNameTrait
      *
      * @return object
      */
-    protected static function __apishkaApishka(array $data, string $name, array $arguments): object
+    protected static function __apishkaApishka(array $data, string $name, array $arguments)
     {
         return new $data['class'](...$arguments);
     }
