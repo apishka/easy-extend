@@ -7,7 +7,6 @@ use Apishka\EasyExtend\RouterAbstract;
 /**
  * By key abstract
  */
-
 abstract class ByKeyAbstract extends RouterAbstract
 {
     /**

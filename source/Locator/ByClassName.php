@@ -1,13 +1,12 @@
 <?php declare(strict_types = 1);
 
-namespace Apishka\EasyExtend\Router;
+namespace Apishka\EasyExtend\Locator;
 
 use Apishka\EasyExtend\RouterAbstract;
-use Apishka\EasyExtend\Helper\ByClassNameTrait;
+use Apishka\EasyExtend\Helper\DiscoverTrait;
 
 /**
  * By class name
- * @deprecated
  */
 class ByClassName extends RouterAbstract
 {
@@ -16,18 +15,7 @@ class ByClassName extends RouterAbstract
      */
     protected function isCorrectItem(\ReflectionClass $reflector): bool
     {
-        return $this->hasClassTrait($reflector, ByClassNameTrait::class);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function getClassData(\ReflectionClass $reflector, $item, $variant): array
-    {
-        $data             = parent::getClassData($reflector, $item, $variant);
-        $data['prefixes'] = $item->__apishkaGetPrefixes();
-
-        return $data;
+        return $this->hasClassTrait($reflector, DiscoverTrait::class);
     }
 
     /**
