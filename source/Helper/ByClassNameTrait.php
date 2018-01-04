@@ -4,6 +4,7 @@ namespace Apishka\EasyExtend\Helper;
 
 /**
  * By class name help trait
+ *
  * @deprecated
  */
 trait ByClassNameTrait

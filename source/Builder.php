@@ -87,8 +87,7 @@ class Builder
      *
      * @return Builder this
      */
-
-    protected function addFindersByConfigs(array $configs)
+    protected function addFindersByConfigs(array $configs): self
     {
         foreach ($configs as $package => $path)
         {
@@ -123,13 +122,14 @@ class Builder
                 }
             }
         }
+
+        return $this;
     }
 
     /**
      * Build
      */
-
-    public function build()
+    public function build(): void
     {
         $this->requireFiles();
 

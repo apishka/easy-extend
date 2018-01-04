@@ -10,23 +10,16 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Apishka easy extend command
  */
-class EasyExtend extends Command
+class Collect extends Command
 {
-    /**
-     * Result
-     *
-     * @var array
-     */
-    private $_result = array();
-
     /**
      * {@inheritdoc}
      */
     protected function configure()
     {
         $this
-            ->setName('apishka:easy-extend')
-            ->setDescription('Easy extend')
+            ->setName('collect')
+            ->setDescription('Collect easy extend data')
         ;
     }
 

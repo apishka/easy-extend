@@ -2,8 +2,8 @@
 
 namespace Apishka\EasyExtend\Locator;
 
-use Apishka\EasyExtend\RouterAbstract;
 use Apishka\EasyExtend\Helper\DiscoverTrait;
+use Apishka\EasyExtend\RouterAbstract;
 
 /**
  * By class name
@@ -36,6 +36,18 @@ class ByClassName extends RouterAbstract
         }
 
         return $data;
+    }
+
+    /**
+     * @param string $class_name
+     *
+     * @return object
+     */
+    public function make(string $class_name)
+    {
+        $data = $this->getItemData($class_name);
+
+        return new $data['class']();
     }
 
     /**

@@ -6,9 +6,10 @@ namespace Apishka\EasyExtend\Bin;
 require_once('vendor/autoload.php');
 
 use Symfony\Component\Console\Application;
-use Apishka\EasyExtend\Command\EasyExtend;
+use Apishka\EasyExtend\Command;
 
 $application = new \Symfony\Component\Console\Application();
-$application->add(new EasyExtend);
-$application->setDefaultCommand('apishka:easy-extend');
+$application->add(new Command\Collect());
+$application->add(new Command\GenerateMeta());
+$application->setDefaultCommand('collect');
 $application->run();

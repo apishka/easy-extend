@@ -57,12 +57,22 @@ final class Broker extends RouterAbstract
      *
      * @return RouterAbstract
      */
-    public function getRouter($router): RouterAbstract
+    public function getRouter(string $router): RouterAbstract
     {
         if (!array_key_exists($router, $this->_routers))
             $this->_routers[$router] = $this->getItem($router);
 
         return $this->_routers[$router];
+    }
+
+    /**
+     * Get by class name locatotor
+     *
+     * @return Locator\ByClassName
+     */
+    public static function getLocator(): Locator\ByClassName
+    {
+        return self::getInstance()->getRouter(Locator\ByClassName::class);
     }
 
     /**

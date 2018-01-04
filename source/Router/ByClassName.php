@@ -2,11 +2,12 @@
 
 namespace Apishka\EasyExtend\Router;
 
-use Apishka\EasyExtend\RouterAbstract;
 use Apishka\EasyExtend\Helper\ByClassNameTrait;
+use Apishka\EasyExtend\RouterAbstract;
 
 /**
  * By class name
+ *
  * @deprecated
  */
 class ByClassName extends RouterAbstract
