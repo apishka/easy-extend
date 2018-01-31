@@ -352,7 +352,7 @@ abstract class RouterAbstract
      *
      * @param string|array $name
      *
-     * @return object
+     * @return mixed
      */
     public function getItem($name)
     {
