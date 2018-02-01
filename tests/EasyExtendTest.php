@@ -17,31 +17,26 @@ class EasyExtendTest extends \PHPUnit\Framework\TestCase
     /**
      * @var EasyExtend
      */
-
     protected $plugin;
 
     /**
      * @var Composer
      */
-
     protected $composer;
 
     /**
      * @var IOInterface
      */
-
     protected $io;
 
     /**
      * @var \PHPUnit_Framework_MockObject_MockObject
      */
-
     protected $package;
 
     /**
      * Set up
      */
-
     protected function setUp()
     {
         $io         = $this->getMockBuilder('Composer\IO\IOInterface')->getMock();
@@ -103,7 +98,6 @@ class EasyExtendTest extends \PHPUnit\Framework\TestCase
     /**
      * Tear down
      */
-
     protected function tearDown()
     {
         $this->plugin   = null;
@@ -114,7 +108,6 @@ class EasyExtendTest extends \PHPUnit\Framework\TestCase
     /**
      * Test activate
      */
-
     public function testActivate()
     {
         $this->assertNull($this->plugin->activate($this->composer, $this->io));
@@ -123,7 +116,6 @@ class EasyExtendTest extends \PHPUnit\Framework\TestCase
     /**
      * Test builder creation
      */
-
     public function testBuilderCreation()
     {
         $this
@@ -142,7 +134,6 @@ class EasyExtendTest extends \PHPUnit\Framework\TestCase
     /**
      * Test subscribe events
      */
-
     public function testSubscribeEvents()
     {
         $this->assertEquals(

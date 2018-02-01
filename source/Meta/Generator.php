@@ -37,6 +37,7 @@ class Generator
 
     /**
      * @param string $filename
+     *
      * @return bool
      */
     public function generate(string $filename): bool

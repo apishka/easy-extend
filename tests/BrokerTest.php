@@ -9,13 +9,11 @@ use Apishka\EasyExtend\Broker;
  *
  * @runTestsInSeparateProcesses
  */
-
 class BrokerTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Tear down
      */
-
     protected function tearDown()
     {
         Broker::clearInstance();
@@ -24,7 +22,6 @@ class BrokerTest extends \PHPUnit\Framework\TestCase
     /**
      * Get broker
      */
-
     protected function getBroker()
     {
         return Broker::getInstance();
@@ -33,7 +30,6 @@ class BrokerTest extends \PHPUnit\Framework\TestCase
     /**
      * Test cached data
      */
-
     public function testEmptyCachedData()
     {
         $broker = $this->getBroker();
@@ -49,7 +45,6 @@ class BrokerTest extends \PHPUnit\Framework\TestCase
     /**
      * Test simple cache data
      */
-
     public function testSimple()
     {
         require_once 'tests/Fixtures/RouterA.php';
@@ -74,7 +69,6 @@ class BrokerTest extends \PHPUnit\Framework\TestCase
     /**
      * Test simple cache data
      */
-
     public function testExtending()
     {
         require_once 'tests/Fixtures/RouterA.php';
@@ -100,7 +94,6 @@ class BrokerTest extends \PHPUnit\Framework\TestCase
     /**
      * Test simple cache data
      */
-
     public function testExtendingWithBranch()
     {
         require_once 'tests/Fixtures/RouterA.php';
@@ -133,7 +126,6 @@ class BrokerTest extends \PHPUnit\Framework\TestCase
      * @expectedException \LogicException
      * @expectedExceptionMessage Class 'ApishkaTest\\EasyExtend\\Fixtures\\RouterB3' has no direct relation with class 'ApishkaTest\\EasyExtend\\Fixtures\\RouterB1'
      */
-
     public function testExtendingTwice()
     {
         require_once 'tests/Fixtures/RouterB.php';
@@ -147,7 +139,6 @@ class BrokerTest extends \PHPUnit\Framework\TestCase
     /**
      * Test get router
      */
-
     public function testGetRouter()
     {
         require_once 'tests/Fixtures/RouterB.php';
@@ -165,7 +156,6 @@ class BrokerTest extends \PHPUnit\Framework\TestCase
     /**
      * Test get item
      */
-
     public function testGetItem()
     {
         require_once 'tests/Fixtures/RouterB.php';
@@ -183,7 +173,6 @@ class BrokerTest extends \PHPUnit\Framework\TestCase
     /**
      * Test get item data
      */
-
     public function testGetItemData()
     {
         require_once 'tests/Fixtures/RouterB.php';
@@ -203,7 +192,6 @@ class BrokerTest extends \PHPUnit\Framework\TestCase
     /**
      * Test get items list
      */
-
     public function testGetItemsList()
     {
         require_once 'tests/Fixtures/RouterB.php';

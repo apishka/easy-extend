@@ -7,13 +7,11 @@ use Apishka\EasyExtend\Cacher;
 /**
  * Cacher test
  */
-
 class CacherTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Tear down
      */
-
     protected function tearDown()
     {
         Cacher::clearInstance();
@@ -24,7 +22,6 @@ class CacherTest extends \PHPUnit\Framework\TestCase
      *
      * @return Cacher
      */
-
     protected function getCacher()
     {
         return Cacher::getInstance();
@@ -33,7 +30,6 @@ class CacherTest extends \PHPUnit\Framework\TestCase
     /**
      * Test cache path
      */
-
     public function testCacheDir()
     {
         $cacher = $this->getCacher();
@@ -47,7 +43,6 @@ class CacherTest extends \PHPUnit\Framework\TestCase
     /**
      * Test set cache dir
      */
-
     public function testSetCacheDir()
     {
         $path = sys_get_temp_dir() . '/apishka-cacher';

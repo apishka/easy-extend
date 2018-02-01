@@ -287,7 +287,6 @@ class Builder
      *
      * @return bool true if the package requires the bridge
      */
-
     public function isDependantPackage(PackageInterface $package, bool $dev_mode = null)
     {
         if ($package->getName() === 'apishka/easy-extend')

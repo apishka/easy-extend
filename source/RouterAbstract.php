@@ -112,7 +112,6 @@ abstract class RouterAbstract
      *
      * @return array
      */
-
     protected function addClassData(array $data, string $key, \ReflectionClass $reflector, $item, $variant): array
     {
         $data['data'][$key] = $this->getClassData($reflector, $item, $variant);
@@ -292,7 +291,6 @@ abstract class RouterAbstract
      *
      * @return array
      */
-
     protected function getClassInterfaces(\ReflectionClass $reflector): array
     {
         return array_values($reflector->getInterfaceNames());

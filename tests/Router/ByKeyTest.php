@@ -14,7 +14,6 @@ class ByKeyTest extends \PHPUnit\Framework\TestCase
     /**
      * Get broker
      */
-
     protected function getRouter()
     {
         return new ByKeyRouter();
@@ -23,7 +22,6 @@ class ByKeyTest extends \PHPUnit\Framework\TestCase
     /**
      * Test cached data
      */
-
     public function testEmptyCachedData()
     {
         $router = $this->getRouter();
@@ -39,7 +37,6 @@ class ByKeyTest extends \PHPUnit\Framework\TestCase
     /**
      * Test simple cache data
      */
-
     public function testSimple()
     {
         require_once 'tests/Router/Fixtures/Tree/Apple.php';
@@ -68,7 +65,6 @@ class ByKeyTest extends \PHPUnit\Framework\TestCase
     /**
      * Test simple cache data
      */
-
     public function testExtending()
     {
         require_once 'tests/Router/Fixtures/Tree/Apple.php';
@@ -98,7 +94,6 @@ class ByKeyTest extends \PHPUnit\Framework\TestCase
     /**
      * Test simple cache data
      */
-
     public function testExtendingWithBranch()
     {
         require_once 'tests/Router/Fixtures/Tree/Apple.php';
@@ -131,7 +126,6 @@ class ByKeyTest extends \PHPUnit\Framework\TestCase
     /**
      * Test get item
      */
-
     public function testGetItem()
     {
         require_once 'tests/Router/Fixtures/Tree/Apple.php';
@@ -150,7 +144,6 @@ class ByKeyTest extends \PHPUnit\Framework\TestCase
     /**
      * Test get item data
      */
-
     public function testGetItemData()
     {
         require_once 'tests/Router/Fixtures/Tree/Apple.php';
@@ -171,7 +164,6 @@ class ByKeyTest extends \PHPUnit\Framework\TestCase
     /**
      * Test get items list
      */
-
     public function testGetItemsList()
     {
         require_once 'tests/Router/Fixtures/Tree/Apple.php';

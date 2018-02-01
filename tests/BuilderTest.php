@@ -23,7 +23,6 @@ class BuilderTest extends \PHPUnit\Framework\TestCase
     /**
      * @var Composer
      */
-
     protected $_composer;
 
     /**
@@ -31,13 +30,11 @@ class BuilderTest extends \PHPUnit\Framework\TestCase
      *
      * @var mixed
      */
-
     protected $_directory;
 
     /**
      * @var IOInterface
      */
-
     protected $_io;
 
     /**
@@ -45,7 +42,6 @@ class BuilderTest extends \PHPUnit\Framework\TestCase
      *
      * @var InstalledRepositoryInterface
      */
-
     protected $_repository;
 
     /**
@@ -53,7 +49,6 @@ class BuilderTest extends \PHPUnit\Framework\TestCase
      *
      * @var RootPackage
      */
-
     protected $_root_package;
 
     /**
@@ -61,7 +56,6 @@ class BuilderTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-
     protected function generagePackages()
     {
         $result = array();
@@ -85,7 +79,6 @@ class BuilderTest extends \PHPUnit\Framework\TestCase
     /**
      * Set up
      */
-
     protected function setUp()
     {
         $this->_directory = __DIR__ . '/Fixtures/package';
@@ -164,7 +157,6 @@ class BuilderTest extends \PHPUnit\Framework\TestCase
     /**
      * Tear down
      */
-
     protected function tearDown()
     {
         Cacher::getInstance()->flush();
@@ -178,7 +170,6 @@ class BuilderTest extends \PHPUnit\Framework\TestCase
     /**
      * Test root package path
      */
-
     public function testRootPackagePath()
     {
         $builder = new Builder();
@@ -192,7 +183,6 @@ class BuilderTest extends \PHPUnit\Framework\TestCase
     /**
      * Test set root package path
      */
-
     public function testSetRootPackagePath()
     {
         $builder = (new Builder())
@@ -208,7 +198,6 @@ class BuilderTest extends \PHPUnit\Framework\TestCase
     /**
      * Test by keys routing
      */
-
     public function testByKeysCachedData()
     {
         $event = new Event(
@@ -242,7 +231,6 @@ class BuilderTest extends \PHPUnit\Framework\TestCase
     /**
      * Test by class name routing
      */
-
     public function testByClassNameCachedData()
     {
         require_once 'source/Router/ByClassName.php';

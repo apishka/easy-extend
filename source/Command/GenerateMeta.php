@@ -2,9 +2,9 @@
 
 namespace Apishka\EasyExtend\Command;
 
-use Apishka\EasyExtend\Meta;
 use Apishka\EasyExtend\Broker;
 use Apishka\EasyExtend\Locator;
+use Apishka\EasyExtend\Meta;
 use Apishka\EasyExtend\RouterAbstract;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -58,7 +58,8 @@ class GenerateMeta extends Command
 
     /**
      * @param RouterAbstract $router
-     * @param string $function
+     * @param string         $function
+     *
      * @return Meta\Data
      */
     private function generateMetaDataForRouter(RouterAbstract $router, string $function): Meta\Data

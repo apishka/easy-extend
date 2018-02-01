@@ -31,9 +31,10 @@ class Data
 
     /**
      * @param string $key
-     * @param bool $is_key_string
+     * @param bool   $is_key_string
      * @param string $value
-     * @param bool $is_value_string
+     * @param bool   $is_value_string
+     *
      * @return $this
      */
     public function map(string $key, bool $is_key_string, string $value, bool $is_value_string)
@@ -101,7 +102,8 @@ TPL;
 
     /**
      * @param string $value
-     * @param bool $is_string
+     * @param bool   $is_string
+     *
      * @return string
      */
     private function exportMapValue(string $value, bool $is_string): string
