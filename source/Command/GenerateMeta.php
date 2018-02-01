@@ -2,6 +2,7 @@
 
 namespace Apishka\EasyExtend\Command;
 
+use Apishka\EasyExtend\Meta;
 use Apishka\EasyExtend\Broker;
 use Apishka\EasyExtend\Locator;
 use Apishka\EasyExtend\RouterAbstract;
@@ -14,9 +15,6 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class GenerateMeta extends Command
 {
-    /**
-     * {@inheritdoc}
-     */
     protected function configure()
     {
         $this
@@ -45,119 +43,38 @@ class GenerateMeta extends Command
      */
     private function generateMeta(): void
     {
-        $metas = [];
-        $metas[] = $this->generateMetaForClass(Broker::getInstance(), 'getRouter');
-        $metas[] = $this->generateMetaForClass(Broker::getInstance()->getRouter(Locator\ByClassName::class), 'make');
+        $generator = new Meta\Generator();
 
-        $this->writeFile(
-            $this->prepareMetaFileContents($metas)
+        $generator->register(
+            $this->generateMetaDataForRouter(Broker::getInstance(), 'getRouter')
         );
+
+        $generator->register(
+            $this->generateMetaDataForRouter(Broker::getInstance()->getRouter(Locator\ByClassName::class), 'make')
+        );
+
+        $generator->generate('easy-extend.meta.php');
     }
 
     /**
-     * Generates meta for classes
-     *
      * @param RouterAbstract $router
-     * @param string         $function
-     *
-     * @return string
-     */
-    private function generateMetaForClass(RouterAbstract $router, string $function): string
-    {
-        $maps = [];
-        foreach ($router->getData() as $key => $data)
-        {
-            $maps[] = '\'\\' . $key .'\'' . ' => \\' . $data['class'] . '::class';
-        }
-
-        return $this->prepareMetaDataForClass(
-            get_class($router),
-            $function,
-            $maps
-        );
-    }
-
-    /**
-     * @param string $contents
-     */
-    private function writeFile(string $contents)
-    {
-        $dir = '.phpstorm.meta.php';
-
-        if (!file_exists($dir))
-        {
-            mkdir($dir, 0755);
-        }
-
-        file_put_contents(
-            $dir . DIRECTORY_SEPARATOR . 'easy-extend.meta.php',
-            $contents
-        );
-    }
-
-    /**
-     * @param string $class
      * @param string $function
-     * @param array  $maps
-     *
-     * @return string
+     * @return Meta\Data
      */
-    private function prepareMetaDataForClass(string $class, string $function, array $maps): string
+    private function generateMetaDataForRouter(RouterAbstract $router, string $function): Meta\Data
     {
-        if (!$maps)
-            return '';
+        $data = new Meta\Data(get_class($router), $function);
 
-        $template = <<<TPL
-    override(
-        \{class}::{function}(0),
-        map(
-            //map of argument value -> return type
-            [
-                {maps}
-            ]
-        )
-    );
-TPL;
+        foreach ($router->getData() as $key => $details)
+        {
+            $data->map(
+                '\\' . $key,
+                true,
+                '\\' . $details['class'] . '::class',
+                false
+            );
+        }
 
-        $replaces = [
-            '{class}' => $class,
-            '{function}' => $function,
-            '{maps}' => implode(',' . PHP_EOL . '                ', $maps),
-        ];
-
-        return str_replace(
-            array_keys($replaces),
-            array_values($replaces),
-            $template
-        );
-    }
-
-    /**
-     * @param array $metas
-     *
-     * @return string
-     */
-    private function prepareMetaFileContents(array $metas): string
-    {
-        $metas = array_filter($metas);
-
-        $template = <<<TPL
-<?php
-
-namespace PHPSTORM_META
-{
-{meta}
-}
-TPL;
-
-        $replaces = [
-            '{meta}' => implode(PHP_EOL . PHP_EOL, $metas),
-        ];
-
-        return str_replace(
-            array_keys($replaces),
-            array_values($replaces),
-            $template
-        );
+        return $data;
     }
 }
