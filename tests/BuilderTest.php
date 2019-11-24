@@ -79,7 +79,7 @@ class BuilderTest extends \PHPUnit\Framework\TestCase
     /**
      * Set up
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->_directory = __DIR__ . '/Fixtures/package';
 
@@ -157,7 +157,7 @@ class BuilderTest extends \PHPUnit\Framework\TestCase
     /**
      * Tear down
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         Cacher::getInstance()->flush();
 

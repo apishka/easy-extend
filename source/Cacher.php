@@ -83,7 +83,14 @@ class Cacher
     public function getCacheDir(): string
     {
         if ($this->_cache_dir === null)
-            $this->_cache_dir = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'cache');
+        {
+            $real_path = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'cache');
+
+            if ($real_path === false)
+                throw new \LogicException('Cannot get realpath');
+
+            $this->_cache_dir = $real_path;
+        }
 
         return $this->_cache_dir;
     }

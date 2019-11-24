@@ -12,7 +12,7 @@ class CacherTest extends \PHPUnit\Framework\TestCase
     /**
      * Tear down
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         Cacher::clearInstance();
     }

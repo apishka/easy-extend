@@ -37,7 +37,7 @@ class EasyExtendTest extends \PHPUnit\Framework\TestCase
     /**
      * Set up
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $io         = $this->getMockBuilder('Composer\IO\IOInterface')->getMock();
         $composer   = $this->getMockBuilder('Composer\Composer')->getMock();
@@ -98,7 +98,7 @@ class EasyExtendTest extends \PHPUnit\Framework\TestCase
     /**
      * Tear down
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->plugin   = null;
         $this->composer = null;

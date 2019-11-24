@@ -14,7 +14,7 @@ class BrokerTest extends \PHPUnit\Framework\TestCase
     /**
      * Tear down
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         Broker::clearInstance();
     }
@@ -122,12 +122,12 @@ class BrokerTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test simple cache data
-     *
-     * @expectedException \LogicException
-     * @expectedExceptionMessage Class 'ApishkaTest\\EasyExtend\\Fixtures\\RouterB3' has no direct relation with class 'ApishkaTest\\EasyExtend\\Fixtures\\RouterB1'
      */
     public function testExtendingTwice()
     {
+        $this->expectException(\LogicException::class);
+        $this->expectExceptionMessage('Class \'ApishkaTest\\\\EasyExtend\\\\Fixtures\\\\RouterB3\' has no direct relation with class \'ApishkaTest\\\\EasyExtend\\\\Fixtures\\\\RouterB1\'. Use @easy-extend-base to create new branch.');
+
         require_once 'tests/Fixtures/RouterB.php';
         require_once 'tests/Fixtures/RouterB1.php';
         require_once 'tests/Fixtures/RouterB3.php';

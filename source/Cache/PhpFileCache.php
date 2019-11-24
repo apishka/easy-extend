@@ -60,6 +60,9 @@ class PhpFileCache
         }
 
         $tmp_file = tempnam($filepath, 'swap');
+        if ($tmp_file === false) {
+            throw new \LogicException('Cannot create temporary file');
+        }
 
         $content = sprintf(
             '<?php return %s;',
@@ -132,7 +135,10 @@ class PhpFileCache
         foreach ($finder as $file)
         {
             /** @var $file \Symfony\Component\Finder\SplFileInfo */
-            @unlink($file->getRealPath());
+            if ($file->getRealPath() !== false)
+            {
+                @unlink($file->getRealPath());
+            }
         }
     }
 

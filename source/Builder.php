@@ -241,6 +241,10 @@ class Builder
             $dir
         );
 
+        if ($dir === null) {
+            throw new \LogicException('Wrong directory');
+        }
+
         $path = $this->getConfigPath($dir);
         if (file_exists($path))
         {
