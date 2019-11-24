@@ -17,4 +17,4 @@ install:
 
 script:
   - vendor/bin/phpunit -c phpunit.sample.xml
-  - vendor/bin/phpstan analyze -l 1 source
+  - vendor/bin/phpstan analyze -l 7 source
