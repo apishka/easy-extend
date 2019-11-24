@@ -29,7 +29,7 @@ class GenerateMeta extends Command
      * @param InputInterface  $input
      * @param OutputInterface $output
      */
-    protected function execute(InputInterface $input, OutputInterface $output): void
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
         $output->writeln('Apishka Easy Extend meta generation');
 
