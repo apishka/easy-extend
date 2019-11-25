@@ -37,5 +37,7 @@ class Collect extends Command
         $builder->buildFromCache();
 
         $output->writeln('Done');
+        
+        return 0;
     }
 }
