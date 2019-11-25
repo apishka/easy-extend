@@ -36,6 +36,8 @@ class GenerateMeta extends Command
         $this->generateMeta();
 
         $output->writeln('Done');
+        
+        return 0;
     }
 
     /**
